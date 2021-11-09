@@ -93,36 +93,36 @@ tokens = [
 
 # A string containing ignored characters (spaces and tabs)
 t_ignore = ' \t'
-t_ignore_COMMENT = r'#.'
+t_ignore_COMMENT = r'\#.'
 
 # Regular expression rules for simple tokens
 t_NUMBER = r'\d+'
 
-t_PLUS = r'+'
+t_PLUS = r'\+'
 t_MINUS = r'-'
-t_TIMES = r'*' 
+t_TIMES = r'\*' 
 t_DIVIDE = r'/'
-t_EXPONENTIATION = r'**'
+t_EXPONENTIATION = r'\*\*'
 
 t_GREATER = r'>'
 t_GREATER_OR_EQUAL = r'>='
 t_MINOR = r'<' 
 t_MINOR_OR_EQUAL = r'<='
 
-t_LPAR = r'('
-t_RPAR = r')'
-t_LCOR = r'['
-t_RCOR = r']'
-t_LKEY = r'{'
-t_RKEY = r'}'
-t_PIPE = r'|'
-t_S_OR = r'||'
-t_S_AND = r'&&'
-t_S_NOT = r'!'
-t_ASIGN = r'='
-t_COMMA = r','
-t_POINT = r'.'
-t_QUESTION = r'?'
+t_LPAR = r'\('
+t_RPAR = r'\)'
+t_LCOR = r'\['
+t_RCOR = r'\]'
+t_LKEY = r'\{'
+t_RKEY = r'\}'
+t_PIPE = r'\|'
+t_S_OR = r'\|\|'
+t_S_AND = r'\&&'
+t_S_NOT = r'\!'
+t_ASIGN = r'\='
+t_COMMA = r'\,'
+t_POINT = r'\.'
+t_QUESTION = r'\?'
 
 def tVARIABLE(t):
     r'[a-zA-Z$@][A-Za-z_0-9]'
@@ -141,3 +141,19 @@ def t_error(t):
     t.lexer.skip(1)
 
 # Fin -> Tommy Joel Villagómez Borja
+# Build the lexer
+lexer = lex.lex()
+
+def analyze(data):
+    lexer.input(data)
+    while True:
+        tok = lexer.token()
+        if not tok:
+            break  # No more input
+        print(tok)
+
+while True:
+    data = input(">> ")
+    analyze(data)
+    if len(data)==0:
+        break
