@@ -88,3 +88,56 @@ tokens = [
 # Fin-> Luis Carlos Sanchez Plaza
 
 #Comentario Prueba
+
+# Inicio -> Tommy Joel Villagómez Borja
+
+# A string containing ignored characters (spaces and tabs)
+t_ignore = ' \t'
+t_ignore_COMMENT = r'#.'
+
+# Regular expression rules for simple tokens
+t_NUMBER = r'\d+'
+
+t_PLUS = r'+'
+t_MINUS = r'-'
+t_TIMES = r'*' 
+t_DIVIDE = r'/'
+t_EXPONENTIATION = r'**'
+
+t_GREATER = r'>'
+t_GREATER_OR_EQUAL = r'>='
+t_MINOR = r'<' 
+t_MINOR_OR_EQUAL = r'<='
+
+t_LPAR = r'('
+t_RPAR = r')'
+t_LCOR = r'['
+t_RCOR = r']'
+t_LKEY = r'{'
+t_RKEY = r'}'
+t_PIPE = r'|'
+t_S_OR = r'||'
+t_S_AND = r'&&'
+t_S_NOT = r'!'
+t_ASIGN = r'='
+t_COMMA = r','
+t_POINT = r'.'
+t_QUESTION = r'?'
+
+def tVARIABLE(t):
+    r'[a-zA-Z$@][A-Za-z_0-9]'
+    t.type = reserved.get(t.value, 'VARIABLE')  # Check for reserved words
+    return t
+
+
+# Define a rule so we can track line numbers
+def t_newline(t):
+ r'\n+'
+ t.lexer.lineno += len(t.value)
+
+ # Error handling rule
+def t_error(t):
+    print("Illegal character '%s'" % t.value[0])
+    t.lexer.skip(1)
+
+# Fin -> Tommy Joel Villagómez Borja
