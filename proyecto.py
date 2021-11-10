@@ -124,12 +124,21 @@ t_COMMA = r'\,'
 t_POINT = r'\.'
 t_QUESTION = r'\?'
 
-def tVARIABLE(t):
-    r'[a-zA-Z$@][A-Za-z_0-9]'
+def t_VARIABLE(t):
+    r'[a-zA-Z_$@][A-Za-z_0-9]*'
     t.type = reserved.get(t.value, 'VARIABLE')  # Check for reserved words
     return t
 
+# Inicio -> Paúl del Pezo
+def t_STRING(t):
+    r'(\"|\').*?(\"|\')'
+    t.value = t.value[1:-1]
+    return t
 
+def t_FLOAT(t):
+    r'\d+\.\d+'
+    t.value = float(t.value)
+    return t
 # Define a rule so we can track line numbers
 def t_newline(t):
  r'\n+'
@@ -141,6 +150,7 @@ def t_error(t):
     t.lexer.skip(1)
 
 # Fin -> Tommy Joel Villagómez Borja
+
 # Build the lexer
 lexer = lex.lex()
 
@@ -151,9 +161,10 @@ def analyze(data):
         if not tok:
             break  # No more input
         print(tok)
+archivo = open("algoritm.txt","r")
 
-while True:
-    data = input(">> ")
-    analyze(data)
-    if len(data)==0:
+for line in archivo:
+    print(">>>"+ line)
+    analyze(line)
+    if len(line)==0:
         break

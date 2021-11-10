@@ -1,0 +1,17 @@
+variable
+_variable
+@variable
+if(a>1)
+	puts "hola"
+ends
+for i in array
+	puts i
+a = true && true
+b = true || false
+a>b
+b<a
+array.insert(2,6)
+array.delete_at(1)
+hash.delete("a")
+stack.search(6)
+stack-push(5)
