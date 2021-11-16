@@ -125,7 +125,7 @@ t_POINT = r'\.'
 t_QUESTION = r'\?'
 
 def t_VARIABLE(t):
-    r'[a-zA-Z_$@][A-Za-z_0-9]*'
+    r'([a-z_$@] | @@)[A-Za-z_0-9]*'
     t.type = reserved.get(t.value, 'VARIABLE')  # Check for reserved words
     return t
 
