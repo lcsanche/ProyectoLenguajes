@@ -9,14 +9,10 @@ reserved = {
     'end':'END',
     
     #Bucles
-    'for':'FOR',
+    'each':'EACH',
     'in': "IN",
     'do': 'DO',
     'while' : 'WHILE',
-    
-    #Operadores logicos
-    'and':'AND',
-    'or':'OR',
 
     #Boolean
     'true': 'TRUE',
@@ -28,6 +24,7 @@ reserved = {
 
     #Funciones
     'def': "DEF",
+    'return' : "RETURN",
 
     # Funciones para Array
     'insert': "INSERT",
@@ -75,13 +72,13 @@ tokens = [
     'LCOR',
     'RKEY',
     'LKEY',
-    'PIPE',
-    'S_OR',
-    'S_AND',
-    'S_NOT',
+    'OR',
+    'AND',
+    'NOT',
     'ASIGN',
     'COMMA',
     'POINT',
+    'D_POINT',
     'QUESTION'
 ]+list(reserved.values())
 
@@ -115,13 +112,13 @@ t_LCOR = r'\['
 t_RCOR = r'\]'
 t_LKEY = r'\{'
 t_RKEY = r'\}'
-t_PIPE = r'\|'
-t_S_OR = r'\|\|'
-t_S_AND = r'\&&'
-t_S_NOT = r'\!'
+t_OR = r'\|\|'
+t_AND = r'\&\&'
+t_NOT = r'\!'
 t_ASIGN = r'\='
 t_COMMA = r'\,'
 t_POINT = r'\.'
+t_D_POINT = r'\:'
 t_QUESTION = r'\?'
 
 def t_VARIABLE(t):
