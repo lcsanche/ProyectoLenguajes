@@ -8,12 +8,17 @@ def p_instrucciones(p):
                     | funciones
                     | comparacion
                     | condicional
+                    | while
                     | impresion
                     | input
                     | callFuncion
                     | addValueHash
                     | modValueHash
                     | deleteValueHash
+                    | insertArray
+                    | deleteArray
+                    
+    
     '''
 
 def p_body(p):
@@ -27,6 +32,8 @@ def p_body(p):
                 | addValueHash
                 | modValueHash
                 | deleteValueHash
+                | insertArray
+                | deleteArray
     '''
 # ----------------------------------Asignacion----------------------------------
 def p_asignacion(p):
@@ -35,6 +42,7 @@ def p_asignacion(p):
                 | VARIABLE ASIGN callFuncion
                 | VARIABLE ASIGN diccionario
                 | VARIABLE ASIGN getValueHash
+                | VARIABLE ASIGN array
     '''
 
 # ----------------------------------Expresiones----------------------------------
@@ -50,6 +58,7 @@ def p_factor_num(p):
     '''factor : NUMBER
                 | STRING
                 | FLOAT
+                | VARIABLE
     '''
 
 def p_factor_expr(p):
@@ -152,6 +161,37 @@ def p_del_hash(p):
     'deleteValueHash : VARIABLE POINT DELETE LPAR expression RPAR'
 
 # Fin -> Luis Carlos Sanchez Plaza
+
+# Inicio -> Tommy Joel Villagómez Borja
+#-----------------------------------while----------------------------------
+def p_while(p):
+    '''while : WHILE LPAR comparacion RPAR cuerpo END
+            | WHILE LPAR comparacion RPAR cuerpo END while
+    '''
+
+#------------------------------------array-----------------------------------
+def p_parA_function(p):
+    ''' parametrosA : factor
+                    | factor COMMA parametrosA
+    '''
+def p_array(p):
+    '''array : LCOR parametrosA RCOR
+             | LCOR RCOR
+    '''
+
+def p_argumentos_array(p):
+    '''argumentosA : NUMBER
+                    | NUMBER COMMA factor
+    '''
+def p_insert_array(p):
+    '''insertArray : VARIABLE POINT INSERT LPAR argumentosA RPAR
+    '''
+
+def p_delete_array(p):
+    '''deleteArray : VARIABLE POINT DELETE_AT LPAR NUMBER RPAR
+    '''
+
+# Fin -> Tommy Joel Villagómez Borja
 
 
 

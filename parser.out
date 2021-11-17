@@ -3,18 +3,15 @@ Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 Unused terminals:
 
     ALIAS
-    DELETE_AT
     DO
     EACH
     ENSURE
     IN
     INCLUDE
-    INSERT
     PUSH
     QUESTION
     SEARCH
     SELF
-    WHILE
 
 Grammar
 
@@ -24,150 +21,173 @@ Rule 2     instrucciones -> expression
 Rule 3     instrucciones -> funciones
 Rule 4     instrucciones -> comparacion
 Rule 5     instrucciones -> condicional
-Rule 6     instrucciones -> impresion
-Rule 7     instrucciones -> input
-Rule 8     instrucciones -> callFuncion
-Rule 9     instrucciones -> addValueHash
-Rule 10    instrucciones -> modValueHash
-Rule 11    instrucciones -> deleteValueHash
-Rule 12    cuerpo -> asignacion
-Rule 13    cuerpo -> expression
-Rule 14    cuerpo -> comparacion
-Rule 15    cuerpo -> condicional
-Rule 16    cuerpo -> impresion
-Rule 17    cuerpo -> input
-Rule 18    cuerpo -> callFuncion
-Rule 19    cuerpo -> addValueHash
-Rule 20    cuerpo -> modValueHash
-Rule 21    cuerpo -> deleteValueHash
-Rule 22    asignacion -> VARIABLE ASIGN expression
-Rule 23    asignacion -> VARIABLE ASIGN comparacion
-Rule 24    asignacion -> VARIABLE ASIGN callFuncion
-Rule 25    asignacion -> VARIABLE ASIGN diccionario
-Rule 26    asignacion -> VARIABLE ASIGN getValueHash
-Rule 27    expression -> term
-Rule 28    expression -> boleano
-Rule 29    term -> factor
-Rule 30    factor -> NUMBER
-Rule 31    factor -> STRING
-Rule 32    factor -> FLOAT
-Rule 33    factor -> LPAR expression RPAR
-Rule 34    expression -> expression PLUS term
-Rule 35    expression -> expression MINUS term
-Rule 36    term -> term TIMES factor
-Rule 37    term -> term DIVIDE factor
-Rule 38    term -> term EXPONENTIATION factor
-Rule 39    comparacion -> expression comparador expression
-Rule 40    comparacion -> expression comparador expression AND comparacion
-Rule 41    comparacion -> expression comparador expression OR comparacion
-Rule 42    comparador -> GREATER
-Rule 43    comparador -> GREATER_OR_EQUAL
-Rule 44    comparador -> MINOR
-Rule 45    comparador -> MINOR_OR_EQUAL
-Rule 46    comparador -> ASIGN ASIGN
-Rule 47    comparador -> NOT ASIGN
-Rule 48    condicional -> IF comparacion D_POINT cuerpo END
-Rule 49    condicional -> IF comparacion D_POINT cuerpo END cond_else
-Rule 50    cond_else -> ELSE D_POINT cuerpo END
-Rule 51    impresion -> PUTS STRING
-Rule 52    input -> VARIABLE ASIGN GETS
-Rule 53    parametros -> VARIABLE
-Rule 54    parametros -> VARIABLE COMMA parametros
-Rule 55    encabezado -> DEF VARIABLE LPAR RPAR
-Rule 56    encabezado -> DEF VARIABLE LPAR parametros RPAR
-Rule 57    funciones -> encabezado cuerpo END
-Rule 58    funciones -> encabezado RETURN expression END
-Rule 59    funciones -> encabezado cuerpo RETURN expression END
-Rule 60    callFuncion -> VARIABLE LPAR RPAR
-Rule 61    callFuncion -> VARIABLE LPAR parametros RPAR
-Rule 62    boleano -> TRUE
-Rule 63    boleano -> FALSE
-Rule 64    diccionario -> LKEY cuerpoHash RKEY
-Rule 65    cuerpoHash -> expression ASIGN GREATER expression
-Rule 66    cuerpoHash -> expression ASIGN GREATER expression COMMA cuerpoHash
-Rule 67    getValueHash -> VARIABLE LCOR expression RCOR
-Rule 68    addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression
-Rule 69    modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression
-Rule 70    deleteValueHash -> VARIABLE POINT DELETE LPAR expression RPAR
+Rule 6     instrucciones -> while
+Rule 7     instrucciones -> impresion
+Rule 8     instrucciones -> input
+Rule 9     instrucciones -> callFuncion
+Rule 10    instrucciones -> addValueHash
+Rule 11    instrucciones -> modValueHash
+Rule 12    instrucciones -> deleteValueHash
+Rule 13    instrucciones -> insertArray
+Rule 14    instrucciones -> deleteArray
+Rule 15    cuerpo -> asignacion
+Rule 16    cuerpo -> expression
+Rule 17    cuerpo -> comparacion
+Rule 18    cuerpo -> condicional
+Rule 19    cuerpo -> impresion
+Rule 20    cuerpo -> input
+Rule 21    cuerpo -> callFuncion
+Rule 22    cuerpo -> addValueHash
+Rule 23    cuerpo -> modValueHash
+Rule 24    cuerpo -> deleteValueHash
+Rule 25    cuerpo -> insertArray
+Rule 26    cuerpo -> deleteArray
+Rule 27    asignacion -> VARIABLE ASIGN expression
+Rule 28    asignacion -> VARIABLE ASIGN comparacion
+Rule 29    asignacion -> VARIABLE ASIGN callFuncion
+Rule 30    asignacion -> VARIABLE ASIGN diccionario
+Rule 31    asignacion -> VARIABLE ASIGN getValueHash
+Rule 32    asignacion -> VARIABLE ASIGN array
+Rule 33    expression -> term
+Rule 34    expression -> boleano
+Rule 35    term -> factor
+Rule 36    factor -> NUMBER
+Rule 37    factor -> STRING
+Rule 38    factor -> FLOAT
+Rule 39    factor -> VARIABLE
+Rule 40    factor -> LPAR expression RPAR
+Rule 41    expression -> expression PLUS term
+Rule 42    expression -> expression MINUS term
+Rule 43    term -> term TIMES factor
+Rule 44    term -> term DIVIDE factor
+Rule 45    term -> term EXPONENTIATION factor
+Rule 46    comparacion -> expression comparador expression
+Rule 47    comparacion -> expression comparador expression AND comparacion
+Rule 48    comparacion -> expression comparador expression OR comparacion
+Rule 49    comparador -> GREATER
+Rule 50    comparador -> GREATER_OR_EQUAL
+Rule 51    comparador -> MINOR
+Rule 52    comparador -> MINOR_OR_EQUAL
+Rule 53    comparador -> ASIGN ASIGN
+Rule 54    comparador -> NOT ASIGN
+Rule 55    condicional -> IF comparacion D_POINT cuerpo END
+Rule 56    condicional -> IF comparacion D_POINT cuerpo END cond_else
+Rule 57    cond_else -> ELSE D_POINT cuerpo END
+Rule 58    impresion -> PUTS STRING
+Rule 59    input -> VARIABLE ASIGN GETS
+Rule 60    parametros -> VARIABLE
+Rule 61    parametros -> VARIABLE COMMA parametros
+Rule 62    encabezado -> DEF VARIABLE LPAR RPAR
+Rule 63    encabezado -> DEF VARIABLE LPAR parametros RPAR
+Rule 64    funciones -> encabezado cuerpo END
+Rule 65    funciones -> encabezado RETURN expression END
+Rule 66    funciones -> encabezado cuerpo RETURN expression END
+Rule 67    callFuncion -> VARIABLE LPAR RPAR
+Rule 68    callFuncion -> VARIABLE LPAR parametros RPAR
+Rule 69    boleano -> TRUE
+Rule 70    boleano -> FALSE
+Rule 71    diccionario -> LKEY cuerpoHash RKEY
+Rule 72    cuerpoHash -> expression ASIGN GREATER expression
+Rule 73    cuerpoHash -> expression ASIGN GREATER expression COMMA cuerpoHash
+Rule 74    getValueHash -> VARIABLE LCOR expression RCOR
+Rule 75    addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression
+Rule 76    modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression
+Rule 77    deleteValueHash -> VARIABLE POINT DELETE LPAR expression RPAR
+Rule 78    while -> WHILE LPAR comparacion RPAR cuerpo END
+Rule 79    while -> WHILE LPAR comparacion RPAR cuerpo END while
+Rule 80    parametrosA -> factor
+Rule 81    parametrosA -> factor COMMA parametrosA
+Rule 82    array -> LCOR parametrosA RCOR
+Rule 83    array -> LCOR RCOR
+Rule 84    argumentosA -> NUMBER
+Rule 85    argumentosA -> NUMBER COMMA factor
+Rule 86    insertArray -> VARIABLE POINT INSERT LPAR argumentosA RPAR
+Rule 87    deleteArray -> VARIABLE POINT DELETE_AT LPAR NUMBER RPAR
 
 Terminals, with rules where they appear
 
 ALIAS                : 
-AND                  : 40
-ASIGN                : 22 23 24 25 26 46 46 47 52 65 66 68 69
-COMMA                : 54 66
-DEF                  : 55 56
-DELETE               : 70
-DELETE_AT            : 
-DIVIDE               : 37
+AND                  : 47
+ASIGN                : 27 28 29 30 31 32 53 53 54 59 72 73 75 76
+COMMA                : 61 73 81 85
+DEF                  : 62 63
+DELETE               : 77
+DELETE_AT            : 87
+DIVIDE               : 44
 DO                   : 
-D_POINT              : 48 49 50
+D_POINT              : 55 56 57
 EACH                 : 
-ELSE                 : 50
-END                  : 48 49 50 57 58 59
+ELSE                 : 57
+END                  : 55 56 57 64 65 66 78 79
 ENSURE               : 
-EXPONENTIATION       : 38
-FALSE                : 63
-FLOAT                : 32
-GETS                 : 52
-GREATER              : 42 65 66
-GREATER_OR_EQUAL     : 43
-IF                   : 48 49
+EXPONENTIATION       : 45
+FALSE                : 70
+FLOAT                : 38
+GETS                 : 59
+GREATER              : 49 72 73
+GREATER_OR_EQUAL     : 50
+IF                   : 55 56
 IN                   : 
 INCLUDE              : 
-INSERT               : 
-LCOR                 : 67 68 69
-LKEY                 : 64
-LPAR                 : 33 55 56 60 61 70
-MINOR                : 44
-MINOR_OR_EQUAL       : 45
-MINUS                : 35
-NOT                  : 47
-NUMBER               : 30
-OR                   : 41
-PLUS                 : 34
-POINT                : 70
+INSERT               : 86
+LCOR                 : 74 75 76 82 83
+LKEY                 : 71
+LPAR                 : 40 62 63 67 68 77 78 79 86 87
+MINOR                : 51
+MINOR_OR_EQUAL       : 52
+MINUS                : 42
+NOT                  : 54
+NUMBER               : 36 84 85 87
+OR                   : 48
+PLUS                 : 41
+POINT                : 77 86 87
 PUSH                 : 
-PUTS                 : 51
+PUTS                 : 58
 QUESTION             : 
-RCOR                 : 67 68 69
-RETURN               : 58 59
-RKEY                 : 64
-RPAR                 : 33 55 56 60 61 70
+RCOR                 : 74 75 76 82 83
+RETURN               : 65 66
+RKEY                 : 71
+RPAR                 : 40 62 63 67 68 77 78 79 86 87
 SEARCH               : 
 SELF                 : 
-STRING               : 31 51
-TIMES                : 36
-TRUE                 : 62
-VARIABLE             : 22 23 24 25 26 52 53 54 55 56 60 61 67 68 69 70
-WHILE                : 
+STRING               : 37 58
+TIMES                : 43
+TRUE                 : 69
+VARIABLE             : 27 28 29 30 31 32 39 59 60 61 62 63 67 68 74 75 76 77 86 87
+WHILE                : 78 79
 error                : 
 
 Nonterminals, with rules where they appear
 
-addValueHash         : 9 19
-asignacion           : 1 12
-boleano              : 28
-callFuncion          : 8 18 24
-comparacion          : 4 14 23 40 41 48 49
-comparador           : 39 40 41
-cond_else            : 49
-condicional          : 5 15
-cuerpo               : 48 49 50 57 59
-cuerpoHash           : 64 66
-deleteValueHash      : 11 21
-diccionario          : 25
-encabezado           : 57 58 59
-expression           : 2 13 22 33 34 35 39 39 40 40 41 41 58 59 65 65 66 66 67 68 68 69 69 70
-factor               : 29 36 37 38
+addValueHash         : 10 22
+argumentosA          : 86
+array                : 32
+asignacion           : 1 15
+boleano              : 34
+callFuncion          : 9 21 29
+comparacion          : 4 17 28 47 48 55 56 78 79
+comparador           : 46 47 48
+cond_else            : 56
+condicional          : 5 18
+cuerpo               : 55 56 57 64 66 78 79
+cuerpoHash           : 71 73
+deleteArray          : 14 26
+deleteValueHash      : 12 24
+diccionario          : 30
+encabezado           : 64 65 66
+expression           : 2 16 27 40 41 42 46 46 47 47 48 48 65 66 72 72 73 73 74 75 75 76 76 77
+factor               : 35 43 44 45 80 81 85
 funciones            : 3
-getValueHash         : 26
-impresion            : 6 16
-input                : 7 17
+getValueHash         : 31
+impresion            : 7 19
+input                : 8 20
+insertArray          : 13 25
 instrucciones        : 0
-modValueHash         : 10 20
-parametros           : 54 56 61
-term                 : 27 34 35 36 37 38
+modValueHash         : 11 23
+parametros           : 61 63 68
+parametrosA          : 81 82
+term                 : 33 41 42 43 44 45
+while                : 6 79
 
 Parsing method: LALR
 
@@ -179,59 +199,69 @@ state 0
     (3) instrucciones -> . funciones
     (4) instrucciones -> . comparacion
     (5) instrucciones -> . condicional
-    (6) instrucciones -> . impresion
-    (7) instrucciones -> . input
-    (8) instrucciones -> . callFuncion
-    (9) instrucciones -> . addValueHash
-    (10) instrucciones -> . modValueHash
-    (11) instrucciones -> . deleteValueHash
-    (22) asignacion -> . VARIABLE ASIGN expression
-    (23) asignacion -> . VARIABLE ASIGN comparacion
-    (24) asignacion -> . VARIABLE ASIGN callFuncion
-    (25) asignacion -> . VARIABLE ASIGN diccionario
-    (26) asignacion -> . VARIABLE ASIGN getValueHash
-    (27) expression -> . term
-    (28) expression -> . boleano
-    (34) expression -> . expression PLUS term
-    (35) expression -> . expression MINUS term
-    (57) funciones -> . encabezado cuerpo END
-    (58) funciones -> . encabezado RETURN expression END
-    (59) funciones -> . encabezado cuerpo RETURN expression END
-    (39) comparacion -> . expression comparador expression
-    (40) comparacion -> . expression comparador expression AND comparacion
-    (41) comparacion -> . expression comparador expression OR comparacion
-    (48) condicional -> . IF comparacion D_POINT cuerpo END
-    (49) condicional -> . IF comparacion D_POINT cuerpo END cond_else
-    (51) impresion -> . PUTS STRING
-    (52) input -> . VARIABLE ASIGN GETS
-    (60) callFuncion -> . VARIABLE LPAR RPAR
-    (61) callFuncion -> . VARIABLE LPAR parametros RPAR
-    (68) addValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
-    (69) modValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
-    (70) deleteValueHash -> . VARIABLE POINT DELETE LPAR expression RPAR
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (62) boleano -> . TRUE
-    (63) boleano -> . FALSE
-    (55) encabezado -> . DEF VARIABLE LPAR RPAR
-    (56) encabezado -> . DEF VARIABLE LPAR parametros RPAR
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (6) instrucciones -> . while
+    (7) instrucciones -> . impresion
+    (8) instrucciones -> . input
+    (9) instrucciones -> . callFuncion
+    (10) instrucciones -> . addValueHash
+    (11) instrucciones -> . modValueHash
+    (12) instrucciones -> . deleteValueHash
+    (13) instrucciones -> . insertArray
+    (14) instrucciones -> . deleteArray
+    (27) asignacion -> . VARIABLE ASIGN expression
+    (28) asignacion -> . VARIABLE ASIGN comparacion
+    (29) asignacion -> . VARIABLE ASIGN callFuncion
+    (30) asignacion -> . VARIABLE ASIGN diccionario
+    (31) asignacion -> . VARIABLE ASIGN getValueHash
+    (32) asignacion -> . VARIABLE ASIGN array
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (64) funciones -> . encabezado cuerpo END
+    (65) funciones -> . encabezado RETURN expression END
+    (66) funciones -> . encabezado cuerpo RETURN expression END
+    (46) comparacion -> . expression comparador expression
+    (47) comparacion -> . expression comparador expression AND comparacion
+    (48) comparacion -> . expression comparador expression OR comparacion
+    (55) condicional -> . IF comparacion D_POINT cuerpo END
+    (56) condicional -> . IF comparacion D_POINT cuerpo END cond_else
+    (78) while -> . WHILE LPAR comparacion RPAR cuerpo END
+    (79) while -> . WHILE LPAR comparacion RPAR cuerpo END while
+    (58) impresion -> . PUTS STRING
+    (59) input -> . VARIABLE ASIGN GETS
+    (67) callFuncion -> . VARIABLE LPAR RPAR
+    (68) callFuncion -> . VARIABLE LPAR parametros RPAR
+    (75) addValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
+    (76) modValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
+    (77) deleteValueHash -> . VARIABLE POINT DELETE LPAR expression RPAR
+    (86) insertArray -> . VARIABLE POINT INSERT LPAR argumentosA RPAR
+    (87) deleteArray -> . VARIABLE POINT DELETE_AT LPAR NUMBER RPAR
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (62) encabezado -> . DEF VARIABLE LPAR RPAR
+    (63) encabezado -> . DEF VARIABLE LPAR parametros RPAR
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    VARIABLE        shift and go to state 13
-    IF              shift and go to state 17
-    PUTS            shift and go to state 18
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
-    DEF             shift and go to state 24
+    VARIABLE        shift and go to state 16
+    IF              shift and go to state 20
+    WHILE           shift and go to state 21
+    PUTS            shift and go to state 23
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
+    DEF             shift and go to state 29
     NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    LPAR            shift and go to state 22
 
     instrucciones                  shift and go to state 1
     asignacion                     shift and go to state 2
@@ -239,16 +269,19 @@ state 0
     funciones                      shift and go to state 4
     comparacion                    shift and go to state 5
     condicional                    shift and go to state 6
-    impresion                      shift and go to state 7
-    input                          shift and go to state 8
-    callFuncion                    shift and go to state 9
-    addValueHash                   shift and go to state 10
-    modValueHash                   shift and go to state 11
-    deleteValueHash                shift and go to state 12
-    term                           shift and go to state 14
-    boleano                        shift and go to state 15
-    encabezado                     shift and go to state 16
-    factor                         shift and go to state 21
+    while                          shift and go to state 7
+    impresion                      shift and go to state 8
+    input                          shift and go to state 9
+    callFuncion                    shift and go to state 10
+    addValueHash                   shift and go to state 11
+    modValueHash                   shift and go to state 12
+    deleteValueHash                shift and go to state 13
+    insertArray                    shift and go to state 14
+    deleteArray                    shift and go to state 15
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    encabezado                     shift and go to state 19
+    factor                         shift and go to state 26
 
 state 1
 
@@ -266,29 +299,29 @@ state 2
 state 3
 
     (2) instrucciones -> expression .
-    (34) expression -> expression . PLUS term
-    (35) expression -> expression . MINUS term
-    (39) comparacion -> expression . comparador expression
-    (40) comparacion -> expression . comparador expression AND comparacion
-    (41) comparacion -> expression . comparador expression OR comparacion
-    (42) comparador -> . GREATER
-    (43) comparador -> . GREATER_OR_EQUAL
-    (44) comparador -> . MINOR
-    (45) comparador -> . MINOR_OR_EQUAL
-    (46) comparador -> . ASIGN ASIGN
-    (47) comparador -> . NOT ASIGN
+    (41) expression -> expression . PLUS term
+    (42) expression -> expression . MINUS term
+    (46) comparacion -> expression . comparador expression
+    (47) comparacion -> expression . comparador expression AND comparacion
+    (48) comparacion -> expression . comparador expression OR comparacion
+    (49) comparador -> . GREATER
+    (50) comparador -> . GREATER_OR_EQUAL
+    (51) comparador -> . MINOR
+    (52) comparador -> . MINOR_OR_EQUAL
+    (53) comparador -> . ASIGN ASIGN
+    (54) comparador -> . NOT ASIGN
 
     $end            reduce using rule 2 (instrucciones -> expression .)
-    PLUS            shift and go to state 27
-    MINUS           shift and go to state 28
-    GREATER         shift and go to state 30
-    GREATER_OR_EQUAL shift and go to state 31
-    MINOR           shift and go to state 32
-    MINOR_OR_EQUAL  shift and go to state 33
-    ASIGN           shift and go to state 34
-    NOT             shift and go to state 35
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    GREATER         shift and go to state 34
+    GREATER_OR_EQUAL shift and go to state 35
+    MINOR           shift and go to state 36
+    MINOR_OR_EQUAL  shift and go to state 37
+    ASIGN           shift and go to state 38
+    NOT             shift and go to state 39
 
-    comparador                     shift and go to state 29
+    comparador                     shift and go to state 33
 
 state 4
 
@@ -313,1992 +346,2520 @@ state 6
 
 state 7
 
-    (6) instrucciones -> impresion .
+    (6) instrucciones -> while .
 
-    $end            reduce using rule 6 (instrucciones -> impresion .)
+    $end            reduce using rule 6 (instrucciones -> while .)
 
 
 state 8
 
-    (7) instrucciones -> input .
+    (7) instrucciones -> impresion .
 
-    $end            reduce using rule 7 (instrucciones -> input .)
+    $end            reduce using rule 7 (instrucciones -> impresion .)
 
 
 state 9
 
-    (8) instrucciones -> callFuncion .
+    (8) instrucciones -> input .
 
-    $end            reduce using rule 8 (instrucciones -> callFuncion .)
+    $end            reduce using rule 8 (instrucciones -> input .)
 
 
 state 10
 
-    (9) instrucciones -> addValueHash .
+    (9) instrucciones -> callFuncion .
 
-    $end            reduce using rule 9 (instrucciones -> addValueHash .)
+    $end            reduce using rule 9 (instrucciones -> callFuncion .)
 
 
 state 11
 
-    (10) instrucciones -> modValueHash .
+    (10) instrucciones -> addValueHash .
 
-    $end            reduce using rule 10 (instrucciones -> modValueHash .)
+    $end            reduce using rule 10 (instrucciones -> addValueHash .)
 
 
 state 12
 
-    (11) instrucciones -> deleteValueHash .
+    (11) instrucciones -> modValueHash .
 
-    $end            reduce using rule 11 (instrucciones -> deleteValueHash .)
+    $end            reduce using rule 11 (instrucciones -> modValueHash .)
 
 
 state 13
 
-    (22) asignacion -> VARIABLE . ASIGN expression
-    (23) asignacion -> VARIABLE . ASIGN comparacion
-    (24) asignacion -> VARIABLE . ASIGN callFuncion
-    (25) asignacion -> VARIABLE . ASIGN diccionario
-    (26) asignacion -> VARIABLE . ASIGN getValueHash
-    (52) input -> VARIABLE . ASIGN GETS
-    (60) callFuncion -> VARIABLE . LPAR RPAR
-    (61) callFuncion -> VARIABLE . LPAR parametros RPAR
-    (68) addValueHash -> VARIABLE . LCOR expression RCOR ASIGN expression
-    (69) modValueHash -> VARIABLE . LCOR expression RCOR ASIGN expression
-    (70) deleteValueHash -> VARIABLE . POINT DELETE LPAR expression RPAR
+    (12) instrucciones -> deleteValueHash .
 
-    ASIGN           shift and go to state 36
-    LPAR            shift and go to state 37
-    LCOR            shift and go to state 38
-    POINT           shift and go to state 39
+    $end            reduce using rule 12 (instrucciones -> deleteValueHash .)
 
 
 state 14
 
-    (27) expression -> term .
-    (36) term -> term . TIMES factor
-    (37) term -> term . DIVIDE factor
-    (38) term -> term . EXPONENTIATION factor
+    (13) instrucciones -> insertArray .
 
-    PLUS            reduce using rule 27 (expression -> term .)
-    MINUS           reduce using rule 27 (expression -> term .)
-    GREATER         reduce using rule 27 (expression -> term .)
-    GREATER_OR_EQUAL reduce using rule 27 (expression -> term .)
-    MINOR           reduce using rule 27 (expression -> term .)
-    MINOR_OR_EQUAL  reduce using rule 27 (expression -> term .)
-    ASIGN           reduce using rule 27 (expression -> term .)
-    NOT             reduce using rule 27 (expression -> term .)
-    $end            reduce using rule 27 (expression -> term .)
-    END             reduce using rule 27 (expression -> term .)
-    RETURN          reduce using rule 27 (expression -> term .)
-    RPAR            reduce using rule 27 (expression -> term .)
-    AND             reduce using rule 27 (expression -> term .)
-    OR              reduce using rule 27 (expression -> term .)
-    D_POINT         reduce using rule 27 (expression -> term .)
-    RCOR            reduce using rule 27 (expression -> term .)
-    COMMA           reduce using rule 27 (expression -> term .)
-    RKEY            reduce using rule 27 (expression -> term .)
-    TIMES           shift and go to state 40
-    DIVIDE          shift and go to state 41
-    EXPONENTIATION  shift and go to state 42
+    $end            reduce using rule 13 (instrucciones -> insertArray .)
 
 
 state 15
 
-    (28) expression -> boleano .
+    (14) instrucciones -> deleteArray .
 
-    PLUS            reduce using rule 28 (expression -> boleano .)
-    MINUS           reduce using rule 28 (expression -> boleano .)
-    GREATER         reduce using rule 28 (expression -> boleano .)
-    GREATER_OR_EQUAL reduce using rule 28 (expression -> boleano .)
-    MINOR           reduce using rule 28 (expression -> boleano .)
-    MINOR_OR_EQUAL  reduce using rule 28 (expression -> boleano .)
-    ASIGN           reduce using rule 28 (expression -> boleano .)
-    NOT             reduce using rule 28 (expression -> boleano .)
-    $end            reduce using rule 28 (expression -> boleano .)
-    END             reduce using rule 28 (expression -> boleano .)
-    RETURN          reduce using rule 28 (expression -> boleano .)
-    RPAR            reduce using rule 28 (expression -> boleano .)
-    AND             reduce using rule 28 (expression -> boleano .)
-    OR              reduce using rule 28 (expression -> boleano .)
-    D_POINT         reduce using rule 28 (expression -> boleano .)
-    RCOR            reduce using rule 28 (expression -> boleano .)
-    COMMA           reduce using rule 28 (expression -> boleano .)
-    RKEY            reduce using rule 28 (expression -> boleano .)
+    $end            reduce using rule 14 (instrucciones -> deleteArray .)
 
 
 state 16
 
-    (57) funciones -> encabezado . cuerpo END
-    (58) funciones -> encabezado . RETURN expression END
-    (59) funciones -> encabezado . cuerpo RETURN expression END
-    (12) cuerpo -> . asignacion
-    (13) cuerpo -> . expression
-    (14) cuerpo -> . comparacion
-    (15) cuerpo -> . condicional
-    (16) cuerpo -> . impresion
-    (17) cuerpo -> . input
-    (18) cuerpo -> . callFuncion
-    (19) cuerpo -> . addValueHash
-    (20) cuerpo -> . modValueHash
-    (21) cuerpo -> . deleteValueHash
-    (22) asignacion -> . VARIABLE ASIGN expression
-    (23) asignacion -> . VARIABLE ASIGN comparacion
-    (24) asignacion -> . VARIABLE ASIGN callFuncion
-    (25) asignacion -> . VARIABLE ASIGN diccionario
-    (26) asignacion -> . VARIABLE ASIGN getValueHash
-    (27) expression -> . term
-    (28) expression -> . boleano
-    (34) expression -> . expression PLUS term
-    (35) expression -> . expression MINUS term
-    (39) comparacion -> . expression comparador expression
-    (40) comparacion -> . expression comparador expression AND comparacion
-    (41) comparacion -> . expression comparador expression OR comparacion
-    (48) condicional -> . IF comparacion D_POINT cuerpo END
-    (49) condicional -> . IF comparacion D_POINT cuerpo END cond_else
-    (51) impresion -> . PUTS STRING
-    (52) input -> . VARIABLE ASIGN GETS
-    (60) callFuncion -> . VARIABLE LPAR RPAR
-    (61) callFuncion -> . VARIABLE LPAR parametros RPAR
-    (68) addValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
-    (69) modValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
-    (70) deleteValueHash -> . VARIABLE POINT DELETE LPAR expression RPAR
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (62) boleano -> . TRUE
-    (63) boleano -> . FALSE
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (27) asignacion -> VARIABLE . ASIGN expression
+    (28) asignacion -> VARIABLE . ASIGN comparacion
+    (29) asignacion -> VARIABLE . ASIGN callFuncion
+    (30) asignacion -> VARIABLE . ASIGN diccionario
+    (31) asignacion -> VARIABLE . ASIGN getValueHash
+    (32) asignacion -> VARIABLE . ASIGN array
+    (59) input -> VARIABLE . ASIGN GETS
+    (67) callFuncion -> VARIABLE . LPAR RPAR
+    (68) callFuncion -> VARIABLE . LPAR parametros RPAR
+    (75) addValueHash -> VARIABLE . LCOR expression RCOR ASIGN expression
+    (76) modValueHash -> VARIABLE . LCOR expression RCOR ASIGN expression
+    (77) deleteValueHash -> VARIABLE . POINT DELETE LPAR expression RPAR
+    (86) insertArray -> VARIABLE . POINT INSERT LPAR argumentosA RPAR
+    (87) deleteArray -> VARIABLE . POINT DELETE_AT LPAR NUMBER RPAR
+    (39) factor -> VARIABLE .
 
-    RETURN          shift and go to state 44
-    VARIABLE        shift and go to state 13
-    IF              shift and go to state 17
-    PUTS            shift and go to state 18
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
-    NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+  ! shift/reduce conflict for ASIGN resolved as shift
+    ASIGN           shift and go to state 40
+    LPAR            shift and go to state 41
+    LCOR            shift and go to state 42
+    POINT           shift and go to state 43
+    TIMES           reduce using rule 39 (factor -> VARIABLE .)
+    DIVIDE          reduce using rule 39 (factor -> VARIABLE .)
+    EXPONENTIATION  reduce using rule 39 (factor -> VARIABLE .)
+    PLUS            reduce using rule 39 (factor -> VARIABLE .)
+    MINUS           reduce using rule 39 (factor -> VARIABLE .)
+    GREATER         reduce using rule 39 (factor -> VARIABLE .)
+    GREATER_OR_EQUAL reduce using rule 39 (factor -> VARIABLE .)
+    MINOR           reduce using rule 39 (factor -> VARIABLE .)
+    MINOR_OR_EQUAL  reduce using rule 39 (factor -> VARIABLE .)
+    NOT             reduce using rule 39 (factor -> VARIABLE .)
+    $end            reduce using rule 39 (factor -> VARIABLE .)
+    END             reduce using rule 39 (factor -> VARIABLE .)
+    RETURN          reduce using rule 39 (factor -> VARIABLE .)
 
-    cuerpo                         shift and go to state 43
-    expression                     shift and go to state 45
-    asignacion                     shift and go to state 46
-    comparacion                    shift and go to state 47
-    condicional                    shift and go to state 48
-    impresion                      shift and go to state 49
-    input                          shift and go to state 50
-    callFuncion                    shift and go to state 51
-    addValueHash                   shift and go to state 52
-    modValueHash                   shift and go to state 53
-    deleteValueHash                shift and go to state 54
-    term                           shift and go to state 14
-    boleano                        shift and go to state 15
-    factor                         shift and go to state 21
+  ! ASIGN           [ reduce using rule 39 (factor -> VARIABLE .) ]
+
 
 state 17
 
-    (48) condicional -> IF . comparacion D_POINT cuerpo END
-    (49) condicional -> IF . comparacion D_POINT cuerpo END cond_else
-    (39) comparacion -> . expression comparador expression
-    (40) comparacion -> . expression comparador expression AND comparacion
-    (41) comparacion -> . expression comparador expression OR comparacion
-    (27) expression -> . term
-    (28) expression -> . boleano
-    (34) expression -> . expression PLUS term
-    (35) expression -> . expression MINUS term
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (62) boleano -> . TRUE
-    (63) boleano -> . FALSE
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (33) expression -> term .
+    (43) term -> term . TIMES factor
+    (44) term -> term . DIVIDE factor
+    (45) term -> term . EXPONENTIATION factor
 
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
-    NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    PLUS            reduce using rule 33 (expression -> term .)
+    MINUS           reduce using rule 33 (expression -> term .)
+    GREATER         reduce using rule 33 (expression -> term .)
+    GREATER_OR_EQUAL reduce using rule 33 (expression -> term .)
+    MINOR           reduce using rule 33 (expression -> term .)
+    MINOR_OR_EQUAL  reduce using rule 33 (expression -> term .)
+    ASIGN           reduce using rule 33 (expression -> term .)
+    NOT             reduce using rule 33 (expression -> term .)
+    $end            reduce using rule 33 (expression -> term .)
+    END             reduce using rule 33 (expression -> term .)
+    RETURN          reduce using rule 33 (expression -> term .)
+    RPAR            reduce using rule 33 (expression -> term .)
+    AND             reduce using rule 33 (expression -> term .)
+    OR              reduce using rule 33 (expression -> term .)
+    D_POINT         reduce using rule 33 (expression -> term .)
+    RCOR            reduce using rule 33 (expression -> term .)
+    COMMA           reduce using rule 33 (expression -> term .)
+    RKEY            reduce using rule 33 (expression -> term .)
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+    EXPONENTIATION  shift and go to state 46
 
-    comparacion                    shift and go to state 55
-    expression                     shift and go to state 56
-    term                           shift and go to state 14
-    boleano                        shift and go to state 15
-    factor                         shift and go to state 21
 
 state 18
 
-    (51) impresion -> PUTS . STRING
+    (34) expression -> boleano .
 
-    STRING          shift and go to state 57
+    PLUS            reduce using rule 34 (expression -> boleano .)
+    MINUS           reduce using rule 34 (expression -> boleano .)
+    GREATER         reduce using rule 34 (expression -> boleano .)
+    GREATER_OR_EQUAL reduce using rule 34 (expression -> boleano .)
+    MINOR           reduce using rule 34 (expression -> boleano .)
+    MINOR_OR_EQUAL  reduce using rule 34 (expression -> boleano .)
+    ASIGN           reduce using rule 34 (expression -> boleano .)
+    NOT             reduce using rule 34 (expression -> boleano .)
+    $end            reduce using rule 34 (expression -> boleano .)
+    END             reduce using rule 34 (expression -> boleano .)
+    RETURN          reduce using rule 34 (expression -> boleano .)
+    RPAR            reduce using rule 34 (expression -> boleano .)
+    AND             reduce using rule 34 (expression -> boleano .)
+    OR              reduce using rule 34 (expression -> boleano .)
+    D_POINT         reduce using rule 34 (expression -> boleano .)
+    RCOR            reduce using rule 34 (expression -> boleano .)
+    COMMA           reduce using rule 34 (expression -> boleano .)
+    RKEY            reduce using rule 34 (expression -> boleano .)
 
 
 state 19
 
-    (31) factor -> STRING .
+    (64) funciones -> encabezado . cuerpo END
+    (65) funciones -> encabezado . RETURN expression END
+    (66) funciones -> encabezado . cuerpo RETURN expression END
+    (15) cuerpo -> . asignacion
+    (16) cuerpo -> . expression
+    (17) cuerpo -> . comparacion
+    (18) cuerpo -> . condicional
+    (19) cuerpo -> . impresion
+    (20) cuerpo -> . input
+    (21) cuerpo -> . callFuncion
+    (22) cuerpo -> . addValueHash
+    (23) cuerpo -> . modValueHash
+    (24) cuerpo -> . deleteValueHash
+    (25) cuerpo -> . insertArray
+    (26) cuerpo -> . deleteArray
+    (27) asignacion -> . VARIABLE ASIGN expression
+    (28) asignacion -> . VARIABLE ASIGN comparacion
+    (29) asignacion -> . VARIABLE ASIGN callFuncion
+    (30) asignacion -> . VARIABLE ASIGN diccionario
+    (31) asignacion -> . VARIABLE ASIGN getValueHash
+    (32) asignacion -> . VARIABLE ASIGN array
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (46) comparacion -> . expression comparador expression
+    (47) comparacion -> . expression comparador expression AND comparacion
+    (48) comparacion -> . expression comparador expression OR comparacion
+    (55) condicional -> . IF comparacion D_POINT cuerpo END
+    (56) condicional -> . IF comparacion D_POINT cuerpo END cond_else
+    (58) impresion -> . PUTS STRING
+    (59) input -> . VARIABLE ASIGN GETS
+    (67) callFuncion -> . VARIABLE LPAR RPAR
+    (68) callFuncion -> . VARIABLE LPAR parametros RPAR
+    (75) addValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
+    (76) modValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
+    (77) deleteValueHash -> . VARIABLE POINT DELETE LPAR expression RPAR
+    (86) insertArray -> . VARIABLE POINT INSERT LPAR argumentosA RPAR
+    (87) deleteArray -> . VARIABLE POINT DELETE_AT LPAR NUMBER RPAR
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    TIMES           reduce using rule 31 (factor -> STRING .)
-    DIVIDE          reduce using rule 31 (factor -> STRING .)
-    EXPONENTIATION  reduce using rule 31 (factor -> STRING .)
-    PLUS            reduce using rule 31 (factor -> STRING .)
-    MINUS           reduce using rule 31 (factor -> STRING .)
-    GREATER         reduce using rule 31 (factor -> STRING .)
-    GREATER_OR_EQUAL reduce using rule 31 (factor -> STRING .)
-    MINOR           reduce using rule 31 (factor -> STRING .)
-    MINOR_OR_EQUAL  reduce using rule 31 (factor -> STRING .)
-    ASIGN           reduce using rule 31 (factor -> STRING .)
-    NOT             reduce using rule 31 (factor -> STRING .)
-    $end            reduce using rule 31 (factor -> STRING .)
-    END             reduce using rule 31 (factor -> STRING .)
-    RETURN          reduce using rule 31 (factor -> STRING .)
-    RPAR            reduce using rule 31 (factor -> STRING .)
-    AND             reduce using rule 31 (factor -> STRING .)
-    OR              reduce using rule 31 (factor -> STRING .)
-    D_POINT         reduce using rule 31 (factor -> STRING .)
-    RCOR            reduce using rule 31 (factor -> STRING .)
-    COMMA           reduce using rule 31 (factor -> STRING .)
-    RKEY            reduce using rule 31 (factor -> STRING .)
+    RETURN          shift and go to state 48
+    VARIABLE        shift and go to state 16
+    IF              shift and go to state 20
+    PUTS            shift and go to state 23
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    LPAR            shift and go to state 22
 
+    cuerpo                         shift and go to state 47
+    expression                     shift and go to state 49
+    asignacion                     shift and go to state 50
+    comparacion                    shift and go to state 51
+    condicional                    shift and go to state 52
+    impresion                      shift and go to state 53
+    input                          shift and go to state 54
+    callFuncion                    shift and go to state 55
+    addValueHash                   shift and go to state 56
+    modValueHash                   shift and go to state 57
+    deleteValueHash                shift and go to state 58
+    insertArray                    shift and go to state 59
+    deleteArray                    shift and go to state 60
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    factor                         shift and go to state 26
 
 state 20
 
-    (33) factor -> LPAR . expression RPAR
-    (27) expression -> . term
-    (28) expression -> . boleano
-    (34) expression -> . expression PLUS term
-    (35) expression -> . expression MINUS term
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (62) boleano -> . TRUE
-    (63) boleano -> . FALSE
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (55) condicional -> IF . comparacion D_POINT cuerpo END
+    (56) condicional -> IF . comparacion D_POINT cuerpo END cond_else
+    (46) comparacion -> . expression comparador expression
+    (47) comparacion -> . expression comparador expression AND comparacion
+    (48) comparacion -> . expression comparador expression OR comparacion
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
     NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
 
-    expression                     shift and go to state 58
-    term                           shift and go to state 14
-    boleano                        shift and go to state 15
-    factor                         shift and go to state 21
+    comparacion                    shift and go to state 61
+    expression                     shift and go to state 62
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    factor                         shift and go to state 26
 
 state 21
 
-    (29) term -> factor .
+    (78) while -> WHILE . LPAR comparacion RPAR cuerpo END
+    (79) while -> WHILE . LPAR comparacion RPAR cuerpo END while
 
-    TIMES           reduce using rule 29 (term -> factor .)
-    DIVIDE          reduce using rule 29 (term -> factor .)
-    EXPONENTIATION  reduce using rule 29 (term -> factor .)
-    PLUS            reduce using rule 29 (term -> factor .)
-    MINUS           reduce using rule 29 (term -> factor .)
-    GREATER         reduce using rule 29 (term -> factor .)
-    GREATER_OR_EQUAL reduce using rule 29 (term -> factor .)
-    MINOR           reduce using rule 29 (term -> factor .)
-    MINOR_OR_EQUAL  reduce using rule 29 (term -> factor .)
-    ASIGN           reduce using rule 29 (term -> factor .)
-    NOT             reduce using rule 29 (term -> factor .)
-    $end            reduce using rule 29 (term -> factor .)
-    END             reduce using rule 29 (term -> factor .)
-    RETURN          reduce using rule 29 (term -> factor .)
-    RPAR            reduce using rule 29 (term -> factor .)
-    AND             reduce using rule 29 (term -> factor .)
-    OR              reduce using rule 29 (term -> factor .)
-    D_POINT         reduce using rule 29 (term -> factor .)
-    RCOR            reduce using rule 29 (term -> factor .)
-    COMMA           reduce using rule 29 (term -> factor .)
-    RKEY            reduce using rule 29 (term -> factor .)
+    LPAR            shift and go to state 64
 
 
 state 22
 
-    (62) boleano -> TRUE .
+    (40) factor -> LPAR . expression RPAR
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    PLUS            reduce using rule 62 (boleano -> TRUE .)
-    MINUS           reduce using rule 62 (boleano -> TRUE .)
-    GREATER         reduce using rule 62 (boleano -> TRUE .)
-    GREATER_OR_EQUAL reduce using rule 62 (boleano -> TRUE .)
-    MINOR           reduce using rule 62 (boleano -> TRUE .)
-    MINOR_OR_EQUAL  reduce using rule 62 (boleano -> TRUE .)
-    ASIGN           reduce using rule 62 (boleano -> TRUE .)
-    NOT             reduce using rule 62 (boleano -> TRUE .)
-    $end            reduce using rule 62 (boleano -> TRUE .)
-    END             reduce using rule 62 (boleano -> TRUE .)
-    RETURN          reduce using rule 62 (boleano -> TRUE .)
-    RPAR            reduce using rule 62 (boleano -> TRUE .)
-    AND             reduce using rule 62 (boleano -> TRUE .)
-    OR              reduce using rule 62 (boleano -> TRUE .)
-    D_POINT         reduce using rule 62 (boleano -> TRUE .)
-    RCOR            reduce using rule 62 (boleano -> TRUE .)
-    COMMA           reduce using rule 62 (boleano -> TRUE .)
-    RKEY            reduce using rule 62 (boleano -> TRUE .)
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
 
+    expression                     shift and go to state 65
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    factor                         shift and go to state 26
 
 state 23
 
-    (63) boleano -> FALSE .
+    (58) impresion -> PUTS . STRING
 
-    PLUS            reduce using rule 63 (boleano -> FALSE .)
-    MINUS           reduce using rule 63 (boleano -> FALSE .)
-    GREATER         reduce using rule 63 (boleano -> FALSE .)
-    GREATER_OR_EQUAL reduce using rule 63 (boleano -> FALSE .)
-    MINOR           reduce using rule 63 (boleano -> FALSE .)
-    MINOR_OR_EQUAL  reduce using rule 63 (boleano -> FALSE .)
-    ASIGN           reduce using rule 63 (boleano -> FALSE .)
-    NOT             reduce using rule 63 (boleano -> FALSE .)
-    $end            reduce using rule 63 (boleano -> FALSE .)
-    END             reduce using rule 63 (boleano -> FALSE .)
-    RETURN          reduce using rule 63 (boleano -> FALSE .)
-    RPAR            reduce using rule 63 (boleano -> FALSE .)
-    AND             reduce using rule 63 (boleano -> FALSE .)
-    OR              reduce using rule 63 (boleano -> FALSE .)
-    D_POINT         reduce using rule 63 (boleano -> FALSE .)
-    RCOR            reduce using rule 63 (boleano -> FALSE .)
-    COMMA           reduce using rule 63 (boleano -> FALSE .)
-    RKEY            reduce using rule 63 (boleano -> FALSE .)
+    STRING          shift and go to state 66
 
 
 state 24
 
-    (55) encabezado -> DEF . VARIABLE LPAR RPAR
-    (56) encabezado -> DEF . VARIABLE LPAR parametros RPAR
+    (37) factor -> STRING .
 
-    VARIABLE        shift and go to state 59
+    TIMES           reduce using rule 37 (factor -> STRING .)
+    DIVIDE          reduce using rule 37 (factor -> STRING .)
+    EXPONENTIATION  reduce using rule 37 (factor -> STRING .)
+    PLUS            reduce using rule 37 (factor -> STRING .)
+    MINUS           reduce using rule 37 (factor -> STRING .)
+    GREATER         reduce using rule 37 (factor -> STRING .)
+    GREATER_OR_EQUAL reduce using rule 37 (factor -> STRING .)
+    MINOR           reduce using rule 37 (factor -> STRING .)
+    MINOR_OR_EQUAL  reduce using rule 37 (factor -> STRING .)
+    ASIGN           reduce using rule 37 (factor -> STRING .)
+    NOT             reduce using rule 37 (factor -> STRING .)
+    $end            reduce using rule 37 (factor -> STRING .)
+    END             reduce using rule 37 (factor -> STRING .)
+    RETURN          reduce using rule 37 (factor -> STRING .)
+    RPAR            reduce using rule 37 (factor -> STRING .)
+    AND             reduce using rule 37 (factor -> STRING .)
+    OR              reduce using rule 37 (factor -> STRING .)
+    D_POINT         reduce using rule 37 (factor -> STRING .)
+    RCOR            reduce using rule 37 (factor -> STRING .)
+    COMMA           reduce using rule 37 (factor -> STRING .)
+    RKEY            reduce using rule 37 (factor -> STRING .)
 
 
 state 25
 
-    (30) factor -> NUMBER .
+    (36) factor -> NUMBER .
 
-    TIMES           reduce using rule 30 (factor -> NUMBER .)
-    DIVIDE          reduce using rule 30 (factor -> NUMBER .)
-    EXPONENTIATION  reduce using rule 30 (factor -> NUMBER .)
-    PLUS            reduce using rule 30 (factor -> NUMBER .)
-    MINUS           reduce using rule 30 (factor -> NUMBER .)
-    GREATER         reduce using rule 30 (factor -> NUMBER .)
-    GREATER_OR_EQUAL reduce using rule 30 (factor -> NUMBER .)
-    MINOR           reduce using rule 30 (factor -> NUMBER .)
-    MINOR_OR_EQUAL  reduce using rule 30 (factor -> NUMBER .)
-    ASIGN           reduce using rule 30 (factor -> NUMBER .)
-    NOT             reduce using rule 30 (factor -> NUMBER .)
-    $end            reduce using rule 30 (factor -> NUMBER .)
-    END             reduce using rule 30 (factor -> NUMBER .)
-    RETURN          reduce using rule 30 (factor -> NUMBER .)
-    RPAR            reduce using rule 30 (factor -> NUMBER .)
-    AND             reduce using rule 30 (factor -> NUMBER .)
-    OR              reduce using rule 30 (factor -> NUMBER .)
-    D_POINT         reduce using rule 30 (factor -> NUMBER .)
-    RCOR            reduce using rule 30 (factor -> NUMBER .)
-    COMMA           reduce using rule 30 (factor -> NUMBER .)
-    RKEY            reduce using rule 30 (factor -> NUMBER .)
+    TIMES           reduce using rule 36 (factor -> NUMBER .)
+    DIVIDE          reduce using rule 36 (factor -> NUMBER .)
+    EXPONENTIATION  reduce using rule 36 (factor -> NUMBER .)
+    PLUS            reduce using rule 36 (factor -> NUMBER .)
+    MINUS           reduce using rule 36 (factor -> NUMBER .)
+    GREATER         reduce using rule 36 (factor -> NUMBER .)
+    GREATER_OR_EQUAL reduce using rule 36 (factor -> NUMBER .)
+    MINOR           reduce using rule 36 (factor -> NUMBER .)
+    MINOR_OR_EQUAL  reduce using rule 36 (factor -> NUMBER .)
+    ASIGN           reduce using rule 36 (factor -> NUMBER .)
+    NOT             reduce using rule 36 (factor -> NUMBER .)
+    $end            reduce using rule 36 (factor -> NUMBER .)
+    END             reduce using rule 36 (factor -> NUMBER .)
+    RETURN          reduce using rule 36 (factor -> NUMBER .)
+    RPAR            reduce using rule 36 (factor -> NUMBER .)
+    AND             reduce using rule 36 (factor -> NUMBER .)
+    OR              reduce using rule 36 (factor -> NUMBER .)
+    D_POINT         reduce using rule 36 (factor -> NUMBER .)
+    RCOR            reduce using rule 36 (factor -> NUMBER .)
+    COMMA           reduce using rule 36 (factor -> NUMBER .)
+    RKEY            reduce using rule 36 (factor -> NUMBER .)
 
 
 state 26
 
-    (32) factor -> FLOAT .
+    (35) term -> factor .
 
-    TIMES           reduce using rule 32 (factor -> FLOAT .)
-    DIVIDE          reduce using rule 32 (factor -> FLOAT .)
-    EXPONENTIATION  reduce using rule 32 (factor -> FLOAT .)
-    PLUS            reduce using rule 32 (factor -> FLOAT .)
-    MINUS           reduce using rule 32 (factor -> FLOAT .)
-    GREATER         reduce using rule 32 (factor -> FLOAT .)
-    GREATER_OR_EQUAL reduce using rule 32 (factor -> FLOAT .)
-    MINOR           reduce using rule 32 (factor -> FLOAT .)
-    MINOR_OR_EQUAL  reduce using rule 32 (factor -> FLOAT .)
-    ASIGN           reduce using rule 32 (factor -> FLOAT .)
-    NOT             reduce using rule 32 (factor -> FLOAT .)
-    $end            reduce using rule 32 (factor -> FLOAT .)
-    END             reduce using rule 32 (factor -> FLOAT .)
-    RETURN          reduce using rule 32 (factor -> FLOAT .)
-    RPAR            reduce using rule 32 (factor -> FLOAT .)
-    AND             reduce using rule 32 (factor -> FLOAT .)
-    OR              reduce using rule 32 (factor -> FLOAT .)
-    D_POINT         reduce using rule 32 (factor -> FLOAT .)
-    RCOR            reduce using rule 32 (factor -> FLOAT .)
-    COMMA           reduce using rule 32 (factor -> FLOAT .)
-    RKEY            reduce using rule 32 (factor -> FLOAT .)
+    TIMES           reduce using rule 35 (term -> factor .)
+    DIVIDE          reduce using rule 35 (term -> factor .)
+    EXPONENTIATION  reduce using rule 35 (term -> factor .)
+    PLUS            reduce using rule 35 (term -> factor .)
+    MINUS           reduce using rule 35 (term -> factor .)
+    GREATER         reduce using rule 35 (term -> factor .)
+    GREATER_OR_EQUAL reduce using rule 35 (term -> factor .)
+    MINOR           reduce using rule 35 (term -> factor .)
+    MINOR_OR_EQUAL  reduce using rule 35 (term -> factor .)
+    ASIGN           reduce using rule 35 (term -> factor .)
+    NOT             reduce using rule 35 (term -> factor .)
+    $end            reduce using rule 35 (term -> factor .)
+    END             reduce using rule 35 (term -> factor .)
+    RETURN          reduce using rule 35 (term -> factor .)
+    RPAR            reduce using rule 35 (term -> factor .)
+    AND             reduce using rule 35 (term -> factor .)
+    OR              reduce using rule 35 (term -> factor .)
+    D_POINT         reduce using rule 35 (term -> factor .)
+    RCOR            reduce using rule 35 (term -> factor .)
+    COMMA           reduce using rule 35 (term -> factor .)
+    RKEY            reduce using rule 35 (term -> factor .)
 
 
 state 27
 
-    (34) expression -> expression PLUS . term
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (69) boleano -> TRUE .
 
-    NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    PLUS            reduce using rule 69 (boleano -> TRUE .)
+    MINUS           reduce using rule 69 (boleano -> TRUE .)
+    GREATER         reduce using rule 69 (boleano -> TRUE .)
+    GREATER_OR_EQUAL reduce using rule 69 (boleano -> TRUE .)
+    MINOR           reduce using rule 69 (boleano -> TRUE .)
+    MINOR_OR_EQUAL  reduce using rule 69 (boleano -> TRUE .)
+    ASIGN           reduce using rule 69 (boleano -> TRUE .)
+    NOT             reduce using rule 69 (boleano -> TRUE .)
+    $end            reduce using rule 69 (boleano -> TRUE .)
+    END             reduce using rule 69 (boleano -> TRUE .)
+    RETURN          reduce using rule 69 (boleano -> TRUE .)
+    RPAR            reduce using rule 69 (boleano -> TRUE .)
+    AND             reduce using rule 69 (boleano -> TRUE .)
+    OR              reduce using rule 69 (boleano -> TRUE .)
+    D_POINT         reduce using rule 69 (boleano -> TRUE .)
+    RCOR            reduce using rule 69 (boleano -> TRUE .)
+    COMMA           reduce using rule 69 (boleano -> TRUE .)
+    RKEY            reduce using rule 69 (boleano -> TRUE .)
 
-    term                           shift and go to state 60
-    factor                         shift and go to state 21
 
 state 28
 
-    (35) expression -> expression MINUS . term
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (70) boleano -> FALSE .
 
-    NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    PLUS            reduce using rule 70 (boleano -> FALSE .)
+    MINUS           reduce using rule 70 (boleano -> FALSE .)
+    GREATER         reduce using rule 70 (boleano -> FALSE .)
+    GREATER_OR_EQUAL reduce using rule 70 (boleano -> FALSE .)
+    MINOR           reduce using rule 70 (boleano -> FALSE .)
+    MINOR_OR_EQUAL  reduce using rule 70 (boleano -> FALSE .)
+    ASIGN           reduce using rule 70 (boleano -> FALSE .)
+    NOT             reduce using rule 70 (boleano -> FALSE .)
+    $end            reduce using rule 70 (boleano -> FALSE .)
+    END             reduce using rule 70 (boleano -> FALSE .)
+    RETURN          reduce using rule 70 (boleano -> FALSE .)
+    RPAR            reduce using rule 70 (boleano -> FALSE .)
+    AND             reduce using rule 70 (boleano -> FALSE .)
+    OR              reduce using rule 70 (boleano -> FALSE .)
+    D_POINT         reduce using rule 70 (boleano -> FALSE .)
+    RCOR            reduce using rule 70 (boleano -> FALSE .)
+    COMMA           reduce using rule 70 (boleano -> FALSE .)
+    RKEY            reduce using rule 70 (boleano -> FALSE .)
 
-    term                           shift and go to state 61
-    factor                         shift and go to state 21
 
 state 29
 
-    (39) comparacion -> expression comparador . expression
-    (40) comparacion -> expression comparador . expression AND comparacion
-    (41) comparacion -> expression comparador . expression OR comparacion
-    (27) expression -> . term
-    (28) expression -> . boleano
-    (34) expression -> . expression PLUS term
-    (35) expression -> . expression MINUS term
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (62) boleano -> . TRUE
-    (63) boleano -> . FALSE
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (62) encabezado -> DEF . VARIABLE LPAR RPAR
+    (63) encabezado -> DEF . VARIABLE LPAR parametros RPAR
 
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
-    NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    VARIABLE        shift and go to state 67
 
-    expression                     shift and go to state 62
-    term                           shift and go to state 14
-    boleano                        shift and go to state 15
-    factor                         shift and go to state 21
 
 state 30
 
-    (42) comparador -> GREATER .
+    (38) factor -> FLOAT .
 
-    TRUE            reduce using rule 42 (comparador -> GREATER .)
-    FALSE           reduce using rule 42 (comparador -> GREATER .)
-    NUMBER          reduce using rule 42 (comparador -> GREATER .)
-    STRING          reduce using rule 42 (comparador -> GREATER .)
-    FLOAT           reduce using rule 42 (comparador -> GREATER .)
-    LPAR            reduce using rule 42 (comparador -> GREATER .)
+    TIMES           reduce using rule 38 (factor -> FLOAT .)
+    DIVIDE          reduce using rule 38 (factor -> FLOAT .)
+    EXPONENTIATION  reduce using rule 38 (factor -> FLOAT .)
+    PLUS            reduce using rule 38 (factor -> FLOAT .)
+    MINUS           reduce using rule 38 (factor -> FLOAT .)
+    GREATER         reduce using rule 38 (factor -> FLOAT .)
+    GREATER_OR_EQUAL reduce using rule 38 (factor -> FLOAT .)
+    MINOR           reduce using rule 38 (factor -> FLOAT .)
+    MINOR_OR_EQUAL  reduce using rule 38 (factor -> FLOAT .)
+    ASIGN           reduce using rule 38 (factor -> FLOAT .)
+    NOT             reduce using rule 38 (factor -> FLOAT .)
+    $end            reduce using rule 38 (factor -> FLOAT .)
+    END             reduce using rule 38 (factor -> FLOAT .)
+    RETURN          reduce using rule 38 (factor -> FLOAT .)
+    RPAR            reduce using rule 38 (factor -> FLOAT .)
+    AND             reduce using rule 38 (factor -> FLOAT .)
+    OR              reduce using rule 38 (factor -> FLOAT .)
+    D_POINT         reduce using rule 38 (factor -> FLOAT .)
+    RCOR            reduce using rule 38 (factor -> FLOAT .)
+    COMMA           reduce using rule 38 (factor -> FLOAT .)
+    RKEY            reduce using rule 38 (factor -> FLOAT .)
 
 
 state 31
 
-    (43) comparador -> GREATER_OR_EQUAL .
+    (41) expression -> expression PLUS . term
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    TRUE            reduce using rule 43 (comparador -> GREATER_OR_EQUAL .)
-    FALSE           reduce using rule 43 (comparador -> GREATER_OR_EQUAL .)
-    NUMBER          reduce using rule 43 (comparador -> GREATER_OR_EQUAL .)
-    STRING          reduce using rule 43 (comparador -> GREATER_OR_EQUAL .)
-    FLOAT           reduce using rule 43 (comparador -> GREATER_OR_EQUAL .)
-    LPAR            reduce using rule 43 (comparador -> GREATER_OR_EQUAL .)
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
 
+    term                           shift and go to state 68
+    factor                         shift and go to state 26
 
 state 32
 
-    (44) comparador -> MINOR .
+    (42) expression -> expression MINUS . term
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    TRUE            reduce using rule 44 (comparador -> MINOR .)
-    FALSE           reduce using rule 44 (comparador -> MINOR .)
-    NUMBER          reduce using rule 44 (comparador -> MINOR .)
-    STRING          reduce using rule 44 (comparador -> MINOR .)
-    FLOAT           reduce using rule 44 (comparador -> MINOR .)
-    LPAR            reduce using rule 44 (comparador -> MINOR .)
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
 
+    term                           shift and go to state 69
+    factor                         shift and go to state 26
 
 state 33
 
-    (45) comparador -> MINOR_OR_EQUAL .
+    (46) comparacion -> expression comparador . expression
+    (47) comparacion -> expression comparador . expression AND comparacion
+    (48) comparacion -> expression comparador . expression OR comparacion
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    TRUE            reduce using rule 45 (comparador -> MINOR_OR_EQUAL .)
-    FALSE           reduce using rule 45 (comparador -> MINOR_OR_EQUAL .)
-    NUMBER          reduce using rule 45 (comparador -> MINOR_OR_EQUAL .)
-    STRING          reduce using rule 45 (comparador -> MINOR_OR_EQUAL .)
-    FLOAT           reduce using rule 45 (comparador -> MINOR_OR_EQUAL .)
-    LPAR            reduce using rule 45 (comparador -> MINOR_OR_EQUAL .)
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
 
+    expression                     shift and go to state 70
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    factor                         shift and go to state 26
 
 state 34
 
-    (46) comparador -> ASIGN . ASIGN
+    (49) comparador -> GREATER .
 
-    ASIGN           shift and go to state 63
+    TRUE            reduce using rule 49 (comparador -> GREATER .)
+    FALSE           reduce using rule 49 (comparador -> GREATER .)
+    NUMBER          reduce using rule 49 (comparador -> GREATER .)
+    STRING          reduce using rule 49 (comparador -> GREATER .)
+    FLOAT           reduce using rule 49 (comparador -> GREATER .)
+    VARIABLE        reduce using rule 49 (comparador -> GREATER .)
+    LPAR            reduce using rule 49 (comparador -> GREATER .)
 
 
 state 35
 
-    (47) comparador -> NOT . ASIGN
+    (50) comparador -> GREATER_OR_EQUAL .
 
-    ASIGN           shift and go to state 64
+    TRUE            reduce using rule 50 (comparador -> GREATER_OR_EQUAL .)
+    FALSE           reduce using rule 50 (comparador -> GREATER_OR_EQUAL .)
+    NUMBER          reduce using rule 50 (comparador -> GREATER_OR_EQUAL .)
+    STRING          reduce using rule 50 (comparador -> GREATER_OR_EQUAL .)
+    FLOAT           reduce using rule 50 (comparador -> GREATER_OR_EQUAL .)
+    VARIABLE        reduce using rule 50 (comparador -> GREATER_OR_EQUAL .)
+    LPAR            reduce using rule 50 (comparador -> GREATER_OR_EQUAL .)
 
 
 state 36
 
-    (22) asignacion -> VARIABLE ASIGN . expression
-    (23) asignacion -> VARIABLE ASIGN . comparacion
-    (24) asignacion -> VARIABLE ASIGN . callFuncion
-    (25) asignacion -> VARIABLE ASIGN . diccionario
-    (26) asignacion -> VARIABLE ASIGN . getValueHash
-    (52) input -> VARIABLE ASIGN . GETS
-    (27) expression -> . term
-    (28) expression -> . boleano
-    (34) expression -> . expression PLUS term
-    (35) expression -> . expression MINUS term
-    (39) comparacion -> . expression comparador expression
-    (40) comparacion -> . expression comparador expression AND comparacion
-    (41) comparacion -> . expression comparador expression OR comparacion
-    (60) callFuncion -> . VARIABLE LPAR RPAR
-    (61) callFuncion -> . VARIABLE LPAR parametros RPAR
-    (64) diccionario -> . LKEY cuerpoHash RKEY
-    (67) getValueHash -> . VARIABLE LCOR expression RCOR
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (62) boleano -> . TRUE
-    (63) boleano -> . FALSE
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (51) comparador -> MINOR .
 
-    GETS            shift and go to state 71
-    VARIABLE        shift and go to state 65
-    LKEY            shift and go to state 72
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
-    NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    TRUE            reduce using rule 51 (comparador -> MINOR .)
+    FALSE           reduce using rule 51 (comparador -> MINOR .)
+    NUMBER          reduce using rule 51 (comparador -> MINOR .)
+    STRING          reduce using rule 51 (comparador -> MINOR .)
+    FLOAT           reduce using rule 51 (comparador -> MINOR .)
+    VARIABLE        reduce using rule 51 (comparador -> MINOR .)
+    LPAR            reduce using rule 51 (comparador -> MINOR .)
 
-    expression                     shift and go to state 66
-    comparacion                    shift and go to state 67
-    callFuncion                    shift and go to state 68
-    diccionario                    shift and go to state 69
-    getValueHash                   shift and go to state 70
-    term                           shift and go to state 14
-    boleano                        shift and go to state 15
-    factor                         shift and go to state 21
 
 state 37
 
-    (60) callFuncion -> VARIABLE LPAR . RPAR
-    (61) callFuncion -> VARIABLE LPAR . parametros RPAR
-    (53) parametros -> . VARIABLE
-    (54) parametros -> . VARIABLE COMMA parametros
+    (52) comparador -> MINOR_OR_EQUAL .
 
-    RPAR            shift and go to state 74
-    VARIABLE        shift and go to state 73
+    TRUE            reduce using rule 52 (comparador -> MINOR_OR_EQUAL .)
+    FALSE           reduce using rule 52 (comparador -> MINOR_OR_EQUAL .)
+    NUMBER          reduce using rule 52 (comparador -> MINOR_OR_EQUAL .)
+    STRING          reduce using rule 52 (comparador -> MINOR_OR_EQUAL .)
+    FLOAT           reduce using rule 52 (comparador -> MINOR_OR_EQUAL .)
+    VARIABLE        reduce using rule 52 (comparador -> MINOR_OR_EQUAL .)
+    LPAR            reduce using rule 52 (comparador -> MINOR_OR_EQUAL .)
 
-    parametros                     shift and go to state 75
 
 state 38
 
-    (68) addValueHash -> VARIABLE LCOR . expression RCOR ASIGN expression
-    (69) modValueHash -> VARIABLE LCOR . expression RCOR ASIGN expression
-    (27) expression -> . term
-    (28) expression -> . boleano
-    (34) expression -> . expression PLUS term
-    (35) expression -> . expression MINUS term
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (62) boleano -> . TRUE
-    (63) boleano -> . FALSE
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (53) comparador -> ASIGN . ASIGN
 
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
-    NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    ASIGN           shift and go to state 71
 
-    expression                     shift and go to state 76
-    term                           shift and go to state 14
-    boleano                        shift and go to state 15
-    factor                         shift and go to state 21
 
 state 39
 
-    (70) deleteValueHash -> VARIABLE POINT . DELETE LPAR expression RPAR
+    (54) comparador -> NOT . ASIGN
 
-    DELETE          shift and go to state 77
+    ASIGN           shift and go to state 72
 
 
 state 40
 
-    (36) term -> term TIMES . factor
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (27) asignacion -> VARIABLE ASIGN . expression
+    (28) asignacion -> VARIABLE ASIGN . comparacion
+    (29) asignacion -> VARIABLE ASIGN . callFuncion
+    (30) asignacion -> VARIABLE ASIGN . diccionario
+    (31) asignacion -> VARIABLE ASIGN . getValueHash
+    (32) asignacion -> VARIABLE ASIGN . array
+    (59) input -> VARIABLE ASIGN . GETS
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (46) comparacion -> . expression comparador expression
+    (47) comparacion -> . expression comparador expression AND comparacion
+    (48) comparacion -> . expression comparador expression OR comparacion
+    (67) callFuncion -> . VARIABLE LPAR RPAR
+    (68) callFuncion -> . VARIABLE LPAR parametros RPAR
+    (71) diccionario -> . LKEY cuerpoHash RKEY
+    (74) getValueHash -> . VARIABLE LCOR expression RCOR
+    (82) array -> . LCOR parametrosA RCOR
+    (83) array -> . LCOR RCOR
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
+    GETS            shift and go to state 80
+    VARIABLE        shift and go to state 73
+    LKEY            shift and go to state 81
+    LCOR            shift and go to state 82
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
     NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    LPAR            shift and go to state 22
 
-    factor                         shift and go to state 78
+    expression                     shift and go to state 74
+    comparacion                    shift and go to state 75
+    callFuncion                    shift and go to state 76
+    diccionario                    shift and go to state 77
+    getValueHash                   shift and go to state 78
+    array                          shift and go to state 79
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    factor                         shift and go to state 26
 
 state 41
 
-    (37) term -> term DIVIDE . factor
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (67) callFuncion -> VARIABLE LPAR . RPAR
+    (68) callFuncion -> VARIABLE LPAR . parametros RPAR
+    (60) parametros -> . VARIABLE
+    (61) parametros -> . VARIABLE COMMA parametros
 
-    NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    RPAR            shift and go to state 84
+    VARIABLE        shift and go to state 83
 
-    factor                         shift and go to state 79
+    parametros                     shift and go to state 85
 
 state 42
 
-    (38) term -> term EXPONENTIATION . factor
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (75) addValueHash -> VARIABLE LCOR . expression RCOR ASIGN expression
+    (76) modValueHash -> VARIABLE LCOR . expression RCOR ASIGN expression
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
     NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
 
-    factor                         shift and go to state 80
+    expression                     shift and go to state 86
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    factor                         shift and go to state 26
 
 state 43
 
-    (57) funciones -> encabezado cuerpo . END
-    (59) funciones -> encabezado cuerpo . RETURN expression END
+    (77) deleteValueHash -> VARIABLE POINT . DELETE LPAR expression RPAR
+    (86) insertArray -> VARIABLE POINT . INSERT LPAR argumentosA RPAR
+    (87) deleteArray -> VARIABLE POINT . DELETE_AT LPAR NUMBER RPAR
 
-    END             shift and go to state 81
-    RETURN          shift and go to state 82
+    DELETE          shift and go to state 87
+    INSERT          shift and go to state 88
+    DELETE_AT       shift and go to state 89
 
 
 state 44
 
-    (58) funciones -> encabezado RETURN . expression END
-    (27) expression -> . term
-    (28) expression -> . boleano
-    (34) expression -> . expression PLUS term
-    (35) expression -> . expression MINUS term
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (62) boleano -> . TRUE
-    (63) boleano -> . FALSE
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (43) term -> term TIMES . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
     NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
 
-    expression                     shift and go to state 83
-    term                           shift and go to state 14
-    boleano                        shift and go to state 15
-    factor                         shift and go to state 21
+    factor                         shift and go to state 90
 
 state 45
 
-    (13) cuerpo -> expression .
-    (34) expression -> expression . PLUS term
-    (35) expression -> expression . MINUS term
-    (39) comparacion -> expression . comparador expression
-    (40) comparacion -> expression . comparador expression AND comparacion
-    (41) comparacion -> expression . comparador expression OR comparacion
-    (42) comparador -> . GREATER
-    (43) comparador -> . GREATER_OR_EQUAL
-    (44) comparador -> . MINOR
-    (45) comparador -> . MINOR_OR_EQUAL
-    (46) comparador -> . ASIGN ASIGN
-    (47) comparador -> . NOT ASIGN
+    (44) term -> term DIVIDE . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    END             reduce using rule 13 (cuerpo -> expression .)
-    RETURN          reduce using rule 13 (cuerpo -> expression .)
-    PLUS            shift and go to state 27
-    MINUS           shift and go to state 28
-    GREATER         shift and go to state 30
-    GREATER_OR_EQUAL shift and go to state 31
-    MINOR           shift and go to state 32
-    MINOR_OR_EQUAL  shift and go to state 33
-    ASIGN           shift and go to state 34
-    NOT             shift and go to state 35
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
 
-    comparador                     shift and go to state 29
+    factor                         shift and go to state 91
 
 state 46
 
-    (12) cuerpo -> asignacion .
+    (45) term -> term EXPONENTIATION . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    END             reduce using rule 12 (cuerpo -> asignacion .)
-    RETURN          reduce using rule 12 (cuerpo -> asignacion .)
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
 
+    factor                         shift and go to state 92
 
 state 47
 
-    (14) cuerpo -> comparacion .
+    (64) funciones -> encabezado cuerpo . END
+    (66) funciones -> encabezado cuerpo . RETURN expression END
 
-    END             reduce using rule 14 (cuerpo -> comparacion .)
-    RETURN          reduce using rule 14 (cuerpo -> comparacion .)
+    END             shift and go to state 93
+    RETURN          shift and go to state 94
 
 
 state 48
 
-    (15) cuerpo -> condicional .
+    (65) funciones -> encabezado RETURN . expression END
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    END             reduce using rule 15 (cuerpo -> condicional .)
-    RETURN          reduce using rule 15 (cuerpo -> condicional .)
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
 
+    expression                     shift and go to state 95
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    factor                         shift and go to state 26
 
 state 49
 
-    (16) cuerpo -> impresion .
+    (16) cuerpo -> expression .
+    (41) expression -> expression . PLUS term
+    (42) expression -> expression . MINUS term
+    (46) comparacion -> expression . comparador expression
+    (47) comparacion -> expression . comparador expression AND comparacion
+    (48) comparacion -> expression . comparador expression OR comparacion
+    (49) comparador -> . GREATER
+    (50) comparador -> . GREATER_OR_EQUAL
+    (51) comparador -> . MINOR
+    (52) comparador -> . MINOR_OR_EQUAL
+    (53) comparador -> . ASIGN ASIGN
+    (54) comparador -> . NOT ASIGN
 
-    END             reduce using rule 16 (cuerpo -> impresion .)
-    RETURN          reduce using rule 16 (cuerpo -> impresion .)
+    END             reduce using rule 16 (cuerpo -> expression .)
+    RETURN          reduce using rule 16 (cuerpo -> expression .)
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    GREATER         shift and go to state 34
+    GREATER_OR_EQUAL shift and go to state 35
+    MINOR           shift and go to state 36
+    MINOR_OR_EQUAL  shift and go to state 37
+    ASIGN           shift and go to state 38
+    NOT             shift and go to state 39
 
+    comparador                     shift and go to state 33
 
 state 50
 
-    (17) cuerpo -> input .
+    (15) cuerpo -> asignacion .
 
-    END             reduce using rule 17 (cuerpo -> input .)
-    RETURN          reduce using rule 17 (cuerpo -> input .)
+    END             reduce using rule 15 (cuerpo -> asignacion .)
+    RETURN          reduce using rule 15 (cuerpo -> asignacion .)
 
 
 state 51
 
-    (18) cuerpo -> callFuncion .
+    (17) cuerpo -> comparacion .
 
-    END             reduce using rule 18 (cuerpo -> callFuncion .)
-    RETURN          reduce using rule 18 (cuerpo -> callFuncion .)
+    END             reduce using rule 17 (cuerpo -> comparacion .)
+    RETURN          reduce using rule 17 (cuerpo -> comparacion .)
 
 
 state 52
 
-    (19) cuerpo -> addValueHash .
+    (18) cuerpo -> condicional .
 
-    END             reduce using rule 19 (cuerpo -> addValueHash .)
-    RETURN          reduce using rule 19 (cuerpo -> addValueHash .)
+    END             reduce using rule 18 (cuerpo -> condicional .)
+    RETURN          reduce using rule 18 (cuerpo -> condicional .)
 
 
 state 53
 
-    (20) cuerpo -> modValueHash .
+    (19) cuerpo -> impresion .
 
-    END             reduce using rule 20 (cuerpo -> modValueHash .)
-    RETURN          reduce using rule 20 (cuerpo -> modValueHash .)
+    END             reduce using rule 19 (cuerpo -> impresion .)
+    RETURN          reduce using rule 19 (cuerpo -> impresion .)
 
 
 state 54
 
-    (21) cuerpo -> deleteValueHash .
+    (20) cuerpo -> input .
 
-    END             reduce using rule 21 (cuerpo -> deleteValueHash .)
-    RETURN          reduce using rule 21 (cuerpo -> deleteValueHash .)
+    END             reduce using rule 20 (cuerpo -> input .)
+    RETURN          reduce using rule 20 (cuerpo -> input .)
 
 
 state 55
 
-    (48) condicional -> IF comparacion . D_POINT cuerpo END
-    (49) condicional -> IF comparacion . D_POINT cuerpo END cond_else
+    (21) cuerpo -> callFuncion .
 
-    D_POINT         shift and go to state 84
+    END             reduce using rule 21 (cuerpo -> callFuncion .)
+    RETURN          reduce using rule 21 (cuerpo -> callFuncion .)
 
 
 state 56
 
-    (39) comparacion -> expression . comparador expression
-    (40) comparacion -> expression . comparador expression AND comparacion
-    (41) comparacion -> expression . comparador expression OR comparacion
-    (34) expression -> expression . PLUS term
-    (35) expression -> expression . MINUS term
-    (42) comparador -> . GREATER
-    (43) comparador -> . GREATER_OR_EQUAL
-    (44) comparador -> . MINOR
-    (45) comparador -> . MINOR_OR_EQUAL
-    (46) comparador -> . ASIGN ASIGN
-    (47) comparador -> . NOT ASIGN
+    (22) cuerpo -> addValueHash .
 
-    PLUS            shift and go to state 27
-    MINUS           shift and go to state 28
-    GREATER         shift and go to state 30
-    GREATER_OR_EQUAL shift and go to state 31
-    MINOR           shift and go to state 32
-    MINOR_OR_EQUAL  shift and go to state 33
-    ASIGN           shift and go to state 34
-    NOT             shift and go to state 35
+    END             reduce using rule 22 (cuerpo -> addValueHash .)
+    RETURN          reduce using rule 22 (cuerpo -> addValueHash .)
 
-    comparador                     shift and go to state 29
 
 state 57
 
-    (51) impresion -> PUTS STRING .
+    (23) cuerpo -> modValueHash .
 
-    $end            reduce using rule 51 (impresion -> PUTS STRING .)
-    END             reduce using rule 51 (impresion -> PUTS STRING .)
-    RETURN          reduce using rule 51 (impresion -> PUTS STRING .)
+    END             reduce using rule 23 (cuerpo -> modValueHash .)
+    RETURN          reduce using rule 23 (cuerpo -> modValueHash .)
 
 
 state 58
 
-    (33) factor -> LPAR expression . RPAR
-    (34) expression -> expression . PLUS term
-    (35) expression -> expression . MINUS term
+    (24) cuerpo -> deleteValueHash .
 
-    RPAR            shift and go to state 85
-    PLUS            shift and go to state 27
-    MINUS           shift and go to state 28
+    END             reduce using rule 24 (cuerpo -> deleteValueHash .)
+    RETURN          reduce using rule 24 (cuerpo -> deleteValueHash .)
 
 
 state 59
 
-    (55) encabezado -> DEF VARIABLE . LPAR RPAR
-    (56) encabezado -> DEF VARIABLE . LPAR parametros RPAR
+    (25) cuerpo -> insertArray .
 
-    LPAR            shift and go to state 86
+    END             reduce using rule 25 (cuerpo -> insertArray .)
+    RETURN          reduce using rule 25 (cuerpo -> insertArray .)
 
 
 state 60
 
-    (34) expression -> expression PLUS term .
-    (36) term -> term . TIMES factor
-    (37) term -> term . DIVIDE factor
-    (38) term -> term . EXPONENTIATION factor
+    (26) cuerpo -> deleteArray .
 
-    PLUS            reduce using rule 34 (expression -> expression PLUS term .)
-    MINUS           reduce using rule 34 (expression -> expression PLUS term .)
-    GREATER         reduce using rule 34 (expression -> expression PLUS term .)
-    GREATER_OR_EQUAL reduce using rule 34 (expression -> expression PLUS term .)
-    MINOR           reduce using rule 34 (expression -> expression PLUS term .)
-    MINOR_OR_EQUAL  reduce using rule 34 (expression -> expression PLUS term .)
-    ASIGN           reduce using rule 34 (expression -> expression PLUS term .)
-    NOT             reduce using rule 34 (expression -> expression PLUS term .)
-    $end            reduce using rule 34 (expression -> expression PLUS term .)
-    END             reduce using rule 34 (expression -> expression PLUS term .)
-    RETURN          reduce using rule 34 (expression -> expression PLUS term .)
-    RPAR            reduce using rule 34 (expression -> expression PLUS term .)
-    AND             reduce using rule 34 (expression -> expression PLUS term .)
-    OR              reduce using rule 34 (expression -> expression PLUS term .)
-    D_POINT         reduce using rule 34 (expression -> expression PLUS term .)
-    RCOR            reduce using rule 34 (expression -> expression PLUS term .)
-    COMMA           reduce using rule 34 (expression -> expression PLUS term .)
-    RKEY            reduce using rule 34 (expression -> expression PLUS term .)
-    TIMES           shift and go to state 40
-    DIVIDE          shift and go to state 41
-    EXPONENTIATION  shift and go to state 42
+    END             reduce using rule 26 (cuerpo -> deleteArray .)
+    RETURN          reduce using rule 26 (cuerpo -> deleteArray .)
 
 
 state 61
 
-    (35) expression -> expression MINUS term .
-    (36) term -> term . TIMES factor
-    (37) term -> term . DIVIDE factor
-    (38) term -> term . EXPONENTIATION factor
+    (55) condicional -> IF comparacion . D_POINT cuerpo END
+    (56) condicional -> IF comparacion . D_POINT cuerpo END cond_else
 
-    PLUS            reduce using rule 35 (expression -> expression MINUS term .)
-    MINUS           reduce using rule 35 (expression -> expression MINUS term .)
-    GREATER         reduce using rule 35 (expression -> expression MINUS term .)
-    GREATER_OR_EQUAL reduce using rule 35 (expression -> expression MINUS term .)
-    MINOR           reduce using rule 35 (expression -> expression MINUS term .)
-    MINOR_OR_EQUAL  reduce using rule 35 (expression -> expression MINUS term .)
-    ASIGN           reduce using rule 35 (expression -> expression MINUS term .)
-    NOT             reduce using rule 35 (expression -> expression MINUS term .)
-    $end            reduce using rule 35 (expression -> expression MINUS term .)
-    END             reduce using rule 35 (expression -> expression MINUS term .)
-    RETURN          reduce using rule 35 (expression -> expression MINUS term .)
-    RPAR            reduce using rule 35 (expression -> expression MINUS term .)
-    AND             reduce using rule 35 (expression -> expression MINUS term .)
-    OR              reduce using rule 35 (expression -> expression MINUS term .)
-    D_POINT         reduce using rule 35 (expression -> expression MINUS term .)
-    RCOR            reduce using rule 35 (expression -> expression MINUS term .)
-    COMMA           reduce using rule 35 (expression -> expression MINUS term .)
-    RKEY            reduce using rule 35 (expression -> expression MINUS term .)
-    TIMES           shift and go to state 40
-    DIVIDE          shift and go to state 41
-    EXPONENTIATION  shift and go to state 42
+    D_POINT         shift and go to state 96
 
 
 state 62
 
-    (39) comparacion -> expression comparador expression .
-    (40) comparacion -> expression comparador expression . AND comparacion
-    (41) comparacion -> expression comparador expression . OR comparacion
-    (34) expression -> expression . PLUS term
-    (35) expression -> expression . MINUS term
+    (46) comparacion -> expression . comparador expression
+    (47) comparacion -> expression . comparador expression AND comparacion
+    (48) comparacion -> expression . comparador expression OR comparacion
+    (41) expression -> expression . PLUS term
+    (42) expression -> expression . MINUS term
+    (49) comparador -> . GREATER
+    (50) comparador -> . GREATER_OR_EQUAL
+    (51) comparador -> . MINOR
+    (52) comparador -> . MINOR_OR_EQUAL
+    (53) comparador -> . ASIGN ASIGN
+    (54) comparador -> . NOT ASIGN
 
-    $end            reduce using rule 39 (comparacion -> expression comparador expression .)
-    END             reduce using rule 39 (comparacion -> expression comparador expression .)
-    RETURN          reduce using rule 39 (comparacion -> expression comparador expression .)
-    D_POINT         reduce using rule 39 (comparacion -> expression comparador expression .)
-    AND             shift and go to state 87
-    OR              shift and go to state 88
-    PLUS            shift and go to state 27
-    MINUS           shift and go to state 28
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    GREATER         shift and go to state 34
+    GREATER_OR_EQUAL shift and go to state 35
+    MINOR           shift and go to state 36
+    MINOR_OR_EQUAL  shift and go to state 37
+    ASIGN           shift and go to state 38
+    NOT             shift and go to state 39
 
+    comparador                     shift and go to state 33
 
 state 63
 
-    (46) comparador -> ASIGN ASIGN .
+    (39) factor -> VARIABLE .
 
-    TRUE            reduce using rule 46 (comparador -> ASIGN ASIGN .)
-    FALSE           reduce using rule 46 (comparador -> ASIGN ASIGN .)
-    NUMBER          reduce using rule 46 (comparador -> ASIGN ASIGN .)
-    STRING          reduce using rule 46 (comparador -> ASIGN ASIGN .)
-    FLOAT           reduce using rule 46 (comparador -> ASIGN ASIGN .)
-    LPAR            reduce using rule 46 (comparador -> ASIGN ASIGN .)
+    TIMES           reduce using rule 39 (factor -> VARIABLE .)
+    DIVIDE          reduce using rule 39 (factor -> VARIABLE .)
+    EXPONENTIATION  reduce using rule 39 (factor -> VARIABLE .)
+    PLUS            reduce using rule 39 (factor -> VARIABLE .)
+    MINUS           reduce using rule 39 (factor -> VARIABLE .)
+    GREATER         reduce using rule 39 (factor -> VARIABLE .)
+    GREATER_OR_EQUAL reduce using rule 39 (factor -> VARIABLE .)
+    MINOR           reduce using rule 39 (factor -> VARIABLE .)
+    MINOR_OR_EQUAL  reduce using rule 39 (factor -> VARIABLE .)
+    ASIGN           reduce using rule 39 (factor -> VARIABLE .)
+    NOT             reduce using rule 39 (factor -> VARIABLE .)
+    RPAR            reduce using rule 39 (factor -> VARIABLE .)
+    $end            reduce using rule 39 (factor -> VARIABLE .)
+    END             reduce using rule 39 (factor -> VARIABLE .)
+    RETURN          reduce using rule 39 (factor -> VARIABLE .)
+    AND             reduce using rule 39 (factor -> VARIABLE .)
+    OR              reduce using rule 39 (factor -> VARIABLE .)
+    D_POINT         reduce using rule 39 (factor -> VARIABLE .)
+    RCOR            reduce using rule 39 (factor -> VARIABLE .)
+    COMMA           reduce using rule 39 (factor -> VARIABLE .)
+    RKEY            reduce using rule 39 (factor -> VARIABLE .)
 
 
 state 64
 
-    (47) comparador -> NOT ASIGN .
+    (78) while -> WHILE LPAR . comparacion RPAR cuerpo END
+    (79) while -> WHILE LPAR . comparacion RPAR cuerpo END while
+    (46) comparacion -> . expression comparador expression
+    (47) comparacion -> . expression comparador expression AND comparacion
+    (48) comparacion -> . expression comparador expression OR comparacion
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    TRUE            reduce using rule 47 (comparador -> NOT ASIGN .)
-    FALSE           reduce using rule 47 (comparador -> NOT ASIGN .)
-    NUMBER          reduce using rule 47 (comparador -> NOT ASIGN .)
-    STRING          reduce using rule 47 (comparador -> NOT ASIGN .)
-    FLOAT           reduce using rule 47 (comparador -> NOT ASIGN .)
-    LPAR            reduce using rule 47 (comparador -> NOT ASIGN .)
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
 
+    comparacion                    shift and go to state 97
+    expression                     shift and go to state 62
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    factor                         shift and go to state 26
 
 state 65
 
-    (60) callFuncion -> VARIABLE . LPAR RPAR
-    (61) callFuncion -> VARIABLE . LPAR parametros RPAR
-    (67) getValueHash -> VARIABLE . LCOR expression RCOR
+    (40) factor -> LPAR expression . RPAR
+    (41) expression -> expression . PLUS term
+    (42) expression -> expression . MINUS term
 
-    LPAR            shift and go to state 37
-    LCOR            shift and go to state 89
+    RPAR            shift and go to state 98
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
 
 
 state 66
 
-    (22) asignacion -> VARIABLE ASIGN expression .
-    (34) expression -> expression . PLUS term
-    (35) expression -> expression . MINUS term
-    (39) comparacion -> expression . comparador expression
-    (40) comparacion -> expression . comparador expression AND comparacion
-    (41) comparacion -> expression . comparador expression OR comparacion
-    (42) comparador -> . GREATER
-    (43) comparador -> . GREATER_OR_EQUAL
-    (44) comparador -> . MINOR
-    (45) comparador -> . MINOR_OR_EQUAL
-    (46) comparador -> . ASIGN ASIGN
-    (47) comparador -> . NOT ASIGN
+    (58) impresion -> PUTS STRING .
 
-    $end            reduce using rule 22 (asignacion -> VARIABLE ASIGN expression .)
-    END             reduce using rule 22 (asignacion -> VARIABLE ASIGN expression .)
-    RETURN          reduce using rule 22 (asignacion -> VARIABLE ASIGN expression .)
-    PLUS            shift and go to state 27
-    MINUS           shift and go to state 28
-    GREATER         shift and go to state 30
-    GREATER_OR_EQUAL shift and go to state 31
-    MINOR           shift and go to state 32
-    MINOR_OR_EQUAL  shift and go to state 33
-    ASIGN           shift and go to state 34
-    NOT             shift and go to state 35
+    $end            reduce using rule 58 (impresion -> PUTS STRING .)
+    END             reduce using rule 58 (impresion -> PUTS STRING .)
+    RETURN          reduce using rule 58 (impresion -> PUTS STRING .)
 
-    comparador                     shift and go to state 29
 
 state 67
 
-    (23) asignacion -> VARIABLE ASIGN comparacion .
+    (62) encabezado -> DEF VARIABLE . LPAR RPAR
+    (63) encabezado -> DEF VARIABLE . LPAR parametros RPAR
 
-    $end            reduce using rule 23 (asignacion -> VARIABLE ASIGN comparacion .)
-    END             reduce using rule 23 (asignacion -> VARIABLE ASIGN comparacion .)
-    RETURN          reduce using rule 23 (asignacion -> VARIABLE ASIGN comparacion .)
+    LPAR            shift and go to state 99
 
 
 state 68
 
-    (24) asignacion -> VARIABLE ASIGN callFuncion .
+    (41) expression -> expression PLUS term .
+    (43) term -> term . TIMES factor
+    (44) term -> term . DIVIDE factor
+    (45) term -> term . EXPONENTIATION factor
 
-    $end            reduce using rule 24 (asignacion -> VARIABLE ASIGN callFuncion .)
-    END             reduce using rule 24 (asignacion -> VARIABLE ASIGN callFuncion .)
-    RETURN          reduce using rule 24 (asignacion -> VARIABLE ASIGN callFuncion .)
+    PLUS            reduce using rule 41 (expression -> expression PLUS term .)
+    MINUS           reduce using rule 41 (expression -> expression PLUS term .)
+    GREATER         reduce using rule 41 (expression -> expression PLUS term .)
+    GREATER_OR_EQUAL reduce using rule 41 (expression -> expression PLUS term .)
+    MINOR           reduce using rule 41 (expression -> expression PLUS term .)
+    MINOR_OR_EQUAL  reduce using rule 41 (expression -> expression PLUS term .)
+    ASIGN           reduce using rule 41 (expression -> expression PLUS term .)
+    NOT             reduce using rule 41 (expression -> expression PLUS term .)
+    $end            reduce using rule 41 (expression -> expression PLUS term .)
+    END             reduce using rule 41 (expression -> expression PLUS term .)
+    RETURN          reduce using rule 41 (expression -> expression PLUS term .)
+    RPAR            reduce using rule 41 (expression -> expression PLUS term .)
+    AND             reduce using rule 41 (expression -> expression PLUS term .)
+    OR              reduce using rule 41 (expression -> expression PLUS term .)
+    D_POINT         reduce using rule 41 (expression -> expression PLUS term .)
+    RCOR            reduce using rule 41 (expression -> expression PLUS term .)
+    COMMA           reduce using rule 41 (expression -> expression PLUS term .)
+    RKEY            reduce using rule 41 (expression -> expression PLUS term .)
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+    EXPONENTIATION  shift and go to state 46
 
 
 state 69
 
-    (25) asignacion -> VARIABLE ASIGN diccionario .
+    (42) expression -> expression MINUS term .
+    (43) term -> term . TIMES factor
+    (44) term -> term . DIVIDE factor
+    (45) term -> term . EXPONENTIATION factor
 
-    $end            reduce using rule 25 (asignacion -> VARIABLE ASIGN diccionario .)
-    END             reduce using rule 25 (asignacion -> VARIABLE ASIGN diccionario .)
-    RETURN          reduce using rule 25 (asignacion -> VARIABLE ASIGN diccionario .)
+    PLUS            reduce using rule 42 (expression -> expression MINUS term .)
+    MINUS           reduce using rule 42 (expression -> expression MINUS term .)
+    GREATER         reduce using rule 42 (expression -> expression MINUS term .)
+    GREATER_OR_EQUAL reduce using rule 42 (expression -> expression MINUS term .)
+    MINOR           reduce using rule 42 (expression -> expression MINUS term .)
+    MINOR_OR_EQUAL  reduce using rule 42 (expression -> expression MINUS term .)
+    ASIGN           reduce using rule 42 (expression -> expression MINUS term .)
+    NOT             reduce using rule 42 (expression -> expression MINUS term .)
+    $end            reduce using rule 42 (expression -> expression MINUS term .)
+    END             reduce using rule 42 (expression -> expression MINUS term .)
+    RETURN          reduce using rule 42 (expression -> expression MINUS term .)
+    RPAR            reduce using rule 42 (expression -> expression MINUS term .)
+    AND             reduce using rule 42 (expression -> expression MINUS term .)
+    OR              reduce using rule 42 (expression -> expression MINUS term .)
+    D_POINT         reduce using rule 42 (expression -> expression MINUS term .)
+    RCOR            reduce using rule 42 (expression -> expression MINUS term .)
+    COMMA           reduce using rule 42 (expression -> expression MINUS term .)
+    RKEY            reduce using rule 42 (expression -> expression MINUS term .)
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+    EXPONENTIATION  shift and go to state 46
 
 
 state 70
 
-    (26) asignacion -> VARIABLE ASIGN getValueHash .
+    (46) comparacion -> expression comparador expression .
+    (47) comparacion -> expression comparador expression . AND comparacion
+    (48) comparacion -> expression comparador expression . OR comparacion
+    (41) expression -> expression . PLUS term
+    (42) expression -> expression . MINUS term
 
-    $end            reduce using rule 26 (asignacion -> VARIABLE ASIGN getValueHash .)
-    END             reduce using rule 26 (asignacion -> VARIABLE ASIGN getValueHash .)
-    RETURN          reduce using rule 26 (asignacion -> VARIABLE ASIGN getValueHash .)
+    $end            reduce using rule 46 (comparacion -> expression comparador expression .)
+    END             reduce using rule 46 (comparacion -> expression comparador expression .)
+    RETURN          reduce using rule 46 (comparacion -> expression comparador expression .)
+    D_POINT         reduce using rule 46 (comparacion -> expression comparador expression .)
+    RPAR            reduce using rule 46 (comparacion -> expression comparador expression .)
+    AND             shift and go to state 100
+    OR              shift and go to state 101
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
 
 
 state 71
 
-    (52) input -> VARIABLE ASIGN GETS .
+    (53) comparador -> ASIGN ASIGN .
 
-    $end            reduce using rule 52 (input -> VARIABLE ASIGN GETS .)
-    END             reduce using rule 52 (input -> VARIABLE ASIGN GETS .)
-    RETURN          reduce using rule 52 (input -> VARIABLE ASIGN GETS .)
+    TRUE            reduce using rule 53 (comparador -> ASIGN ASIGN .)
+    FALSE           reduce using rule 53 (comparador -> ASIGN ASIGN .)
+    NUMBER          reduce using rule 53 (comparador -> ASIGN ASIGN .)
+    STRING          reduce using rule 53 (comparador -> ASIGN ASIGN .)
+    FLOAT           reduce using rule 53 (comparador -> ASIGN ASIGN .)
+    VARIABLE        reduce using rule 53 (comparador -> ASIGN ASIGN .)
+    LPAR            reduce using rule 53 (comparador -> ASIGN ASIGN .)
 
 
 state 72
 
-    (64) diccionario -> LKEY . cuerpoHash RKEY
-    (65) cuerpoHash -> . expression ASIGN GREATER expression
-    (66) cuerpoHash -> . expression ASIGN GREATER expression COMMA cuerpoHash
-    (27) expression -> . term
-    (28) expression -> . boleano
-    (34) expression -> . expression PLUS term
-    (35) expression -> . expression MINUS term
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (62) boleano -> . TRUE
-    (63) boleano -> . FALSE
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (54) comparador -> NOT ASIGN .
 
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
-    NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    TRUE            reduce using rule 54 (comparador -> NOT ASIGN .)
+    FALSE           reduce using rule 54 (comparador -> NOT ASIGN .)
+    NUMBER          reduce using rule 54 (comparador -> NOT ASIGN .)
+    STRING          reduce using rule 54 (comparador -> NOT ASIGN .)
+    FLOAT           reduce using rule 54 (comparador -> NOT ASIGN .)
+    VARIABLE        reduce using rule 54 (comparador -> NOT ASIGN .)
+    LPAR            reduce using rule 54 (comparador -> NOT ASIGN .)
 
-    cuerpoHash                     shift and go to state 90
-    expression                     shift and go to state 91
-    term                           shift and go to state 14
-    boleano                        shift and go to state 15
-    factor                         shift and go to state 21
 
 state 73
 
-    (53) parametros -> VARIABLE .
-    (54) parametros -> VARIABLE . COMMA parametros
+    (67) callFuncion -> VARIABLE . LPAR RPAR
+    (68) callFuncion -> VARIABLE . LPAR parametros RPAR
+    (74) getValueHash -> VARIABLE . LCOR expression RCOR
+    (39) factor -> VARIABLE .
 
-    RPAR            reduce using rule 53 (parametros -> VARIABLE .)
-    COMMA           shift and go to state 92
+    LPAR            shift and go to state 41
+    LCOR            shift and go to state 102
+    TIMES           reduce using rule 39 (factor -> VARIABLE .)
+    DIVIDE          reduce using rule 39 (factor -> VARIABLE .)
+    EXPONENTIATION  reduce using rule 39 (factor -> VARIABLE .)
+    PLUS            reduce using rule 39 (factor -> VARIABLE .)
+    MINUS           reduce using rule 39 (factor -> VARIABLE .)
+    GREATER         reduce using rule 39 (factor -> VARIABLE .)
+    GREATER_OR_EQUAL reduce using rule 39 (factor -> VARIABLE .)
+    MINOR           reduce using rule 39 (factor -> VARIABLE .)
+    MINOR_OR_EQUAL  reduce using rule 39 (factor -> VARIABLE .)
+    ASIGN           reduce using rule 39 (factor -> VARIABLE .)
+    NOT             reduce using rule 39 (factor -> VARIABLE .)
+    $end            reduce using rule 39 (factor -> VARIABLE .)
+    END             reduce using rule 39 (factor -> VARIABLE .)
+    RETURN          reduce using rule 39 (factor -> VARIABLE .)
 
 
 state 74
 
-    (60) callFuncion -> VARIABLE LPAR RPAR .
+    (27) asignacion -> VARIABLE ASIGN expression .
+    (41) expression -> expression . PLUS term
+    (42) expression -> expression . MINUS term
+    (46) comparacion -> expression . comparador expression
+    (47) comparacion -> expression . comparador expression AND comparacion
+    (48) comparacion -> expression . comparador expression OR comparacion
+    (49) comparador -> . GREATER
+    (50) comparador -> . GREATER_OR_EQUAL
+    (51) comparador -> . MINOR
+    (52) comparador -> . MINOR_OR_EQUAL
+    (53) comparador -> . ASIGN ASIGN
+    (54) comparador -> . NOT ASIGN
 
-    $end            reduce using rule 60 (callFuncion -> VARIABLE LPAR RPAR .)
-    END             reduce using rule 60 (callFuncion -> VARIABLE LPAR RPAR .)
-    RETURN          reduce using rule 60 (callFuncion -> VARIABLE LPAR RPAR .)
+    $end            reduce using rule 27 (asignacion -> VARIABLE ASIGN expression .)
+    END             reduce using rule 27 (asignacion -> VARIABLE ASIGN expression .)
+    RETURN          reduce using rule 27 (asignacion -> VARIABLE ASIGN expression .)
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    GREATER         shift and go to state 34
+    GREATER_OR_EQUAL shift and go to state 35
+    MINOR           shift and go to state 36
+    MINOR_OR_EQUAL  shift and go to state 37
+    ASIGN           shift and go to state 38
+    NOT             shift and go to state 39
 
+    comparador                     shift and go to state 33
 
 state 75
 
-    (61) callFuncion -> VARIABLE LPAR parametros . RPAR
+    (28) asignacion -> VARIABLE ASIGN comparacion .
 
-    RPAR            shift and go to state 93
+    $end            reduce using rule 28 (asignacion -> VARIABLE ASIGN comparacion .)
+    END             reduce using rule 28 (asignacion -> VARIABLE ASIGN comparacion .)
+    RETURN          reduce using rule 28 (asignacion -> VARIABLE ASIGN comparacion .)
 
 
 state 76
 
-    (68) addValueHash -> VARIABLE LCOR expression . RCOR ASIGN expression
-    (69) modValueHash -> VARIABLE LCOR expression . RCOR ASIGN expression
-    (34) expression -> expression . PLUS term
-    (35) expression -> expression . MINUS term
+    (29) asignacion -> VARIABLE ASIGN callFuncion .
 
-    RCOR            shift and go to state 94
-    PLUS            shift and go to state 27
-    MINUS           shift and go to state 28
+    $end            reduce using rule 29 (asignacion -> VARIABLE ASIGN callFuncion .)
+    END             reduce using rule 29 (asignacion -> VARIABLE ASIGN callFuncion .)
+    RETURN          reduce using rule 29 (asignacion -> VARIABLE ASIGN callFuncion .)
 
 
 state 77
 
-    (70) deleteValueHash -> VARIABLE POINT DELETE . LPAR expression RPAR
+    (30) asignacion -> VARIABLE ASIGN diccionario .
 
-    LPAR            shift and go to state 95
+    $end            reduce using rule 30 (asignacion -> VARIABLE ASIGN diccionario .)
+    END             reduce using rule 30 (asignacion -> VARIABLE ASIGN diccionario .)
+    RETURN          reduce using rule 30 (asignacion -> VARIABLE ASIGN diccionario .)
 
 
 state 78
 
-    (36) term -> term TIMES factor .
+    (31) asignacion -> VARIABLE ASIGN getValueHash .
 
-    TIMES           reduce using rule 36 (term -> term TIMES factor .)
-    DIVIDE          reduce using rule 36 (term -> term TIMES factor .)
-    EXPONENTIATION  reduce using rule 36 (term -> term TIMES factor .)
-    PLUS            reduce using rule 36 (term -> term TIMES factor .)
-    MINUS           reduce using rule 36 (term -> term TIMES factor .)
-    GREATER         reduce using rule 36 (term -> term TIMES factor .)
-    GREATER_OR_EQUAL reduce using rule 36 (term -> term TIMES factor .)
-    MINOR           reduce using rule 36 (term -> term TIMES factor .)
-    MINOR_OR_EQUAL  reduce using rule 36 (term -> term TIMES factor .)
-    ASIGN           reduce using rule 36 (term -> term TIMES factor .)
-    NOT             reduce using rule 36 (term -> term TIMES factor .)
-    $end            reduce using rule 36 (term -> term TIMES factor .)
-    END             reduce using rule 36 (term -> term TIMES factor .)
-    RETURN          reduce using rule 36 (term -> term TIMES factor .)
-    RPAR            reduce using rule 36 (term -> term TIMES factor .)
-    AND             reduce using rule 36 (term -> term TIMES factor .)
-    OR              reduce using rule 36 (term -> term TIMES factor .)
-    D_POINT         reduce using rule 36 (term -> term TIMES factor .)
-    RCOR            reduce using rule 36 (term -> term TIMES factor .)
-    COMMA           reduce using rule 36 (term -> term TIMES factor .)
-    RKEY            reduce using rule 36 (term -> term TIMES factor .)
+    $end            reduce using rule 31 (asignacion -> VARIABLE ASIGN getValueHash .)
+    END             reduce using rule 31 (asignacion -> VARIABLE ASIGN getValueHash .)
+    RETURN          reduce using rule 31 (asignacion -> VARIABLE ASIGN getValueHash .)
 
 
 state 79
 
-    (37) term -> term DIVIDE factor .
+    (32) asignacion -> VARIABLE ASIGN array .
 
-    TIMES           reduce using rule 37 (term -> term DIVIDE factor .)
-    DIVIDE          reduce using rule 37 (term -> term DIVIDE factor .)
-    EXPONENTIATION  reduce using rule 37 (term -> term DIVIDE factor .)
-    PLUS            reduce using rule 37 (term -> term DIVIDE factor .)
-    MINUS           reduce using rule 37 (term -> term DIVIDE factor .)
-    GREATER         reduce using rule 37 (term -> term DIVIDE factor .)
-    GREATER_OR_EQUAL reduce using rule 37 (term -> term DIVIDE factor .)
-    MINOR           reduce using rule 37 (term -> term DIVIDE factor .)
-    MINOR_OR_EQUAL  reduce using rule 37 (term -> term DIVIDE factor .)
-    ASIGN           reduce using rule 37 (term -> term DIVIDE factor .)
-    NOT             reduce using rule 37 (term -> term DIVIDE factor .)
-    $end            reduce using rule 37 (term -> term DIVIDE factor .)
-    END             reduce using rule 37 (term -> term DIVIDE factor .)
-    RETURN          reduce using rule 37 (term -> term DIVIDE factor .)
-    RPAR            reduce using rule 37 (term -> term DIVIDE factor .)
-    AND             reduce using rule 37 (term -> term DIVIDE factor .)
-    OR              reduce using rule 37 (term -> term DIVIDE factor .)
-    D_POINT         reduce using rule 37 (term -> term DIVIDE factor .)
-    RCOR            reduce using rule 37 (term -> term DIVIDE factor .)
-    COMMA           reduce using rule 37 (term -> term DIVIDE factor .)
-    RKEY            reduce using rule 37 (term -> term DIVIDE factor .)
+    $end            reduce using rule 32 (asignacion -> VARIABLE ASIGN array .)
+    END             reduce using rule 32 (asignacion -> VARIABLE ASIGN array .)
+    RETURN          reduce using rule 32 (asignacion -> VARIABLE ASIGN array .)
 
 
 state 80
 
-    (38) term -> term EXPONENTIATION factor .
+    (59) input -> VARIABLE ASIGN GETS .
 
-    TIMES           reduce using rule 38 (term -> term EXPONENTIATION factor .)
-    DIVIDE          reduce using rule 38 (term -> term EXPONENTIATION factor .)
-    EXPONENTIATION  reduce using rule 38 (term -> term EXPONENTIATION factor .)
-    PLUS            reduce using rule 38 (term -> term EXPONENTIATION factor .)
-    MINUS           reduce using rule 38 (term -> term EXPONENTIATION factor .)
-    GREATER         reduce using rule 38 (term -> term EXPONENTIATION factor .)
-    GREATER_OR_EQUAL reduce using rule 38 (term -> term EXPONENTIATION factor .)
-    MINOR           reduce using rule 38 (term -> term EXPONENTIATION factor .)
-    MINOR_OR_EQUAL  reduce using rule 38 (term -> term EXPONENTIATION factor .)
-    ASIGN           reduce using rule 38 (term -> term EXPONENTIATION factor .)
-    NOT             reduce using rule 38 (term -> term EXPONENTIATION factor .)
-    $end            reduce using rule 38 (term -> term EXPONENTIATION factor .)
-    END             reduce using rule 38 (term -> term EXPONENTIATION factor .)
-    RETURN          reduce using rule 38 (term -> term EXPONENTIATION factor .)
-    RPAR            reduce using rule 38 (term -> term EXPONENTIATION factor .)
-    AND             reduce using rule 38 (term -> term EXPONENTIATION factor .)
-    OR              reduce using rule 38 (term -> term EXPONENTIATION factor .)
-    D_POINT         reduce using rule 38 (term -> term EXPONENTIATION factor .)
-    RCOR            reduce using rule 38 (term -> term EXPONENTIATION factor .)
-    COMMA           reduce using rule 38 (term -> term EXPONENTIATION factor .)
-    RKEY            reduce using rule 38 (term -> term EXPONENTIATION factor .)
+    $end            reduce using rule 59 (input -> VARIABLE ASIGN GETS .)
+    END             reduce using rule 59 (input -> VARIABLE ASIGN GETS .)
+    RETURN          reduce using rule 59 (input -> VARIABLE ASIGN GETS .)
 
 
 state 81
 
-    (57) funciones -> encabezado cuerpo END .
+    (71) diccionario -> LKEY . cuerpoHash RKEY
+    (72) cuerpoHash -> . expression ASIGN GREATER expression
+    (73) cuerpoHash -> . expression ASIGN GREATER expression COMMA cuerpoHash
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    $end            reduce using rule 57 (funciones -> encabezado cuerpo END .)
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
 
+    cuerpoHash                     shift and go to state 103
+    expression                     shift and go to state 104
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    factor                         shift and go to state 26
 
 state 82
 
-    (59) funciones -> encabezado cuerpo RETURN . expression END
-    (27) expression -> . term
-    (28) expression -> . boleano
-    (34) expression -> . expression PLUS term
-    (35) expression -> . expression MINUS term
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (62) boleano -> . TRUE
-    (63) boleano -> . FALSE
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (82) array -> LCOR . parametrosA RCOR
+    (83) array -> LCOR . RCOR
+    (80) parametrosA -> . factor
+    (81) parametrosA -> . factor COMMA parametrosA
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    RCOR            shift and go to state 106
     NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
 
-    expression                     shift and go to state 96
-    term                           shift and go to state 14
-    boleano                        shift and go to state 15
-    factor                         shift and go to state 21
+    parametrosA                    shift and go to state 105
+    factor                         shift and go to state 107
 
 state 83
 
-    (58) funciones -> encabezado RETURN expression . END
-    (34) expression -> expression . PLUS term
-    (35) expression -> expression . MINUS term
+    (60) parametros -> VARIABLE .
+    (61) parametros -> VARIABLE . COMMA parametros
 
-    END             shift and go to state 97
-    PLUS            shift and go to state 27
-    MINUS           shift and go to state 28
+    RPAR            reduce using rule 60 (parametros -> VARIABLE .)
+    COMMA           shift and go to state 108
 
 
 state 84
 
-    (48) condicional -> IF comparacion D_POINT . cuerpo END
-    (49) condicional -> IF comparacion D_POINT . cuerpo END cond_else
-    (12) cuerpo -> . asignacion
-    (13) cuerpo -> . expression
-    (14) cuerpo -> . comparacion
-    (15) cuerpo -> . condicional
-    (16) cuerpo -> . impresion
-    (17) cuerpo -> . input
-    (18) cuerpo -> . callFuncion
-    (19) cuerpo -> . addValueHash
-    (20) cuerpo -> . modValueHash
-    (21) cuerpo -> . deleteValueHash
-    (22) asignacion -> . VARIABLE ASIGN expression
-    (23) asignacion -> . VARIABLE ASIGN comparacion
-    (24) asignacion -> . VARIABLE ASIGN callFuncion
-    (25) asignacion -> . VARIABLE ASIGN diccionario
-    (26) asignacion -> . VARIABLE ASIGN getValueHash
-    (27) expression -> . term
-    (28) expression -> . boleano
-    (34) expression -> . expression PLUS term
-    (35) expression -> . expression MINUS term
-    (39) comparacion -> . expression comparador expression
-    (40) comparacion -> . expression comparador expression AND comparacion
-    (41) comparacion -> . expression comparador expression OR comparacion
-    (48) condicional -> . IF comparacion D_POINT cuerpo END
-    (49) condicional -> . IF comparacion D_POINT cuerpo END cond_else
-    (51) impresion -> . PUTS STRING
-    (52) input -> . VARIABLE ASIGN GETS
-    (60) callFuncion -> . VARIABLE LPAR RPAR
-    (61) callFuncion -> . VARIABLE LPAR parametros RPAR
-    (68) addValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
-    (69) modValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
-    (70) deleteValueHash -> . VARIABLE POINT DELETE LPAR expression RPAR
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (62) boleano -> . TRUE
-    (63) boleano -> . FALSE
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (67) callFuncion -> VARIABLE LPAR RPAR .
 
-    VARIABLE        shift and go to state 13
-    IF              shift and go to state 17
-    PUTS            shift and go to state 18
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
-    NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    $end            reduce using rule 67 (callFuncion -> VARIABLE LPAR RPAR .)
+    END             reduce using rule 67 (callFuncion -> VARIABLE LPAR RPAR .)
+    RETURN          reduce using rule 67 (callFuncion -> VARIABLE LPAR RPAR .)
 
-    comparacion                    shift and go to state 47
-    cuerpo                         shift and go to state 98
-    asignacion                     shift and go to state 46
-    expression                     shift and go to state 45
-    condicional                    shift and go to state 48
-    impresion                      shift and go to state 49
-    input                          shift and go to state 50
-    callFuncion                    shift and go to state 51
-    addValueHash                   shift and go to state 52
-    modValueHash                   shift and go to state 53
-    deleteValueHash                shift and go to state 54
-    term                           shift and go to state 14
-    boleano                        shift and go to state 15
-    factor                         shift and go to state 21
 
 state 85
 
-    (33) factor -> LPAR expression RPAR .
+    (68) callFuncion -> VARIABLE LPAR parametros . RPAR
 
-    TIMES           reduce using rule 33 (factor -> LPAR expression RPAR .)
-    DIVIDE          reduce using rule 33 (factor -> LPAR expression RPAR .)
-    EXPONENTIATION  reduce using rule 33 (factor -> LPAR expression RPAR .)
-    PLUS            reduce using rule 33 (factor -> LPAR expression RPAR .)
-    MINUS           reduce using rule 33 (factor -> LPAR expression RPAR .)
-    GREATER         reduce using rule 33 (factor -> LPAR expression RPAR .)
-    GREATER_OR_EQUAL reduce using rule 33 (factor -> LPAR expression RPAR .)
-    MINOR           reduce using rule 33 (factor -> LPAR expression RPAR .)
-    MINOR_OR_EQUAL  reduce using rule 33 (factor -> LPAR expression RPAR .)
-    ASIGN           reduce using rule 33 (factor -> LPAR expression RPAR .)
-    NOT             reduce using rule 33 (factor -> LPAR expression RPAR .)
-    $end            reduce using rule 33 (factor -> LPAR expression RPAR .)
-    END             reduce using rule 33 (factor -> LPAR expression RPAR .)
-    RETURN          reduce using rule 33 (factor -> LPAR expression RPAR .)
-    RPAR            reduce using rule 33 (factor -> LPAR expression RPAR .)
-    AND             reduce using rule 33 (factor -> LPAR expression RPAR .)
-    OR              reduce using rule 33 (factor -> LPAR expression RPAR .)
-    D_POINT         reduce using rule 33 (factor -> LPAR expression RPAR .)
-    RCOR            reduce using rule 33 (factor -> LPAR expression RPAR .)
-    COMMA           reduce using rule 33 (factor -> LPAR expression RPAR .)
-    RKEY            reduce using rule 33 (factor -> LPAR expression RPAR .)
+    RPAR            shift and go to state 109
 
 
 state 86
 
-    (55) encabezado -> DEF VARIABLE LPAR . RPAR
-    (56) encabezado -> DEF VARIABLE LPAR . parametros RPAR
-    (53) parametros -> . VARIABLE
-    (54) parametros -> . VARIABLE COMMA parametros
+    (75) addValueHash -> VARIABLE LCOR expression . RCOR ASIGN expression
+    (76) modValueHash -> VARIABLE LCOR expression . RCOR ASIGN expression
+    (41) expression -> expression . PLUS term
+    (42) expression -> expression . MINUS term
 
-    RPAR            shift and go to state 99
-    VARIABLE        shift and go to state 73
+    RCOR            shift and go to state 110
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
 
-    parametros                     shift and go to state 100
 
 state 87
 
-    (40) comparacion -> expression comparador expression AND . comparacion
-    (39) comparacion -> . expression comparador expression
-    (40) comparacion -> . expression comparador expression AND comparacion
-    (41) comparacion -> . expression comparador expression OR comparacion
-    (27) expression -> . term
-    (28) expression -> . boleano
-    (34) expression -> . expression PLUS term
-    (35) expression -> . expression MINUS term
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (62) boleano -> . TRUE
-    (63) boleano -> . FALSE
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (77) deleteValueHash -> VARIABLE POINT DELETE . LPAR expression RPAR
 
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
-    NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    LPAR            shift and go to state 111
 
-    expression                     shift and go to state 56
-    comparacion                    shift and go to state 101
-    term                           shift and go to state 14
-    boleano                        shift and go to state 15
-    factor                         shift and go to state 21
 
 state 88
 
-    (41) comparacion -> expression comparador expression OR . comparacion
-    (39) comparacion -> . expression comparador expression
-    (40) comparacion -> . expression comparador expression AND comparacion
-    (41) comparacion -> . expression comparador expression OR comparacion
-    (27) expression -> . term
-    (28) expression -> . boleano
-    (34) expression -> . expression PLUS term
-    (35) expression -> . expression MINUS term
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (62) boleano -> . TRUE
-    (63) boleano -> . FALSE
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (86) insertArray -> VARIABLE POINT INSERT . LPAR argumentosA RPAR
 
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
-    NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    LPAR            shift and go to state 112
 
-    expression                     shift and go to state 56
-    comparacion                    shift and go to state 102
-    term                           shift and go to state 14
-    boleano                        shift and go to state 15
-    factor                         shift and go to state 21
 
 state 89
 
-    (67) getValueHash -> VARIABLE LCOR . expression RCOR
-    (27) expression -> . term
-    (28) expression -> . boleano
-    (34) expression -> . expression PLUS term
-    (35) expression -> . expression MINUS term
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (62) boleano -> . TRUE
-    (63) boleano -> . FALSE
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (87) deleteArray -> VARIABLE POINT DELETE_AT . LPAR NUMBER RPAR
 
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
-    NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    LPAR            shift and go to state 113
 
-    expression                     shift and go to state 103
-    term                           shift and go to state 14
-    boleano                        shift and go to state 15
-    factor                         shift and go to state 21
 
 state 90
 
-    (64) diccionario -> LKEY cuerpoHash . RKEY
+    (43) term -> term TIMES factor .
 
-    RKEY            shift and go to state 104
+    TIMES           reduce using rule 43 (term -> term TIMES factor .)
+    DIVIDE          reduce using rule 43 (term -> term TIMES factor .)
+    EXPONENTIATION  reduce using rule 43 (term -> term TIMES factor .)
+    PLUS            reduce using rule 43 (term -> term TIMES factor .)
+    MINUS           reduce using rule 43 (term -> term TIMES factor .)
+    GREATER         reduce using rule 43 (term -> term TIMES factor .)
+    GREATER_OR_EQUAL reduce using rule 43 (term -> term TIMES factor .)
+    MINOR           reduce using rule 43 (term -> term TIMES factor .)
+    MINOR_OR_EQUAL  reduce using rule 43 (term -> term TIMES factor .)
+    ASIGN           reduce using rule 43 (term -> term TIMES factor .)
+    NOT             reduce using rule 43 (term -> term TIMES factor .)
+    $end            reduce using rule 43 (term -> term TIMES factor .)
+    END             reduce using rule 43 (term -> term TIMES factor .)
+    RETURN          reduce using rule 43 (term -> term TIMES factor .)
+    RPAR            reduce using rule 43 (term -> term TIMES factor .)
+    AND             reduce using rule 43 (term -> term TIMES factor .)
+    OR              reduce using rule 43 (term -> term TIMES factor .)
+    D_POINT         reduce using rule 43 (term -> term TIMES factor .)
+    RCOR            reduce using rule 43 (term -> term TIMES factor .)
+    COMMA           reduce using rule 43 (term -> term TIMES factor .)
+    RKEY            reduce using rule 43 (term -> term TIMES factor .)
 
 
 state 91
 
-    (65) cuerpoHash -> expression . ASIGN GREATER expression
-    (66) cuerpoHash -> expression . ASIGN GREATER expression COMMA cuerpoHash
-    (34) expression -> expression . PLUS term
-    (35) expression -> expression . MINUS term
+    (44) term -> term DIVIDE factor .
 
-    ASIGN           shift and go to state 105
-    PLUS            shift and go to state 27
-    MINUS           shift and go to state 28
+    TIMES           reduce using rule 44 (term -> term DIVIDE factor .)
+    DIVIDE          reduce using rule 44 (term -> term DIVIDE factor .)
+    EXPONENTIATION  reduce using rule 44 (term -> term DIVIDE factor .)
+    PLUS            reduce using rule 44 (term -> term DIVIDE factor .)
+    MINUS           reduce using rule 44 (term -> term DIVIDE factor .)
+    GREATER         reduce using rule 44 (term -> term DIVIDE factor .)
+    GREATER_OR_EQUAL reduce using rule 44 (term -> term DIVIDE factor .)
+    MINOR           reduce using rule 44 (term -> term DIVIDE factor .)
+    MINOR_OR_EQUAL  reduce using rule 44 (term -> term DIVIDE factor .)
+    ASIGN           reduce using rule 44 (term -> term DIVIDE factor .)
+    NOT             reduce using rule 44 (term -> term DIVIDE factor .)
+    $end            reduce using rule 44 (term -> term DIVIDE factor .)
+    END             reduce using rule 44 (term -> term DIVIDE factor .)
+    RETURN          reduce using rule 44 (term -> term DIVIDE factor .)
+    RPAR            reduce using rule 44 (term -> term DIVIDE factor .)
+    AND             reduce using rule 44 (term -> term DIVIDE factor .)
+    OR              reduce using rule 44 (term -> term DIVIDE factor .)
+    D_POINT         reduce using rule 44 (term -> term DIVIDE factor .)
+    RCOR            reduce using rule 44 (term -> term DIVIDE factor .)
+    COMMA           reduce using rule 44 (term -> term DIVIDE factor .)
+    RKEY            reduce using rule 44 (term -> term DIVIDE factor .)
 
 
 state 92
 
-    (54) parametros -> VARIABLE COMMA . parametros
-    (53) parametros -> . VARIABLE
-    (54) parametros -> . VARIABLE COMMA parametros
+    (45) term -> term EXPONENTIATION factor .
 
-    VARIABLE        shift and go to state 73
+    TIMES           reduce using rule 45 (term -> term EXPONENTIATION factor .)
+    DIVIDE          reduce using rule 45 (term -> term EXPONENTIATION factor .)
+    EXPONENTIATION  reduce using rule 45 (term -> term EXPONENTIATION factor .)
+    PLUS            reduce using rule 45 (term -> term EXPONENTIATION factor .)
+    MINUS           reduce using rule 45 (term -> term EXPONENTIATION factor .)
+    GREATER         reduce using rule 45 (term -> term EXPONENTIATION factor .)
+    GREATER_OR_EQUAL reduce using rule 45 (term -> term EXPONENTIATION factor .)
+    MINOR           reduce using rule 45 (term -> term EXPONENTIATION factor .)
+    MINOR_OR_EQUAL  reduce using rule 45 (term -> term EXPONENTIATION factor .)
+    ASIGN           reduce using rule 45 (term -> term EXPONENTIATION factor .)
+    NOT             reduce using rule 45 (term -> term EXPONENTIATION factor .)
+    $end            reduce using rule 45 (term -> term EXPONENTIATION factor .)
+    END             reduce using rule 45 (term -> term EXPONENTIATION factor .)
+    RETURN          reduce using rule 45 (term -> term EXPONENTIATION factor .)
+    RPAR            reduce using rule 45 (term -> term EXPONENTIATION factor .)
+    AND             reduce using rule 45 (term -> term EXPONENTIATION factor .)
+    OR              reduce using rule 45 (term -> term EXPONENTIATION factor .)
+    D_POINT         reduce using rule 45 (term -> term EXPONENTIATION factor .)
+    RCOR            reduce using rule 45 (term -> term EXPONENTIATION factor .)
+    COMMA           reduce using rule 45 (term -> term EXPONENTIATION factor .)
+    RKEY            reduce using rule 45 (term -> term EXPONENTIATION factor .)
 
-    parametros                     shift and go to state 106
 
 state 93
 
-    (61) callFuncion -> VARIABLE LPAR parametros RPAR .
+    (64) funciones -> encabezado cuerpo END .
 
-    $end            reduce using rule 61 (callFuncion -> VARIABLE LPAR parametros RPAR .)
-    END             reduce using rule 61 (callFuncion -> VARIABLE LPAR parametros RPAR .)
-    RETURN          reduce using rule 61 (callFuncion -> VARIABLE LPAR parametros RPAR .)
+    $end            reduce using rule 64 (funciones -> encabezado cuerpo END .)
 
 
 state 94
 
-    (68) addValueHash -> VARIABLE LCOR expression RCOR . ASIGN expression
-    (69) modValueHash -> VARIABLE LCOR expression RCOR . ASIGN expression
+    (66) funciones -> encabezado cuerpo RETURN . expression END
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    ASIGN           shift and go to state 107
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
 
+    expression                     shift and go to state 114
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    factor                         shift and go to state 26
 
 state 95
 
-    (70) deleteValueHash -> VARIABLE POINT DELETE LPAR . expression RPAR
-    (27) expression -> . term
-    (28) expression -> . boleano
-    (34) expression -> . expression PLUS term
-    (35) expression -> . expression MINUS term
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (62) boleano -> . TRUE
-    (63) boleano -> . FALSE
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (65) funciones -> encabezado RETURN expression . END
+    (41) expression -> expression . PLUS term
+    (42) expression -> expression . MINUS term
 
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
-    NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    END             shift and go to state 115
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
 
-    expression                     shift and go to state 108
-    term                           shift and go to state 14
-    boleano                        shift and go to state 15
-    factor                         shift and go to state 21
 
 state 96
 
-    (59) funciones -> encabezado cuerpo RETURN expression . END
-    (34) expression -> expression . PLUS term
-    (35) expression -> expression . MINUS term
+    (55) condicional -> IF comparacion D_POINT . cuerpo END
+    (56) condicional -> IF comparacion D_POINT . cuerpo END cond_else
+    (15) cuerpo -> . asignacion
+    (16) cuerpo -> . expression
+    (17) cuerpo -> . comparacion
+    (18) cuerpo -> . condicional
+    (19) cuerpo -> . impresion
+    (20) cuerpo -> . input
+    (21) cuerpo -> . callFuncion
+    (22) cuerpo -> . addValueHash
+    (23) cuerpo -> . modValueHash
+    (24) cuerpo -> . deleteValueHash
+    (25) cuerpo -> . insertArray
+    (26) cuerpo -> . deleteArray
+    (27) asignacion -> . VARIABLE ASIGN expression
+    (28) asignacion -> . VARIABLE ASIGN comparacion
+    (29) asignacion -> . VARIABLE ASIGN callFuncion
+    (30) asignacion -> . VARIABLE ASIGN diccionario
+    (31) asignacion -> . VARIABLE ASIGN getValueHash
+    (32) asignacion -> . VARIABLE ASIGN array
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (46) comparacion -> . expression comparador expression
+    (47) comparacion -> . expression comparador expression AND comparacion
+    (48) comparacion -> . expression comparador expression OR comparacion
+    (55) condicional -> . IF comparacion D_POINT cuerpo END
+    (56) condicional -> . IF comparacion D_POINT cuerpo END cond_else
+    (58) impresion -> . PUTS STRING
+    (59) input -> . VARIABLE ASIGN GETS
+    (67) callFuncion -> . VARIABLE LPAR RPAR
+    (68) callFuncion -> . VARIABLE LPAR parametros RPAR
+    (75) addValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
+    (76) modValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
+    (77) deleteValueHash -> . VARIABLE POINT DELETE LPAR expression RPAR
+    (86) insertArray -> . VARIABLE POINT INSERT LPAR argumentosA RPAR
+    (87) deleteArray -> . VARIABLE POINT DELETE_AT LPAR NUMBER RPAR
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    END             shift and go to state 109
-    PLUS            shift and go to state 27
-    MINUS           shift and go to state 28
+    VARIABLE        shift and go to state 16
+    IF              shift and go to state 20
+    PUTS            shift and go to state 23
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    LPAR            shift and go to state 22
 
+    comparacion                    shift and go to state 51
+    cuerpo                         shift and go to state 116
+    asignacion                     shift and go to state 50
+    expression                     shift and go to state 49
+    condicional                    shift and go to state 52
+    impresion                      shift and go to state 53
+    input                          shift and go to state 54
+    callFuncion                    shift and go to state 55
+    addValueHash                   shift and go to state 56
+    modValueHash                   shift and go to state 57
+    deleteValueHash                shift and go to state 58
+    insertArray                    shift and go to state 59
+    deleteArray                    shift and go to state 60
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    factor                         shift and go to state 26
 
 state 97
 
-    (58) funciones -> encabezado RETURN expression END .
+    (78) while -> WHILE LPAR comparacion . RPAR cuerpo END
+    (79) while -> WHILE LPAR comparacion . RPAR cuerpo END while
 
-    $end            reduce using rule 58 (funciones -> encabezado RETURN expression END .)
+    RPAR            shift and go to state 117
 
 
 state 98
 
-    (48) condicional -> IF comparacion D_POINT cuerpo . END
-    (49) condicional -> IF comparacion D_POINT cuerpo . END cond_else
+    (40) factor -> LPAR expression RPAR .
 
-    END             shift and go to state 110
+    TIMES           reduce using rule 40 (factor -> LPAR expression RPAR .)
+    DIVIDE          reduce using rule 40 (factor -> LPAR expression RPAR .)
+    EXPONENTIATION  reduce using rule 40 (factor -> LPAR expression RPAR .)
+    PLUS            reduce using rule 40 (factor -> LPAR expression RPAR .)
+    MINUS           reduce using rule 40 (factor -> LPAR expression RPAR .)
+    GREATER         reduce using rule 40 (factor -> LPAR expression RPAR .)
+    GREATER_OR_EQUAL reduce using rule 40 (factor -> LPAR expression RPAR .)
+    MINOR           reduce using rule 40 (factor -> LPAR expression RPAR .)
+    MINOR_OR_EQUAL  reduce using rule 40 (factor -> LPAR expression RPAR .)
+    ASIGN           reduce using rule 40 (factor -> LPAR expression RPAR .)
+    NOT             reduce using rule 40 (factor -> LPAR expression RPAR .)
+    $end            reduce using rule 40 (factor -> LPAR expression RPAR .)
+    END             reduce using rule 40 (factor -> LPAR expression RPAR .)
+    RETURN          reduce using rule 40 (factor -> LPAR expression RPAR .)
+    RPAR            reduce using rule 40 (factor -> LPAR expression RPAR .)
+    AND             reduce using rule 40 (factor -> LPAR expression RPAR .)
+    OR              reduce using rule 40 (factor -> LPAR expression RPAR .)
+    D_POINT         reduce using rule 40 (factor -> LPAR expression RPAR .)
+    RCOR            reduce using rule 40 (factor -> LPAR expression RPAR .)
+    COMMA           reduce using rule 40 (factor -> LPAR expression RPAR .)
+    RKEY            reduce using rule 40 (factor -> LPAR expression RPAR .)
 
 
 state 99
 
-    (55) encabezado -> DEF VARIABLE LPAR RPAR .
+    (62) encabezado -> DEF VARIABLE LPAR . RPAR
+    (63) encabezado -> DEF VARIABLE LPAR . parametros RPAR
+    (60) parametros -> . VARIABLE
+    (61) parametros -> . VARIABLE COMMA parametros
 
-    RETURN          reduce using rule 55 (encabezado -> DEF VARIABLE LPAR RPAR .)
-    VARIABLE        reduce using rule 55 (encabezado -> DEF VARIABLE LPAR RPAR .)
-    IF              reduce using rule 55 (encabezado -> DEF VARIABLE LPAR RPAR .)
-    PUTS            reduce using rule 55 (encabezado -> DEF VARIABLE LPAR RPAR .)
-    TRUE            reduce using rule 55 (encabezado -> DEF VARIABLE LPAR RPAR .)
-    FALSE           reduce using rule 55 (encabezado -> DEF VARIABLE LPAR RPAR .)
-    NUMBER          reduce using rule 55 (encabezado -> DEF VARIABLE LPAR RPAR .)
-    STRING          reduce using rule 55 (encabezado -> DEF VARIABLE LPAR RPAR .)
-    FLOAT           reduce using rule 55 (encabezado -> DEF VARIABLE LPAR RPAR .)
-    LPAR            reduce using rule 55 (encabezado -> DEF VARIABLE LPAR RPAR .)
+    RPAR            shift and go to state 118
+    VARIABLE        shift and go to state 83
 
+    parametros                     shift and go to state 119
 
 state 100
 
-    (56) encabezado -> DEF VARIABLE LPAR parametros . RPAR
+    (47) comparacion -> expression comparador expression AND . comparacion
+    (46) comparacion -> . expression comparador expression
+    (47) comparacion -> . expression comparador expression AND comparacion
+    (48) comparacion -> . expression comparador expression OR comparacion
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    RPAR            shift and go to state 111
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
 
+    expression                     shift and go to state 62
+    comparacion                    shift and go to state 120
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    factor                         shift and go to state 26
 
 state 101
 
-    (40) comparacion -> expression comparador expression AND comparacion .
+    (48) comparacion -> expression comparador expression OR . comparacion
+    (46) comparacion -> . expression comparador expression
+    (47) comparacion -> . expression comparador expression AND comparacion
+    (48) comparacion -> . expression comparador expression OR comparacion
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    $end            reduce using rule 40 (comparacion -> expression comparador expression AND comparacion .)
-    END             reduce using rule 40 (comparacion -> expression comparador expression AND comparacion .)
-    RETURN          reduce using rule 40 (comparacion -> expression comparador expression AND comparacion .)
-    D_POINT         reduce using rule 40 (comparacion -> expression comparador expression AND comparacion .)
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
 
+    expression                     shift and go to state 62
+    comparacion                    shift and go to state 121
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    factor                         shift and go to state 26
 
 state 102
 
-    (41) comparacion -> expression comparador expression OR comparacion .
+    (74) getValueHash -> VARIABLE LCOR . expression RCOR
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    $end            reduce using rule 41 (comparacion -> expression comparador expression OR comparacion .)
-    END             reduce using rule 41 (comparacion -> expression comparador expression OR comparacion .)
-    RETURN          reduce using rule 41 (comparacion -> expression comparador expression OR comparacion .)
-    D_POINT         reduce using rule 41 (comparacion -> expression comparador expression OR comparacion .)
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
 
+    expression                     shift and go to state 122
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    factor                         shift and go to state 26
 
 state 103
 
-    (67) getValueHash -> VARIABLE LCOR expression . RCOR
-    (34) expression -> expression . PLUS term
-    (35) expression -> expression . MINUS term
+    (71) diccionario -> LKEY cuerpoHash . RKEY
 
-    RCOR            shift and go to state 112
-    PLUS            shift and go to state 27
-    MINUS           shift and go to state 28
+    RKEY            shift and go to state 123
 
 
 state 104
 
-    (64) diccionario -> LKEY cuerpoHash RKEY .
+    (72) cuerpoHash -> expression . ASIGN GREATER expression
+    (73) cuerpoHash -> expression . ASIGN GREATER expression COMMA cuerpoHash
+    (41) expression -> expression . PLUS term
+    (42) expression -> expression . MINUS term
 
-    $end            reduce using rule 64 (diccionario -> LKEY cuerpoHash RKEY .)
-    END             reduce using rule 64 (diccionario -> LKEY cuerpoHash RKEY .)
-    RETURN          reduce using rule 64 (diccionario -> LKEY cuerpoHash RKEY .)
+    ASIGN           shift and go to state 124
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
 
 
 state 105
 
-    (65) cuerpoHash -> expression ASIGN . GREATER expression
-    (66) cuerpoHash -> expression ASIGN . GREATER expression COMMA cuerpoHash
+    (82) array -> LCOR parametrosA . RCOR
 
-    GREATER         shift and go to state 113
+    RCOR            shift and go to state 125
 
 
 state 106
 
-    (54) parametros -> VARIABLE COMMA parametros .
+    (83) array -> LCOR RCOR .
 
-    RPAR            reduce using rule 54 (parametros -> VARIABLE COMMA parametros .)
+    $end            reduce using rule 83 (array -> LCOR RCOR .)
+    END             reduce using rule 83 (array -> LCOR RCOR .)
+    RETURN          reduce using rule 83 (array -> LCOR RCOR .)
 
 
 state 107
 
-    (68) addValueHash -> VARIABLE LCOR expression RCOR ASIGN . expression
-    (69) modValueHash -> VARIABLE LCOR expression RCOR ASIGN . expression
-    (27) expression -> . term
-    (28) expression -> . boleano
-    (34) expression -> . expression PLUS term
-    (35) expression -> . expression MINUS term
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (62) boleano -> . TRUE
-    (63) boleano -> . FALSE
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (80) parametrosA -> factor .
+    (81) parametrosA -> factor . COMMA parametrosA
 
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
-    NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    RCOR            reduce using rule 80 (parametrosA -> factor .)
+    COMMA           shift and go to state 126
 
-    expression                     shift and go to state 114
-    term                           shift and go to state 14
-    boleano                        shift and go to state 15
-    factor                         shift and go to state 21
 
 state 108
 
-    (70) deleteValueHash -> VARIABLE POINT DELETE LPAR expression . RPAR
-    (34) expression -> expression . PLUS term
-    (35) expression -> expression . MINUS term
+    (61) parametros -> VARIABLE COMMA . parametros
+    (60) parametros -> . VARIABLE
+    (61) parametros -> . VARIABLE COMMA parametros
 
-    RPAR            shift and go to state 115
-    PLUS            shift and go to state 27
-    MINUS           shift and go to state 28
+    VARIABLE        shift and go to state 83
 
+    parametros                     shift and go to state 127
 
 state 109
 
-    (59) funciones -> encabezado cuerpo RETURN expression END .
+    (68) callFuncion -> VARIABLE LPAR parametros RPAR .
 
-    $end            reduce using rule 59 (funciones -> encabezado cuerpo RETURN expression END .)
+    $end            reduce using rule 68 (callFuncion -> VARIABLE LPAR parametros RPAR .)
+    END             reduce using rule 68 (callFuncion -> VARIABLE LPAR parametros RPAR .)
+    RETURN          reduce using rule 68 (callFuncion -> VARIABLE LPAR parametros RPAR .)
 
 
 state 110
 
-    (48) condicional -> IF comparacion D_POINT cuerpo END .
-    (49) condicional -> IF comparacion D_POINT cuerpo END . cond_else
-    (50) cond_else -> . ELSE D_POINT cuerpo END
+    (75) addValueHash -> VARIABLE LCOR expression RCOR . ASIGN expression
+    (76) modValueHash -> VARIABLE LCOR expression RCOR . ASIGN expression
 
-    $end            reduce using rule 48 (condicional -> IF comparacion D_POINT cuerpo END .)
-    END             reduce using rule 48 (condicional -> IF comparacion D_POINT cuerpo END .)
-    RETURN          reduce using rule 48 (condicional -> IF comparacion D_POINT cuerpo END .)
-    ELSE            shift and go to state 117
+    ASIGN           shift and go to state 128
 
-    cond_else                      shift and go to state 116
 
 state 111
 
-    (56) encabezado -> DEF VARIABLE LPAR parametros RPAR .
+    (77) deleteValueHash -> VARIABLE POINT DELETE LPAR . expression RPAR
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    RETURN          reduce using rule 56 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
-    VARIABLE        reduce using rule 56 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
-    IF              reduce using rule 56 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
-    PUTS            reduce using rule 56 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
-    TRUE            reduce using rule 56 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
-    FALSE           reduce using rule 56 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
-    NUMBER          reduce using rule 56 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
-    STRING          reduce using rule 56 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
-    FLOAT           reduce using rule 56 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
-    LPAR            reduce using rule 56 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
 
+    expression                     shift and go to state 129
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    factor                         shift and go to state 26
 
 state 112
 
-    (67) getValueHash -> VARIABLE LCOR expression RCOR .
+    (86) insertArray -> VARIABLE POINT INSERT LPAR . argumentosA RPAR
+    (84) argumentosA -> . NUMBER
+    (85) argumentosA -> . NUMBER COMMA factor
 
-    $end            reduce using rule 67 (getValueHash -> VARIABLE LCOR expression RCOR .)
-    END             reduce using rule 67 (getValueHash -> VARIABLE LCOR expression RCOR .)
-    RETURN          reduce using rule 67 (getValueHash -> VARIABLE LCOR expression RCOR .)
+    NUMBER          shift and go to state 131
 
+    argumentosA                    shift and go to state 130
 
 state 113
 
-    (65) cuerpoHash -> expression ASIGN GREATER . expression
-    (66) cuerpoHash -> expression ASIGN GREATER . expression COMMA cuerpoHash
-    (27) expression -> . term
-    (28) expression -> . boleano
-    (34) expression -> . expression PLUS term
-    (35) expression -> . expression MINUS term
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (62) boleano -> . TRUE
-    (63) boleano -> . FALSE
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (87) deleteArray -> VARIABLE POINT DELETE_AT LPAR . NUMBER RPAR
 
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
-    NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    NUMBER          shift and go to state 132
 
-    expression                     shift and go to state 118
-    term                           shift and go to state 14
-    boleano                        shift and go to state 15
-    factor                         shift and go to state 21
 
 state 114
 
-    (68) addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .
-    (69) modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .
-    (34) expression -> expression . PLUS term
-    (35) expression -> expression . MINUS term
+    (66) funciones -> encabezado cuerpo RETURN expression . END
+    (41) expression -> expression . PLUS term
+    (42) expression -> expression . MINUS term
 
-  ! reduce/reduce conflict for $end resolved using rule 68 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
-  ! reduce/reduce conflict for END resolved using rule 68 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
-  ! reduce/reduce conflict for RETURN resolved using rule 68 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
-    $end            reduce using rule 68 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
-    END             reduce using rule 68 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
-    RETURN          reduce using rule 68 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
-    PLUS            shift and go to state 27
-    MINUS           shift and go to state 28
-
-  ! $end            [ reduce using rule 69 (modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .) ]
-  ! END             [ reduce using rule 69 (modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .) ]
-  ! RETURN          [ reduce using rule 69 (modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .) ]
+    END             shift and go to state 133
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
 
 
 state 115
 
-    (70) deleteValueHash -> VARIABLE POINT DELETE LPAR expression RPAR .
+    (65) funciones -> encabezado RETURN expression END .
 
-    $end            reduce using rule 70 (deleteValueHash -> VARIABLE POINT DELETE LPAR expression RPAR .)
-    END             reduce using rule 70 (deleteValueHash -> VARIABLE POINT DELETE LPAR expression RPAR .)
-    RETURN          reduce using rule 70 (deleteValueHash -> VARIABLE POINT DELETE LPAR expression RPAR .)
+    $end            reduce using rule 65 (funciones -> encabezado RETURN expression END .)
 
 
 state 116
 
-    (49) condicional -> IF comparacion D_POINT cuerpo END cond_else .
+    (55) condicional -> IF comparacion D_POINT cuerpo . END
+    (56) condicional -> IF comparacion D_POINT cuerpo . END cond_else
 
-    $end            reduce using rule 49 (condicional -> IF comparacion D_POINT cuerpo END cond_else .)
-    END             reduce using rule 49 (condicional -> IF comparacion D_POINT cuerpo END cond_else .)
-    RETURN          reduce using rule 49 (condicional -> IF comparacion D_POINT cuerpo END cond_else .)
+    END             shift and go to state 134
 
 
 state 117
 
-    (50) cond_else -> ELSE . D_POINT cuerpo END
+    (78) while -> WHILE LPAR comparacion RPAR . cuerpo END
+    (79) while -> WHILE LPAR comparacion RPAR . cuerpo END while
+    (15) cuerpo -> . asignacion
+    (16) cuerpo -> . expression
+    (17) cuerpo -> . comparacion
+    (18) cuerpo -> . condicional
+    (19) cuerpo -> . impresion
+    (20) cuerpo -> . input
+    (21) cuerpo -> . callFuncion
+    (22) cuerpo -> . addValueHash
+    (23) cuerpo -> . modValueHash
+    (24) cuerpo -> . deleteValueHash
+    (25) cuerpo -> . insertArray
+    (26) cuerpo -> . deleteArray
+    (27) asignacion -> . VARIABLE ASIGN expression
+    (28) asignacion -> . VARIABLE ASIGN comparacion
+    (29) asignacion -> . VARIABLE ASIGN callFuncion
+    (30) asignacion -> . VARIABLE ASIGN diccionario
+    (31) asignacion -> . VARIABLE ASIGN getValueHash
+    (32) asignacion -> . VARIABLE ASIGN array
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (46) comparacion -> . expression comparador expression
+    (47) comparacion -> . expression comparador expression AND comparacion
+    (48) comparacion -> . expression comparador expression OR comparacion
+    (55) condicional -> . IF comparacion D_POINT cuerpo END
+    (56) condicional -> . IF comparacion D_POINT cuerpo END cond_else
+    (58) impresion -> . PUTS STRING
+    (59) input -> . VARIABLE ASIGN GETS
+    (67) callFuncion -> . VARIABLE LPAR RPAR
+    (68) callFuncion -> . VARIABLE LPAR parametros RPAR
+    (75) addValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
+    (76) modValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
+    (77) deleteValueHash -> . VARIABLE POINT DELETE LPAR expression RPAR
+    (86) insertArray -> . VARIABLE POINT INSERT LPAR argumentosA RPAR
+    (87) deleteArray -> . VARIABLE POINT DELETE_AT LPAR NUMBER RPAR
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
 
-    D_POINT         shift and go to state 119
+    VARIABLE        shift and go to state 16
+    IF              shift and go to state 20
+    PUTS            shift and go to state 23
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    LPAR            shift and go to state 22
 
+    comparacion                    shift and go to state 51
+    cuerpo                         shift and go to state 135
+    asignacion                     shift and go to state 50
+    expression                     shift and go to state 49
+    condicional                    shift and go to state 52
+    impresion                      shift and go to state 53
+    input                          shift and go to state 54
+    callFuncion                    shift and go to state 55
+    addValueHash                   shift and go to state 56
+    modValueHash                   shift and go to state 57
+    deleteValueHash                shift and go to state 58
+    insertArray                    shift and go to state 59
+    deleteArray                    shift and go to state 60
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    factor                         shift and go to state 26
 
 state 118
 
-    (65) cuerpoHash -> expression ASIGN GREATER expression .
-    (66) cuerpoHash -> expression ASIGN GREATER expression . COMMA cuerpoHash
-    (34) expression -> expression . PLUS term
-    (35) expression -> expression . MINUS term
+    (62) encabezado -> DEF VARIABLE LPAR RPAR .
 
-    RKEY            reduce using rule 65 (cuerpoHash -> expression ASIGN GREATER expression .)
-    COMMA           shift and go to state 120
-    PLUS            shift and go to state 27
-    MINUS           shift and go to state 28
+    RETURN          reduce using rule 62 (encabezado -> DEF VARIABLE LPAR RPAR .)
+    VARIABLE        reduce using rule 62 (encabezado -> DEF VARIABLE LPAR RPAR .)
+    IF              reduce using rule 62 (encabezado -> DEF VARIABLE LPAR RPAR .)
+    PUTS            reduce using rule 62 (encabezado -> DEF VARIABLE LPAR RPAR .)
+    TRUE            reduce using rule 62 (encabezado -> DEF VARIABLE LPAR RPAR .)
+    FALSE           reduce using rule 62 (encabezado -> DEF VARIABLE LPAR RPAR .)
+    NUMBER          reduce using rule 62 (encabezado -> DEF VARIABLE LPAR RPAR .)
+    STRING          reduce using rule 62 (encabezado -> DEF VARIABLE LPAR RPAR .)
+    FLOAT           reduce using rule 62 (encabezado -> DEF VARIABLE LPAR RPAR .)
+    LPAR            reduce using rule 62 (encabezado -> DEF VARIABLE LPAR RPAR .)
 
 
 state 119
 
-    (50) cond_else -> ELSE D_POINT . cuerpo END
-    (12) cuerpo -> . asignacion
-    (13) cuerpo -> . expression
-    (14) cuerpo -> . comparacion
-    (15) cuerpo -> . condicional
-    (16) cuerpo -> . impresion
-    (17) cuerpo -> . input
-    (18) cuerpo -> . callFuncion
-    (19) cuerpo -> . addValueHash
-    (20) cuerpo -> . modValueHash
-    (21) cuerpo -> . deleteValueHash
-    (22) asignacion -> . VARIABLE ASIGN expression
-    (23) asignacion -> . VARIABLE ASIGN comparacion
-    (24) asignacion -> . VARIABLE ASIGN callFuncion
-    (25) asignacion -> . VARIABLE ASIGN diccionario
-    (26) asignacion -> . VARIABLE ASIGN getValueHash
-    (27) expression -> . term
-    (28) expression -> . boleano
-    (34) expression -> . expression PLUS term
-    (35) expression -> . expression MINUS term
-    (39) comparacion -> . expression comparador expression
-    (40) comparacion -> . expression comparador expression AND comparacion
-    (41) comparacion -> . expression comparador expression OR comparacion
-    (48) condicional -> . IF comparacion D_POINT cuerpo END
-    (49) condicional -> . IF comparacion D_POINT cuerpo END cond_else
-    (51) impresion -> . PUTS STRING
-    (52) input -> . VARIABLE ASIGN GETS
-    (60) callFuncion -> . VARIABLE LPAR RPAR
-    (61) callFuncion -> . VARIABLE LPAR parametros RPAR
-    (68) addValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
-    (69) modValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
-    (70) deleteValueHash -> . VARIABLE POINT DELETE LPAR expression RPAR
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (62) boleano -> . TRUE
-    (63) boleano -> . FALSE
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (63) encabezado -> DEF VARIABLE LPAR parametros . RPAR
 
-    VARIABLE        shift and go to state 13
-    IF              shift and go to state 17
-    PUTS            shift and go to state 18
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
-    NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    RPAR            shift and go to state 136
 
-    cuerpo                         shift and go to state 121
-    asignacion                     shift and go to state 46
-    expression                     shift and go to state 45
-    comparacion                    shift and go to state 47
-    condicional                    shift and go to state 48
-    impresion                      shift and go to state 49
-    input                          shift and go to state 50
-    callFuncion                    shift and go to state 51
-    addValueHash                   shift and go to state 52
-    modValueHash                   shift and go to state 53
-    deleteValueHash                shift and go to state 54
-    term                           shift and go to state 14
-    boleano                        shift and go to state 15
-    factor                         shift and go to state 21
 
 state 120
 
-    (66) cuerpoHash -> expression ASIGN GREATER expression COMMA . cuerpoHash
-    (65) cuerpoHash -> . expression ASIGN GREATER expression
-    (66) cuerpoHash -> . expression ASIGN GREATER expression COMMA cuerpoHash
-    (27) expression -> . term
-    (28) expression -> . boleano
-    (34) expression -> . expression PLUS term
-    (35) expression -> . expression MINUS term
-    (29) term -> . factor
-    (36) term -> . term TIMES factor
-    (37) term -> . term DIVIDE factor
-    (38) term -> . term EXPONENTIATION factor
-    (62) boleano -> . TRUE
-    (63) boleano -> . FALSE
-    (30) factor -> . NUMBER
-    (31) factor -> . STRING
-    (32) factor -> . FLOAT
-    (33) factor -> . LPAR expression RPAR
+    (47) comparacion -> expression comparador expression AND comparacion .
 
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
-    NUMBER          shift and go to state 25
-    STRING          shift and go to state 19
-    FLOAT           shift and go to state 26
-    LPAR            shift and go to state 20
+    $end            reduce using rule 47 (comparacion -> expression comparador expression AND comparacion .)
+    END             reduce using rule 47 (comparacion -> expression comparador expression AND comparacion .)
+    RETURN          reduce using rule 47 (comparacion -> expression comparador expression AND comparacion .)
+    D_POINT         reduce using rule 47 (comparacion -> expression comparador expression AND comparacion .)
+    RPAR            reduce using rule 47 (comparacion -> expression comparador expression AND comparacion .)
 
-    expression                     shift and go to state 91
-    cuerpoHash                     shift and go to state 122
-    term                           shift and go to state 14
-    boleano                        shift and go to state 15
-    factor                         shift and go to state 21
 
 state 121
 
-    (50) cond_else -> ELSE D_POINT cuerpo . END
+    (48) comparacion -> expression comparador expression OR comparacion .
 
-    END             shift and go to state 123
+    $end            reduce using rule 48 (comparacion -> expression comparador expression OR comparacion .)
+    END             reduce using rule 48 (comparacion -> expression comparador expression OR comparacion .)
+    RETURN          reduce using rule 48 (comparacion -> expression comparador expression OR comparacion .)
+    D_POINT         reduce using rule 48 (comparacion -> expression comparador expression OR comparacion .)
+    RPAR            reduce using rule 48 (comparacion -> expression comparador expression OR comparacion .)
 
 
 state 122
 
-    (66) cuerpoHash -> expression ASIGN GREATER expression COMMA cuerpoHash .
+    (74) getValueHash -> VARIABLE LCOR expression . RCOR
+    (41) expression -> expression . PLUS term
+    (42) expression -> expression . MINUS term
 
-    RKEY            reduce using rule 66 (cuerpoHash -> expression ASIGN GREATER expression COMMA cuerpoHash .)
+    RCOR            shift and go to state 137
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
 
 
 state 123
 
-    (50) cond_else -> ELSE D_POINT cuerpo END .
+    (71) diccionario -> LKEY cuerpoHash RKEY .
 
-    $end            reduce using rule 50 (cond_else -> ELSE D_POINT cuerpo END .)
-    END             reduce using rule 50 (cond_else -> ELSE D_POINT cuerpo END .)
-    RETURN          reduce using rule 50 (cond_else -> ELSE D_POINT cuerpo END .)
+    $end            reduce using rule 71 (diccionario -> LKEY cuerpoHash RKEY .)
+    END             reduce using rule 71 (diccionario -> LKEY cuerpoHash RKEY .)
+    RETURN          reduce using rule 71 (diccionario -> LKEY cuerpoHash RKEY .)
+
+
+state 124
+
+    (72) cuerpoHash -> expression ASIGN . GREATER expression
+    (73) cuerpoHash -> expression ASIGN . GREATER expression COMMA cuerpoHash
+
+    GREATER         shift and go to state 138
+
+
+state 125
+
+    (82) array -> LCOR parametrosA RCOR .
+
+    $end            reduce using rule 82 (array -> LCOR parametrosA RCOR .)
+    END             reduce using rule 82 (array -> LCOR parametrosA RCOR .)
+    RETURN          reduce using rule 82 (array -> LCOR parametrosA RCOR .)
+
+
+state 126
+
+    (81) parametrosA -> factor COMMA . parametrosA
+    (80) parametrosA -> . factor
+    (81) parametrosA -> . factor COMMA parametrosA
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
+
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
+
+    factor                         shift and go to state 107
+    parametrosA                    shift and go to state 139
+
+state 127
+
+    (61) parametros -> VARIABLE COMMA parametros .
+
+    RPAR            reduce using rule 61 (parametros -> VARIABLE COMMA parametros .)
+
+
+state 128
+
+    (75) addValueHash -> VARIABLE LCOR expression RCOR ASIGN . expression
+    (76) modValueHash -> VARIABLE LCOR expression RCOR ASIGN . expression
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
+
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
+
+    expression                     shift and go to state 140
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    factor                         shift and go to state 26
+
+state 129
+
+    (77) deleteValueHash -> VARIABLE POINT DELETE LPAR expression . RPAR
+    (41) expression -> expression . PLUS term
+    (42) expression -> expression . MINUS term
+
+    RPAR            shift and go to state 141
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+
+
+state 130
+
+    (86) insertArray -> VARIABLE POINT INSERT LPAR argumentosA . RPAR
+
+    RPAR            shift and go to state 142
+
+
+state 131
+
+    (84) argumentosA -> NUMBER .
+    (85) argumentosA -> NUMBER . COMMA factor
+
+    RPAR            reduce using rule 84 (argumentosA -> NUMBER .)
+    COMMA           shift and go to state 143
+
+
+state 132
+
+    (87) deleteArray -> VARIABLE POINT DELETE_AT LPAR NUMBER . RPAR
+
+    RPAR            shift and go to state 144
+
+
+state 133
+
+    (66) funciones -> encabezado cuerpo RETURN expression END .
+
+    $end            reduce using rule 66 (funciones -> encabezado cuerpo RETURN expression END .)
+
+
+state 134
+
+    (55) condicional -> IF comparacion D_POINT cuerpo END .
+    (56) condicional -> IF comparacion D_POINT cuerpo END . cond_else
+    (57) cond_else -> . ELSE D_POINT cuerpo END
+
+    $end            reduce using rule 55 (condicional -> IF comparacion D_POINT cuerpo END .)
+    END             reduce using rule 55 (condicional -> IF comparacion D_POINT cuerpo END .)
+    RETURN          reduce using rule 55 (condicional -> IF comparacion D_POINT cuerpo END .)
+    ELSE            shift and go to state 146
+
+    cond_else                      shift and go to state 145
+
+state 135
+
+    (78) while -> WHILE LPAR comparacion RPAR cuerpo . END
+    (79) while -> WHILE LPAR comparacion RPAR cuerpo . END while
+
+    END             shift and go to state 147
+
+
+state 136
+
+    (63) encabezado -> DEF VARIABLE LPAR parametros RPAR .
+
+    RETURN          reduce using rule 63 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
+    VARIABLE        reduce using rule 63 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
+    IF              reduce using rule 63 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
+    PUTS            reduce using rule 63 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
+    TRUE            reduce using rule 63 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
+    FALSE           reduce using rule 63 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
+    NUMBER          reduce using rule 63 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
+    STRING          reduce using rule 63 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
+    FLOAT           reduce using rule 63 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
+    LPAR            reduce using rule 63 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
+
+
+state 137
+
+    (74) getValueHash -> VARIABLE LCOR expression RCOR .
+
+    $end            reduce using rule 74 (getValueHash -> VARIABLE LCOR expression RCOR .)
+    END             reduce using rule 74 (getValueHash -> VARIABLE LCOR expression RCOR .)
+    RETURN          reduce using rule 74 (getValueHash -> VARIABLE LCOR expression RCOR .)
+
+
+state 138
+
+    (72) cuerpoHash -> expression ASIGN GREATER . expression
+    (73) cuerpoHash -> expression ASIGN GREATER . expression COMMA cuerpoHash
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
+
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
+
+    expression                     shift and go to state 148
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    factor                         shift and go to state 26
+
+state 139
+
+    (81) parametrosA -> factor COMMA parametrosA .
+
+    RCOR            reduce using rule 81 (parametrosA -> factor COMMA parametrosA .)
+
+
+state 140
+
+    (75) addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .
+    (76) modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .
+    (41) expression -> expression . PLUS term
+    (42) expression -> expression . MINUS term
+
+  ! reduce/reduce conflict for $end resolved using rule 75 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
+  ! reduce/reduce conflict for END resolved using rule 75 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
+  ! reduce/reduce conflict for RETURN resolved using rule 75 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
+    $end            reduce using rule 75 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
+    END             reduce using rule 75 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
+    RETURN          reduce using rule 75 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+
+  ! $end            [ reduce using rule 76 (modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .) ]
+  ! END             [ reduce using rule 76 (modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .) ]
+  ! RETURN          [ reduce using rule 76 (modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .) ]
+
+
+state 141
+
+    (77) deleteValueHash -> VARIABLE POINT DELETE LPAR expression RPAR .
+
+    $end            reduce using rule 77 (deleteValueHash -> VARIABLE POINT DELETE LPAR expression RPAR .)
+    END             reduce using rule 77 (deleteValueHash -> VARIABLE POINT DELETE LPAR expression RPAR .)
+    RETURN          reduce using rule 77 (deleteValueHash -> VARIABLE POINT DELETE LPAR expression RPAR .)
+
+
+state 142
+
+    (86) insertArray -> VARIABLE POINT INSERT LPAR argumentosA RPAR .
+
+    $end            reduce using rule 86 (insertArray -> VARIABLE POINT INSERT LPAR argumentosA RPAR .)
+    END             reduce using rule 86 (insertArray -> VARIABLE POINT INSERT LPAR argumentosA RPAR .)
+    RETURN          reduce using rule 86 (insertArray -> VARIABLE POINT INSERT LPAR argumentosA RPAR .)
+
+
+state 143
+
+    (85) argumentosA -> NUMBER COMMA . factor
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
+
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
+
+    factor                         shift and go to state 149
+
+state 144
+
+    (87) deleteArray -> VARIABLE POINT DELETE_AT LPAR NUMBER RPAR .
+
+    $end            reduce using rule 87 (deleteArray -> VARIABLE POINT DELETE_AT LPAR NUMBER RPAR .)
+    END             reduce using rule 87 (deleteArray -> VARIABLE POINT DELETE_AT LPAR NUMBER RPAR .)
+    RETURN          reduce using rule 87 (deleteArray -> VARIABLE POINT DELETE_AT LPAR NUMBER RPAR .)
+
+
+state 145
+
+    (56) condicional -> IF comparacion D_POINT cuerpo END cond_else .
+
+    $end            reduce using rule 56 (condicional -> IF comparacion D_POINT cuerpo END cond_else .)
+    END             reduce using rule 56 (condicional -> IF comparacion D_POINT cuerpo END cond_else .)
+    RETURN          reduce using rule 56 (condicional -> IF comparacion D_POINT cuerpo END cond_else .)
+
+
+state 146
+
+    (57) cond_else -> ELSE . D_POINT cuerpo END
+
+    D_POINT         shift and go to state 150
+
+
+state 147
+
+    (78) while -> WHILE LPAR comparacion RPAR cuerpo END .
+    (79) while -> WHILE LPAR comparacion RPAR cuerpo END . while
+    (78) while -> . WHILE LPAR comparacion RPAR cuerpo END
+    (79) while -> . WHILE LPAR comparacion RPAR cuerpo END while
+
+    $end            reduce using rule 78 (while -> WHILE LPAR comparacion RPAR cuerpo END .)
+    WHILE           shift and go to state 21
+
+    while                          shift and go to state 151
+
+state 148
+
+    (72) cuerpoHash -> expression ASIGN GREATER expression .
+    (73) cuerpoHash -> expression ASIGN GREATER expression . COMMA cuerpoHash
+    (41) expression -> expression . PLUS term
+    (42) expression -> expression . MINUS term
+
+    RKEY            reduce using rule 72 (cuerpoHash -> expression ASIGN GREATER expression .)
+    COMMA           shift and go to state 152
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+
+
+state 149
+
+    (85) argumentosA -> NUMBER COMMA factor .
+
+    RPAR            reduce using rule 85 (argumentosA -> NUMBER COMMA factor .)
+
+
+state 150
+
+    (57) cond_else -> ELSE D_POINT . cuerpo END
+    (15) cuerpo -> . asignacion
+    (16) cuerpo -> . expression
+    (17) cuerpo -> . comparacion
+    (18) cuerpo -> . condicional
+    (19) cuerpo -> . impresion
+    (20) cuerpo -> . input
+    (21) cuerpo -> . callFuncion
+    (22) cuerpo -> . addValueHash
+    (23) cuerpo -> . modValueHash
+    (24) cuerpo -> . deleteValueHash
+    (25) cuerpo -> . insertArray
+    (26) cuerpo -> . deleteArray
+    (27) asignacion -> . VARIABLE ASIGN expression
+    (28) asignacion -> . VARIABLE ASIGN comparacion
+    (29) asignacion -> . VARIABLE ASIGN callFuncion
+    (30) asignacion -> . VARIABLE ASIGN diccionario
+    (31) asignacion -> . VARIABLE ASIGN getValueHash
+    (32) asignacion -> . VARIABLE ASIGN array
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (46) comparacion -> . expression comparador expression
+    (47) comparacion -> . expression comparador expression AND comparacion
+    (48) comparacion -> . expression comparador expression OR comparacion
+    (55) condicional -> . IF comparacion D_POINT cuerpo END
+    (56) condicional -> . IF comparacion D_POINT cuerpo END cond_else
+    (58) impresion -> . PUTS STRING
+    (59) input -> . VARIABLE ASIGN GETS
+    (67) callFuncion -> . VARIABLE LPAR RPAR
+    (68) callFuncion -> . VARIABLE LPAR parametros RPAR
+    (75) addValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
+    (76) modValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
+    (77) deleteValueHash -> . VARIABLE POINT DELETE LPAR expression RPAR
+    (86) insertArray -> . VARIABLE POINT INSERT LPAR argumentosA RPAR
+    (87) deleteArray -> . VARIABLE POINT DELETE_AT LPAR NUMBER RPAR
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
+
+    VARIABLE        shift and go to state 16
+    IF              shift and go to state 20
+    PUTS            shift and go to state 23
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    LPAR            shift and go to state 22
+
+    cuerpo                         shift and go to state 153
+    asignacion                     shift and go to state 50
+    expression                     shift and go to state 49
+    comparacion                    shift and go to state 51
+    condicional                    shift and go to state 52
+    impresion                      shift and go to state 53
+    input                          shift and go to state 54
+    callFuncion                    shift and go to state 55
+    addValueHash                   shift and go to state 56
+    modValueHash                   shift and go to state 57
+    deleteValueHash                shift and go to state 58
+    insertArray                    shift and go to state 59
+    deleteArray                    shift and go to state 60
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    factor                         shift and go to state 26
+
+state 151
+
+    (79) while -> WHILE LPAR comparacion RPAR cuerpo END while .
+
+    $end            reduce using rule 79 (while -> WHILE LPAR comparacion RPAR cuerpo END while .)
+
+
+state 152
+
+    (73) cuerpoHash -> expression ASIGN GREATER expression COMMA . cuerpoHash
+    (72) cuerpoHash -> . expression ASIGN GREATER expression
+    (73) cuerpoHash -> . expression ASIGN GREATER expression COMMA cuerpoHash
+    (33) expression -> . term
+    (34) expression -> . boleano
+    (41) expression -> . expression PLUS term
+    (42) expression -> . expression MINUS term
+    (35) term -> . factor
+    (43) term -> . term TIMES factor
+    (44) term -> . term DIVIDE factor
+    (45) term -> . term EXPONENTIATION factor
+    (69) boleano -> . TRUE
+    (70) boleano -> . FALSE
+    (36) factor -> . NUMBER
+    (37) factor -> . STRING
+    (38) factor -> . FLOAT
+    (39) factor -> . VARIABLE
+    (40) factor -> . LPAR expression RPAR
+
+    TRUE            shift and go to state 27
+    FALSE           shift and go to state 28
+    NUMBER          shift and go to state 25
+    STRING          shift and go to state 24
+    FLOAT           shift and go to state 30
+    VARIABLE        shift and go to state 63
+    LPAR            shift and go to state 22
+
+    expression                     shift and go to state 104
+    cuerpoHash                     shift and go to state 154
+    term                           shift and go to state 17
+    boleano                        shift and go to state 18
+    factor                         shift and go to state 26
+
+state 153
+
+    (57) cond_else -> ELSE D_POINT cuerpo . END
+
+    END             shift and go to state 155
+
+
+state 154
+
+    (73) cuerpoHash -> expression ASIGN GREATER expression COMMA cuerpoHash .
+
+    RKEY            reduce using rule 73 (cuerpoHash -> expression ASIGN GREATER expression COMMA cuerpoHash .)
+
+
+state 155
+
+    (57) cond_else -> ELSE D_POINT cuerpo END .
+
+    $end            reduce using rule 57 (cond_else -> ELSE D_POINT cuerpo END .)
+    END             reduce using rule 57 (cond_else -> ELSE D_POINT cuerpo END .)
+    RETURN          reduce using rule 57 (cond_else -> ELSE D_POINT cuerpo END .)
 
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: reduce/reduce conflict in state 114 resolved using rule (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression)
-WARNING: rejected rule (modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression) in state 114
+WARNING: shift/reduce conflict for ASIGN in state 16 resolved as shift
+WARNING: reduce/reduce conflict in state 140 resolved using rule (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression)
+WARNING: rejected rule (modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression) in state 140
 WARNING: Rule (modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression) is never reduced
