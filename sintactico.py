@@ -19,9 +19,8 @@ def p_instrucciones(p):
                     | insertArray
                     | deleteArray
                     | searchStack
-                    | pushStack
-                    
-    
+                    | pushStack    
+                    | metodoBoleano    
     '''
 
 def p_body(p):
@@ -178,6 +177,12 @@ def p_mod_hash(p):
 
 def p_del_hash(p):
     'deleteValueHash : VARIABLE POINT DELETE LPAR expression RPAR'
+
+#-----------------------------------Metodos booleanos----------------------------------
+def p_boolean_method(p):
+    '''metodoBoleano : VARIABLE POINT VARIABLE QUESTION LPAR expression RPAR
+                    | VARIABLE POINT VARIABLE QUESTION LPAR RPAR
+    '''
 
 # Fin -> Luis Carlos Sanchez Plaza
 

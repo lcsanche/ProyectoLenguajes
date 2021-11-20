@@ -18,3 +18,4 @@ def hola()
 	a=[]
 end
 a-=1
+variable.equal?("hola")
