@@ -51,6 +51,14 @@ def p_asignacion(p):
                 | VARIABLE ASIGN getValueHash
                 | VARIABLE ASIGN array
                 | VARIABLE ASIGN stack
+                | VARIABLE tipo_asignacion factor
+    '''
+def p_tipo_asignacion(p):
+    '''tipo_asignacion : PLUS ASIGN
+                        | MINUS ASIGN 
+                        | TIMES ASIGN 
+                        | DIVIDE ASIGN 
+                        | EXPONENTIATION ASIGN 
     '''
 
 # ----------------------------------Expresiones----------------------------------
