@@ -37,11 +37,6 @@ reserved = {
     'search': "SEARCH",
     'push': "PUSH",
 
-    #Otros
-    'include': 'INCLUDE',
-    'alias': "ALIAS",
-    'ensure': "ENSURE",
-    'self': "SELF"
 }
 
 tokens = [
@@ -159,10 +154,10 @@ def analyze(data):
             break  # No more input
         print(tok)
 archivo = open("algoritm.txt","r")
-'''
+
 for line in archivo:
     print(">>>"+ line)
     analyze(line)
     if len(line)==0:
         break
-'''
+

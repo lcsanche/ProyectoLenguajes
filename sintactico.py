@@ -93,6 +93,9 @@ def p_comparacion(p):
     '''comparacion : expression comparador expression
                     | expression comparador expression AND comparacion
                     | expression comparador expression OR comparacion
+                    | expression AND expression
+                    | expression OR expression
+    
     '''
 
 def p_comparador(p):
@@ -106,16 +109,16 @@ def p_comparador(p):
 
 # ----------------------------------Condicional----------------------------------
 def p_cond_if(p):
-    '''condicional : IF comparacion D_POINT cuerpo END
-                    | IF comparacion D_POINT cuerpo END cond_else
+    '''condicional : IF comparacion D_POINT repCuerpo END
+                    | IF comparacion D_POINT repCuerpo END cond_else
     '''
 
 def p_cond_else(p):
-    'cond_else : ELSE D_POINT cuerpo END'
+    'cond_else : ELSE D_POINT repCuerpo END'
 
 # ----------------------------------Input e Impresion----------------------------------
 def p_puts(p):
-    'impresion : PUTS STRING'
+    'impresion : PUTS factor'
 
 def p_gets(p):
     'input : VARIABLE ASIGN GETS'
@@ -132,9 +135,9 @@ def p_header_function(p):
     '''
 
 def p_function(p):
-    '''funciones : encabezado cuerpo END
+    '''funciones : encabezado repCuerpo END
                 | encabezado RETURN expression END
-                | encabezado cuerpo RETURN expression END
+                | encabezado repCuerpo RETURN expression END
     '''
 
 def p_call_function(p):
@@ -173,8 +176,12 @@ def p_del_hash(p):
 # Inicio -> Tommy Joel Villagómez Borja
 #-----------------------------------while----------------------------------
 def p_while(p):
-    '''while : WHILE LPAR comparacion RPAR cuerpo END
-            | WHILE LPAR comparacion RPAR cuerpo END while
+    '''while : WHILE LPAR comparacion RPAR repCuerpo END
+            | WHILE LPAR comparacion RPAR repCuerpo END while
+    '''
+def p_repCuerpo(p):
+    '''repCuerpo : cuerpo 
+                | cuerpo repCuerpo
     '''
 
 #------------------------------------array-----------------------------------
@@ -188,8 +195,7 @@ def p_array(p):
     '''
 
 def p_argumentos_array(p):
-    '''argumentosA : NUMBER
-                    | NUMBER COMMA factor
+    '''argumentosA : NUMBER COMMA factor
     '''
 def p_insert_array(p):
     '''insertArray : VARIABLE POINT INSERT LPAR argumentosA RPAR
@@ -204,8 +210,8 @@ def p_delete_array(p):
 # Inicio -> Paul Daniel del Pezo Navarrete
 #------------------------------------for-----------------------------------
 def p_for(p):
-    '''for : FOR VARIABLE IN LPAR NUMBER POINT POINT NUMBER RPAR DO cuerpo END
-            | FOR VARIABLE IN LPAR NUMBER POINT POINT NUMBER RPAR DO cuerpo END for
+    '''for : FOR VARIABLE IN NUMBER POINT POINT NUMBER  DO repCuerpo END
+            | FOR VARIABLE IN NUMBER POINT POINT NUMBER  DO repCuerpo END for
     '''
 #------------------------------------stack-----------------------------------
 def p_vacio(p):
@@ -230,16 +236,24 @@ def p_push_stack(p):
 
 # ----------------------------------Manejando Errores----------------------------------
 def p_error(p):
-    print("Error Sintactico!")
-
-# Construyendo el parser
+    print("Error de sintaxis en '%s'" % p.value)
+ # Build the parser
 parser = yacc.yacc()
 
-while True:
-    try:
-        s = input('calc> ')
-    except EOFError:
-        break
-    if not s: continue
-    result = parser.parse(s)
-    print(result)
+archivo = open("algoritm.txt", "r")
+for line in archivo:
+        if line != "\n":
+            if line[:3] == "for" or line[:3] == "def" or line[:5] == "while" or line[:2] == "if":
+                nLine = line.replace("\n", "")
+                for Eline in archivo:
+                    nLine += " " + Eline.replace("\n", "").replace("\t", "")
+                    if Eline[:3] == "end":
+                        break
+                line = nLine
+            print(line)
+            result = parser.parse(line)
+            if result is None:
+                linea = "Bloque o linea de codigo correcto"
+            else:
+                linea = "Error en la sintaxis \n"
+            print(linea)

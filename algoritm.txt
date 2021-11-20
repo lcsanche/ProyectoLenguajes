@@ -1,17 +1,19 @@
 variable
 _variable
 @variable
-if(a>1)
+if a>1:
 	puts "hola"
-ends
-for i in array
+end
+while (1>2) 
 	puts i
-a = true && true
-b = true || false
-a>b
-b<a
-array.insert(2,6)
-array.delete_at(1)
-hash.delete("a")
-stack.search(6)
-stack-push(5)
+	a.insert(2,6)
+	a.delete_at(1)
+end
+for i in 1..10 do
+	hash.delete("a")
+	stack.search(6)
+	stack.push(5)
+end
+def hola()
+	a=[]
+end
