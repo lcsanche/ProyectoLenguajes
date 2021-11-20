@@ -9,7 +9,7 @@ reserved = {
     'end':'END',
     
     #Bucles
-    'each':'EACH',
+    'for':'FOR',
     'in': "IN",
     'do': 'DO',
     'while' : 'WHILE',
@@ -159,9 +159,10 @@ def analyze(data):
             break  # No more input
         print(tok)
 archivo = open("algoritm.txt","r")
-
+'''
 for line in archivo:
     print(">>>"+ line)
     analyze(line)
     if len(line)==0:
         break
+'''

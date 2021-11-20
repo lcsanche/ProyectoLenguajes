@@ -9,6 +9,7 @@ def p_instrucciones(p):
                     | comparacion
                     | condicional
                     | while
+                    | for
                     | impresion
                     | input
                     | callFuncion
@@ -17,6 +18,8 @@ def p_instrucciones(p):
                     | deleteValueHash
                     | insertArray
                     | deleteArray
+                    | searchStack
+                    | pushStack
                     
     
     '''
@@ -27,6 +30,8 @@ def p_body(p):
                 | comparacion
                 | condicional
                 | impresion
+                | for
+                | while
                 | input
                 | callFuncion
                 | addValueHash
@@ -34,6 +39,8 @@ def p_body(p):
                 | deleteValueHash
                 | insertArray
                 | deleteArray
+                | pushStack
+                | searchStack
     '''
 # ----------------------------------Asignacion----------------------------------
 def p_asignacion(p):
@@ -43,6 +50,7 @@ def p_asignacion(p):
                 | VARIABLE ASIGN diccionario
                 | VARIABLE ASIGN getValueHash
                 | VARIABLE ASIGN array
+                | VARIABLE ASIGN stack
     '''
 
 # ----------------------------------Expresiones----------------------------------
@@ -193,8 +201,25 @@ def p_delete_array(p):
 
 # Fin -> Tommy Joel Villagómez Borja
 
-
-
+# Inicio -> Paul Daniel del Pezo Navarrete
+#------------------------------------for-----------------------------------
+def p_for(p):
+    '''for : FOR VARIABLE IN LPAR NUMBER POINT POINT NUMBER RPAR DO cuerpo END
+            | FOR VARIABLE IN LPAR NUMBER POINT POINT NUMBER RPAR DO cuerpo END for
+    '''
+#------------------------------------stack-----------------------------------
+def p_vacio(p):
+    'vacio : ""'
+def p_stack(p):
+    '''stack : LCOR parametrosA RCOR
+            | LCOR vacio RCOR
+    '''
+def p_search_stack(p):
+    '''searchStack : VARIABLE POINT SEARCH LPAR factor RPAR
+    '''
+def p_push_stack(p):
+    '''pushStack : VARIABLE POINT PUSH LPAR factor RPAR
+    '''
 
 
 
