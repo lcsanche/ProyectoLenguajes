@@ -51,6 +51,7 @@ def p_asignacion(p):
                 | VARIABLE ASIGN array
                 | VARIABLE ASIGN stack
                 | VARIABLE tipo_asignacion factor
+                | VARIABLE ASIGN opMatematicas
     '''
 def p_tipo_asignacion(p):
     '''tipo_asignacion : PLUS ASIGN
@@ -78,22 +79,6 @@ def p_factor_num(p):
 
 def p_factor_expr(p):
     'factor : LPAR expression RPAR'
-
-# ----------------------------------Operaciones matematicas----------------------------------
-# def p_expression_plus(p):
-#     'expression : expression PLUS term'
-
-# def p_expression_minus(p):
-#     'expression : expression MINUS term'
-
-# def p_term_times(p):
-#     'term : term TIMES factor'
-
-# def p_term_div(p):
-#     'term : term DIVIDE factor'
-
-# def p_term_exp(p):
-#     'term : term EXPONENTIATION factor'
 
 # ----------------------------------Comparador----------------------------------
 def p_comparacion(p):
