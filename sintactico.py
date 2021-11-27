@@ -21,6 +21,7 @@ def p_instrucciones(p):
                     | searchStack
                     | pushStack    
                     | metodoBoleano    
+                    | opMatematicas 
     '''
 
 def p_body(p):
@@ -40,6 +41,7 @@ def p_body(p):
                 | deleteArray
                 | pushStack
                 | searchStack
+                | opMatematicas
     '''
 # ----------------------------------Asignacion----------------------------------
 def p_asignacion(p):
@@ -254,26 +256,26 @@ def p_suma(p):
 def p_resta(p):
     '''resta : operadores MINUS operadores
             | operadores MINUS opMatematicas
-            | operadores MINUS LPAREN operadores RPAREN
-            | operadores MINUS LPAREN opMatematicas RPAREN
+            | operadores MINUS LPAR operadores RPAR
+            | operadores MINUS LPAR opMatematicas RPAR
     '''
 
 def p_multiplicacion (p):
     ''' multiplicacion : operadores TIMES operadores
-                    | operadores TIMES LPAREN operadores RPAREN
-                    | operadores TIMES LPAREN opMatematicas RPAREN
+                    | operadores TIMES LPAR operadores RPAR
+                    | operadores TIMES LPAR opMatematicas RPAR
     '''
 
 def p_divicion (p):
-    ''' divicion : operadores DIVIDE operadores
-                | operadores DIVIDE LPAREN operadores RPAREN
-                | operadores DIVIDE LPAREN opMatematicas RPAREN
+    ''' division : operadores DIVIDE operadores
+                | operadores DIVIDE LPAR operadores RPAR
+                | operadores DIVIDE LPAR opMatematicas RPAR
     '''
 
 def p_exponenciacion (p):
     ''' exponenciacion : operadores EXPONENTIATION operadores
-                    | LPAREN operadores RPAREN EXPONENTIATION operadores
-                    | LPAREN opMatematicas RPAREN EXPONENTIATION operadores
+                    | LPAR operadores RPAR EXPONENTIATION operadores
+                    | LPAR opMatematicas RPAR EXPONENTIATION operadores
     '''
 
 def p_operadores(p):
