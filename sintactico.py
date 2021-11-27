@@ -80,20 +80,20 @@ def p_factor_expr(p):
     'factor : LPAR expression RPAR'
 
 # ----------------------------------Operaciones matematicas----------------------------------
-def p_expression_plus(p):
-    'expression : expression PLUS term'
+# def p_expression_plus(p):
+#     'expression : expression PLUS term'
 
-def p_expression_minus(p):
-    'expression : expression MINUS term'
+# def p_expression_minus(p):
+#     'expression : expression MINUS term'
 
-def p_term_times(p):
-    'term : term TIMES factor'
+# def p_term_times(p):
+#     'term : term TIMES factor'
 
-def p_term_div(p):
-    'term : term DIVIDE factor'
+# def p_term_div(p):
+#     'term : term DIVIDE factor'
 
-def p_term_exp(p):
-    'term : term EXPONENTIATION factor'
+# def p_term_exp(p):
+#     'term : term EXPONENTIATION factor'
 
 # ----------------------------------Comparador----------------------------------
 def p_comparacion(p):
@@ -240,6 +240,68 @@ def p_push_stack(p):
     '''pushStack : VARIABLE POINT PUSH LPAR factor RPAR
     '''
 
+# Fin -> Paul Daniel del Pezo Navarrete
+
+
+
+#----------------------------------------------------------Reglas Semanticas---------------------------------------------------------
+
+
+
+# Inicio -> Luis Carlos Sanchez Plaza
+# ----------------------------------Operaciones matematicas----------------------------------
+
+def p_opMatematicas(p):
+    ''' opMatematicas : suma
+                    | resta
+                    | multiplicacion
+                    | division
+                    | exponenciacion
+    '''
+
+def p_suma(p):
+    '''suma : operadores PLUS operadores
+            | operadores PLUS opMatematicas
+            | operadores PLUS LPAR operadores RPAR
+            | operadores PLUS LPAR opMatematicas RPAR
+    '''
+
+def p_resta(p):
+    '''resta : operadores MINUS operadores
+            | operadores MINUS opMatematicas
+            | operadores MINUS LPAREN operadores RPAREN
+            | operadores MINUS LPAREN opMatematicas RPAREN
+    '''
+
+def p_multiplicacion (p):
+    ''' multiplicacion : operadores TIMES operadores
+                    | operadores TIMES LPAREN operadores RPAREN
+                    | operadores TIMES LPAREN opMatematicas RPAREN
+    '''
+
+def p_divicion (p):
+    ''' divicion : operadores DIVIDE operadores
+                | operadores DIVIDE LPAREN operadores RPAREN
+                | operadores DIVIDE LPAREN opMatematicas RPAREN
+    '''
+
+def p_exponenciacion (p):
+    ''' exponenciacion : operadores EXPONENTIATION operadores
+                    | LPAREN operadores RPAREN EXPONENTIATION operadores
+                    | LPAREN opMatematicas RPAREN EXPONENTIATION operadores
+    '''
+
+def p_operadores(p):
+    ''' operadores : enteros
+                | FLOAT  
+    '''
+    
+def p_enteros(p):
+    ''' enteros : NUMBER
+                | MINUS NUMBER
+    '''
+
+# Fin -> Luis Carlos Sanchez Plaza
 
 
 
