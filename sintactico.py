@@ -298,7 +298,10 @@ def p_enteros(p):
 
 # ----------------------------------Manejando Errores----------------------------------
 def p_error(p):
-    print("Error de sintaxis en '%s'" % p.value)
+    print("Error de sintaxis o semántico")
+    print("Linea: %d" % p.lineno)
+    print("La siguiente línea es incorrecta: %s" % p.lexer.lexdata)
+    
  # Build the parser
 parser = yacc.yacc()
 
