@@ -145,19 +145,19 @@ def t_error(t):
 
 # Build the lexer
 lexer = lex.lex()
-
+toks=[]
 def analyze(data):
     lexer.input(data)
+
     while True:
         tok = lexer.token()
         if not tok:
             break  # No more input
-        print(tok)
-archivo = open("algoritm.txt","r")
-
-for line in archivo:
-    print(">>>"+ line)
-    analyze(line)
-    if len(line)==0:
-        break
-
+        toks.append(str(tok))
+def readAlgoritm(archivo):
+    lines=archivo.split('\n')
+    for line in lines:
+        analyze(line)
+        if len(line) == 0:
+            break
+    return toks

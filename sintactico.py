@@ -296,12 +296,12 @@ def p_enteros(p):
 
 
 
-
+resultGUI=[]
 # ----------------------------------Manejando Errores----------------------------------
 def p_error(p):
-    print("Error de sintaxis o semántico")
-    print("Linea: %d" % p.lineno)
-    print("La siguiente línea es incorrecta: %s" % p.lexer.lexdata)
+    resultGUI.append("Error de sintaxis o semántico")
+    resultGUI.append("Linea: %d" % p.lineno)
+    resultGUI.append("La siguiente línea es incorrecta: %s" % p.lexer.lexdata)
     
  # Build the parser
 parser = yacc.yacc()
@@ -316,10 +316,11 @@ for line in archivo:
                     if Eline[:3] == "end":
                         break
                 line = nLine
-            print(line)
+            resultGUI.append(line)
             result = parser.parse(line)
             if result is None:
                 linea = "Bloque o linea de codigo correcto"
             else:
                 linea = "Error en la sintaxis \n"
-            print(linea)
+                break
+            resultGUI.append(linea)
