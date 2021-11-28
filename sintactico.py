@@ -254,7 +254,8 @@ def p_suma(p):
     '''
 
 def p_resta(p):
-    '''resta : operadores MINUS operadores
+    '''resta : VARIABLE MINUS NUMBER 
+            | operadores MINUS operadores
             | operadores MINUS opMatematicas
             | operadores MINUS LPAR operadores RPAR
             | operadores MINUS LPAR opMatematicas RPAR
