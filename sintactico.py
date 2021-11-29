@@ -293,20 +293,21 @@ def p_enteros(p):
 
 
 
+resultGUI = []
 
 
-
-resultGUI=[]
 # ----------------------------------Manejando Errores----------------------------------
 def p_error(p):
     resultGUI.append("Error de sintaxis o semántico!")
     resultGUI.append("La siguiente línea es incorrecta: %s" % p.lexer.lexdata)
-    
- # Build the parser
-parser = yacc.yacc()
 
-archivo = open("algoritm.txt", "r")
-for line in archivo:
+
+# Build the parser
+parser = yacc.yacc()
+def readAlgoritmSint(file_name):
+    resultGUI.clear()
+    archivo = open(file_name, "r")
+    for line in archivo:
         if line != "\n":
             if line[:3] == "for" or line[:3] == "def" or line[:5] == "while" or line[:2] == "if":
                 nLine = line.replace("\n", "")
@@ -316,8 +317,8 @@ for line in archivo:
                         break
                 line = nLine
             resultGUI.append(line)
-            result = parser.parse(line)
-print(resultGUI)
+            parser.parse(line)
+    return resultGUI
 
 
     

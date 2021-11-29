@@ -1,13 +1,12 @@
 import ply.lex as lex
 
-
 # Inicio-> Luis Carlos Sanchez Plaza
 reserved = {
     #Condicionales
     'if' : 'IF',
     'else' : 'ELSE',
     'end':'END',
-    
+
     #Bucles
     'for':'FOR',
     'in': "IN",
@@ -29,7 +28,7 @@ reserved = {
     # Funciones para Array
     'insert': "INSERT",
     'delete_at': "DELETE_AT",
-    
+
     #Metodos para hash
     'delete': "DELETE",
 
@@ -92,13 +91,13 @@ t_NUMBER = r'\d+'
 
 t_PLUS = r'\+'
 t_MINUS = r'-'
-t_TIMES = r'\*' 
+t_TIMES = r'\*'
 t_DIVIDE = r'/'
 t_EXPONENTIATION = r'\*\*'
 
 t_GREATER = r'>'
 t_GREATER_OR_EQUAL = r'>='
-t_MINOR = r'<' 
+t_MINOR = r'<'
 t_MINOR_OR_EQUAL = r'<='
 
 t_LPAR = r'\('
@@ -154,9 +153,12 @@ def analyze(data):
         if not tok:
             break  # No more input
         toks.append(str(tok))
-def readAlgoritm(archivo):
-    lines=archivo.split('\n')
-    for line in lines:
+
+def readAlgoritmLex(file_name):
+    toks.clear()
+    archivo = open(file_name, "r")
+    #lines=archivo.split('\n')
+    for line in archivo:
         analyze(line)
         if len(line) == 0:
             break
