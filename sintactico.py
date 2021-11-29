@@ -299,8 +299,7 @@ def p_enteros(p):
 resultGUI=[]
 # ----------------------------------Manejando Errores----------------------------------
 def p_error(p):
-    resultGUI.append("Error de sintaxis o semántico")
-    resultGUI.append("Linea: %d" % p.lineno)
+    resultGUI.append("Error de sintaxis o semántico!")
     resultGUI.append("La siguiente línea es incorrecta: %s" % p.lexer.lexdata)
     
  # Build the parser
@@ -318,9 +317,7 @@ for line in archivo:
                 line = nLine
             resultGUI.append(line)
             result = parser.parse(line)
-            if result is None:
-                linea = "Bloque o linea de codigo correcto"
-            else:
-                linea = "Error en la sintaxis \n"
-                break
-            resultGUI.append(linea)
+print(resultGUI)
+
+
+    
