@@ -47,7 +47,7 @@ root.title('Proyecto Final Python')
 root.resizable(width=False, height=True)
 # Label del titulo
 title = tkFont.Font(family="Lucida Grande", size=20)
-lbred = Label(root, text="Titulo del Proyecto", fg="Red", font=title)
+lbred = Label(root, text="Interprete de Ruby", fg="Red", font=title)
 lbred.grid(column=0, row=0, pady=10, padx=10, columnspan=2)
 # Label de las instrucciones
 titleInstruction = tkFont.Font(family="Lucida Grande", size=10)
