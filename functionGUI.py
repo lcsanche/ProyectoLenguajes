@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter import filedialog
 import tkinter.font as tkFont
 from lexico import readAlgoritmLex
-#from sintactico import readAlgoritmSint
+from sintactico import readAlgoritmSint
 file_name=""
 def open_File(root):
     global file_name
@@ -25,8 +25,8 @@ def pressLex():
     scrollbar.config(command=boxResult.yview)
     boxResult.grid(column=0, row=5, pady=10, columnspan=2)
 
-    '''
-    def pressSint():
+
+def pressSint():
     result = readAlgoritmSint(texto.get("1.0","end-1c"))
     scrollbar = Scrollbar(orient=VERTICAL)
     boxResult = Listbox(yscrollcommand=scrollbar.set, width=60, height=15)
@@ -34,4 +34,3 @@ def pressLex():
     scrollbar.config(command=boxResult.yview)
     boxResult.grid(column=0, row=5, pady=10, columnspan=2)
 
-'''
