@@ -101,14 +101,6 @@ def p_comparador(p):
                 | NOT ASIGN
     '''
 
-# ----------------------------------Condicional----------------------------------
-def p_cond_if(p):
-    '''condicional : IF comparacion D_POINT repCuerpo END
-                    | IF comparacion D_POINT repCuerpo END cond_else
-    '''
-
-def p_cond_else(p):
-    'cond_else : ELSE D_POINT repCuerpo END'
 
 # ----------------------------------Input e Impresion----------------------------------
 def p_puts(p):
@@ -296,6 +288,16 @@ def p_call_function(p):
     '''
 # Fin -> Tommy Joel Villagomez Borja
 
+# Inicio -> Paul del Pezo
+# ----------------------------------Condicional----------------------------------
+def p_cond_if(p):
+    '''condicional : IF comparacion D_POINT repCuerpo END
+                    | IF comparacion D_POINT repCuerpo END cond_else
+    '''
+
+def p_cond_else(p):
+    'cond_else : ELSE D_POINT repCuerpo END'
+# Fin -> Paul del Pezo
 
 resultGUI = []
 
