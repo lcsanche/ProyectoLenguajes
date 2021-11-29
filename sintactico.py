@@ -117,27 +117,6 @@ def p_puts(p):
 def p_gets(p):
     'input : VARIABLE ASIGN GETS'
 
-# ----------------------------------Funciones----------------------------------
-def p_par_function(p):
-    ''' parametros : VARIABLE
-                    | VARIABLE COMMA parametros
-    '''
-
-def p_header_function(p):
-    '''encabezado : DEF VARIABLE LPAR RPAR
-                    | DEF VARIABLE LPAR parametros RPAR
-    '''
-
-def p_function(p):
-    '''funciones : encabezado repCuerpo END
-                | encabezado RETURN expression END
-                | encabezado repCuerpo RETURN expression END
-    '''
-
-def p_call_function(p):
-    '''callFuncion : VARIABLE LPAR RPAR
-                | VARIABLE LPAR parametros RPAR
-    '''
 # ----------------------------------Booleanos----------------------------------
 def p_boolean(p):
     '''boleano : TRUE 
@@ -197,6 +176,7 @@ def p_array(p):
 def p_argumentos_array(p):
     '''argumentosA : NUMBER COMMA factor
     '''
+#------------------------------------sintacticoArray-------------------------
 def p_insert_array(p):
     '''insertArray : VARIABLE POINT INSERT LPAR argumentosA RPAR
     '''
@@ -292,6 +272,29 @@ def p_enteros(p):
 
 # Fin -> Luis Carlos Sanchez Plaza
 
+# Inicio -> Tommy Joel Villagomez Borja
+# ----------------------------------Funciones----------------------------------
+def p_par_function(p):
+    ''' parametros : VARIABLE
+                    | VARIABLE COMMA parametros
+    '''
+
+def p_header_function(p):
+    '''encabezado : DEF VARIABLE LPAR RPAR
+                    | DEF VARIABLE LPAR parametros RPAR
+    '''
+
+def p_function(p):
+    '''funciones : encabezado repCuerpo END
+                | encabezado RETURN expression END
+                | encabezado repCuerpo RETURN expression END
+    '''
+
+def p_call_function(p):
+    '''callFuncion : VARIABLE LPAR RPAR
+                | VARIABLE LPAR parametros RPAR
+    '''
+# Fin -> Tommy Joel Villagomez Borja
 
 
 resultGUI = []
