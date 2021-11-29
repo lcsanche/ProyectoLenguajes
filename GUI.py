@@ -68,4 +68,4 @@ btnLex.grid(padx=10, pady=10, row=5, column=0)
 btnSint = Button(root, text="Sintactico", width=50, command=pressSint)
 btnSint.grid(padx=10, pady=10, row=5, column=1)
 root.mainloop()
-# Fin -> Paul del Pezo
+# Fin -> Paul del Pezo Navarrete
