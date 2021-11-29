@@ -247,7 +247,8 @@ def p_opMatematicas(p):
     '''
 
 def p_suma(p):
-    '''suma : operadores PLUS operadores
+    '''suma : VARIABLE PLUS NUMBER
+            | operadores PLUS operadores
             | operadores PLUS opMatematicas
             | operadores PLUS LPAR operadores RPAR
             | operadores PLUS LPAR opMatematicas RPAR
