@@ -3,6 +3,7 @@ _variable
 @variable
 if a>1:
 	puts "hola"
+	a=[1,2]
 end
 while (1>2) 
 	puts i
@@ -15,8 +16,9 @@ for i in 1..10 do
 	stack.search(6)
 	stack.push(5)
 end
-def hola()
+def hola(a)
 	a=[]
+	return a
 end
 a-=1
 variable.equal?("hola")

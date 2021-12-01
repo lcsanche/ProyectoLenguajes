@@ -1,4 +1,5 @@
 from tkinter import *
+import os
 from tkinter import filedialog
 from tkinter import scrolledtext as st
 import tkinter.font as tkFont
@@ -9,7 +10,8 @@ file_name = ""
 # Inicio -> Paul del Pezo
 def open_File():
     global file_name
-    file_name = filedialog.askopenfilename(initialdir="/", title="Seleccione Archivo",
+    directoryActual = os.getcwd()
+    file_name = filedialog.askopenfilename(initialdir=directoryActual, title="Seleccione Archivo",
                                            filetypes=(("Ruby files", "*.rb"), ("all files", "*.*")))
     file = open(file_name, "r")
     file_text = ""
