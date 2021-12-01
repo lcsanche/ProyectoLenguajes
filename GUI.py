@@ -10,10 +10,13 @@ file_name = ""
 # Inicio -> Paul del Pezo
 def open_File():
     global file_name
-    directoryActual = os.getcwd()
-    file_name = filedialog.askopenfilename(initialdir=directoryActual, title="Seleccione Archivo",
-                                           filetypes=(("Ruby files", "*.rb"), ("all files", "*.*")))
+    while file_name == '':
+        directoryActual = os.getcwd()
+        file_name = filedialog.askopenfilename(initialdir=directoryActual, title="Seleccione Archivo",
+                                               filetypes=(("Ruby files", "*.rb"), ("all files", "*.*")))
     file = open(file_name, "r")
+    btnLex.config(state=NORMAL)
+    btnSint.config(state=NORMAL)
     file_text = ""
     for line in file:
         file_text = file_text + line
@@ -67,9 +70,9 @@ titleAnalys = tkFont.Font(family="Lucida Grande", size=10)
 lbInsAnalys = Label(root, text="Seleccione el tipo de analisis que deaea realizar", font=titleAnalys)
 lbInsAnalys.grid(column=0, row=4, pady=10)
 # Botones de Analisis
-btnLex = Button(root, text="Lexico", width=50, command=pressLex)
+btnLex = Button(root, text="Lexico", width=50, command=pressLex, state= DISABLED)
 btnLex.grid(padx=10, pady=10, row=5, column=0)
-btnSint = Button(root, text="Sintactico", width=50, command=pressSint)
+btnSint = Button(root, text="Sintactico", width=50, command=pressSint, state= DISABLED)
 btnSint.grid(padx=10, pady=10, row=5, column=1)
 root.mainloop()
 # Fin -> Paul del Pezo Navarrete
