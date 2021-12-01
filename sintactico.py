@@ -21,7 +21,6 @@ def p_instrucciones(p):
                     | searchStack
                     | pushStack    
                     | metodoBoleano    
-                    | opMatematicas 
     '''
 
 def p_body(p):
