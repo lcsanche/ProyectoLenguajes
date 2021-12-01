@@ -41,7 +41,6 @@ def p_body(p):
                 | deleteArray
                 | pushStack
                 | searchStack
-                | opMatematicas
     '''
 # ----------------------------------Asignacion----------------------------------
 def p_asignacion(p):
@@ -304,9 +303,10 @@ resultGUI = []
 
 # ----------------------------------Manejando Errores----------------------------------
 def p_error(p):
+    resultGUI.append("-----------------------------------------------------------------")
     resultGUI.append("Error de sintaxis o semántico!")
-    resultGUI.append("La siguiente línea es incorrecta: %s" % p.lexer.lexdata)
-
+    resultGUI.append("El siguiente bloque de codigo es incorrecto: %s" % p.lexer.lexdata)
+    resultGUI.append("-----------------------------------------------------------------")
 
 # Build the parser
 parser = yacc.yacc()

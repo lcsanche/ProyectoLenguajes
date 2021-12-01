@@ -37,7 +37,9 @@ def pressSint():
     result = readAlgoritmSint(file_name)
     lines_result = ""
     for line in result:
-        if line != None:
+        if line != None and ('\n' in line):
+            lines_result = lines_result + line
+        else:
             lines_result = lines_result + line + "\n"
     text_code_sin = st.ScrolledText(root, width=65, height=20)
     text_code_sin.insert("1.0", lines_result)
