@@ -53,20 +53,20 @@ root = Tk()
 root.title('Proyecto Final Python')
 root.resizable(width=False, height=True)
 # Label del titulo
-title = tkFont.Font(family="Lucida Grande", size=20)
+title = tkFont.Font(family="Lucida Grande", size=20, weight=tkFont.BOLD)
 lbred = Label(root, text="Interprete de Ruby", fg="Red", font=title)
 lbred.grid(column=0, row=0, pady=10, padx=10, columnspan=2)
 # Label de las instrucciones
-titleInstruction = tkFont.Font(family="Lucida Grande", size=10)
+titleInstruction = tkFont.Font(family="Lucida Grande", size=10, weight=tkFont.BOLD)
 lbInstruction = Label(root, text="Seleccione el archivo Ruby a analizar:", font=titleInstruction)
 lbInstruction.grid(column=0, row=1, pady=15)
 # Boton de Seleccionae archivo
-btnSearch = Button(text="Abrir Archivo", command=open_File)
+btnSearch = Button(text="Abrir Archivo", command=open_File, bg = '#deef23' )
 btnSearch.grid(column=0, row=2, columnspan=2)
 # Label de Algoritmo
 
 # Label de Seleccion de analisis
-titleAnalys = tkFont.Font(family="Lucida Grande", size=10)
+titleAnalys = tkFont.Font(family="Lucida Grande", size=10, weight=tkFont.BOLD)
 lbInsAnalys = Label(root, text="Seleccione el tipo de analisis que deaea realizar", font=titleAnalys)
 lbInsAnalys.grid(column=0, row=4, pady=10)
 # Botones de Analisis
