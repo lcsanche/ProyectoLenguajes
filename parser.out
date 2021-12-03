@@ -1,5 +1,9 @@
 Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
+Unused terminals:
+
+    D_POINT
+
 Grammar
 
 Rule 0     S' -> instrucciones
@@ -138,9 +142,9 @@ Rule 132   funciones -> encabezado RETURN expression END
 Rule 133   funciones -> encabezado repCuerpo RETURN expression END
 Rule 134   callFuncion -> VARIABLE LPAR RPAR
 Rule 135   callFuncion -> VARIABLE LPAR parametros RPAR
-Rule 136   condicional -> IF comparacion D_POINT repCuerpo END
-Rule 137   condicional -> IF comparacion D_POINT repCuerpo END cond_else
-Rule 138   cond_else -> ELSE D_POINT repCuerpo END
+Rule 136   condicional -> IF comparacion repCuerpo END
+Rule 137   condicional -> IF comparacion repCuerpo cond_else
+Rule 138   cond_else -> ELSE repCuerpo END
 
 Terminals, with rules where they appear
 
@@ -152,9 +156,9 @@ DELETE               : 78
 DELETE_AT            : 91
 DIVIDE               : 47 117 118 119
 DO                   : 92 93
-D_POINT              : 136 137 138
+D_POINT              : 
 ELSE                 : 138
-END                  : 81 82 92 93 131 132 133 136 137 138
+END                  : 81 82 92 93 131 132 133 136 138
 EXPONENTIATION       : 48 120 121 122
 FALSE                : 71
 FLOAT                : 54 124
@@ -282,8 +286,8 @@ state 0
     (59) comparacion -> . expression comparador expression OR comparacion
     (60) comparacion -> . expression AND expression
     (61) comparacion -> . expression OR expression
-    (136) condicional -> . IF comparacion D_POINT repCuerpo END
-    (137) condicional -> . IF comparacion D_POINT repCuerpo END cond_else
+    (136) condicional -> . IF comparacion repCuerpo END
+    (137) condicional -> . IF comparacion repCuerpo cond_else
     (81) while -> . WHILE LPAR comparacion RPAR repCuerpo END
     (82) while -> . WHILE LPAR comparacion RPAR repCuerpo END while
     (92) for -> . FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END
@@ -581,7 +585,7 @@ state 21
     END             reduce using rule 51 (term -> factor .)
     RETURN          reduce using rule 51 (term -> factor .)
     RPAR            reduce using rule 51 (term -> factor .)
-    D_POINT         reduce using rule 51 (term -> factor .)
+    ELSE            reduce using rule 51 (term -> factor .)
     RCOR            reduce using rule 51 (term -> factor .)
     COMMA           reduce using rule 51 (term -> factor .)
     RKEY            reduce using rule 51 (term -> factor .)
@@ -614,7 +618,7 @@ state 22
     END             reduce using rule 49 (expression -> term .)
     RETURN          reduce using rule 49 (expression -> term .)
     RPAR            reduce using rule 49 (expression -> term .)
-    D_POINT         reduce using rule 49 (expression -> term .)
+    ELSE            reduce using rule 49 (expression -> term .)
     RCOR            reduce using rule 49 (expression -> term .)
     COMMA           reduce using rule 49 (expression -> term .)
     RKEY            reduce using rule 49 (expression -> term .)
@@ -647,7 +651,7 @@ state 23
     END             reduce using rule 50 (expression -> boleano .)
     RETURN          reduce using rule 50 (expression -> boleano .)
     RPAR            reduce using rule 50 (expression -> boleano .)
-    D_POINT         reduce using rule 50 (expression -> boleano .)
+    ELSE            reduce using rule 50 (expression -> boleano .)
     RCOR            reduce using rule 50 (expression -> boleano .)
     COMMA           reduce using rule 50 (expression -> boleano .)
     RKEY            reduce using rule 50 (expression -> boleano .)
@@ -692,8 +696,8 @@ state 24
     (59) comparacion -> . expression comparador expression OR comparacion
     (60) comparacion -> . expression AND expression
     (61) comparacion -> . expression OR expression
-    (136) condicional -> . IF comparacion D_POINT repCuerpo END
-    (137) condicional -> . IF comparacion D_POINT repCuerpo END cond_else
+    (136) condicional -> . IF comparacion repCuerpo END
+    (137) condicional -> . IF comparacion repCuerpo cond_else
     (68) impresion -> . PUTS factor
     (92) for -> . FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END
     (93) for -> . FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END for
@@ -755,8 +759,8 @@ state 24
 
 state 25
 
-    (136) condicional -> IF . comparacion D_POINT repCuerpo END
-    (137) condicional -> IF . comparacion D_POINT repCuerpo END cond_else
+    (136) condicional -> IF . comparacion repCuerpo END
+    (137) condicional -> IF . comparacion repCuerpo cond_else
     (57) comparacion -> . expression comparador expression
     (58) comparacion -> . expression comparador expression AND comparacion
     (59) comparacion -> . expression comparador expression OR comparacion
@@ -857,7 +861,7 @@ state 29
     END             reduce using rule 52 (factor -> NUMBER .)
     RETURN          reduce using rule 52 (factor -> NUMBER .)
     RPAR            reduce using rule 52 (factor -> NUMBER .)
-    D_POINT         reduce using rule 52 (factor -> NUMBER .)
+    ELSE            reduce using rule 52 (factor -> NUMBER .)
     RCOR            reduce using rule 52 (factor -> NUMBER .)
     COMMA           reduce using rule 52 (factor -> NUMBER .)
     RKEY            reduce using rule 52 (factor -> NUMBER .)
@@ -907,7 +911,7 @@ state 31
     END             reduce using rule 70 (boleano -> TRUE .)
     RETURN          reduce using rule 70 (boleano -> TRUE .)
     RPAR            reduce using rule 70 (boleano -> TRUE .)
-    D_POINT         reduce using rule 70 (boleano -> TRUE .)
+    ELSE            reduce using rule 70 (boleano -> TRUE .)
     RCOR            reduce using rule 70 (boleano -> TRUE .)
     COMMA           reduce using rule 70 (boleano -> TRUE .)
     RKEY            reduce using rule 70 (boleano -> TRUE .)
@@ -940,7 +944,7 @@ state 32
     END             reduce using rule 71 (boleano -> FALSE .)
     RETURN          reduce using rule 71 (boleano -> FALSE .)
     RPAR            reduce using rule 71 (boleano -> FALSE .)
-    D_POINT         reduce using rule 71 (boleano -> FALSE .)
+    ELSE            reduce using rule 71 (boleano -> FALSE .)
     RCOR            reduce using rule 71 (boleano -> FALSE .)
     COMMA           reduce using rule 71 (boleano -> FALSE .)
     RKEY            reduce using rule 71 (boleano -> FALSE .)
@@ -981,7 +985,7 @@ state 34
     END             reduce using rule 53 (factor -> STRING .)
     RETURN          reduce using rule 53 (factor -> STRING .)
     RPAR            reduce using rule 53 (factor -> STRING .)
-    D_POINT         reduce using rule 53 (factor -> STRING .)
+    ELSE            reduce using rule 53 (factor -> STRING .)
     RCOR            reduce using rule 53 (factor -> STRING .)
     COMMA           reduce using rule 53 (factor -> STRING .)
     RKEY            reduce using rule 53 (factor -> STRING .)
@@ -1014,7 +1018,7 @@ state 35
     END             reduce using rule 54 (factor -> FLOAT .)
     RETURN          reduce using rule 54 (factor -> FLOAT .)
     RPAR            reduce using rule 54 (factor -> FLOAT .)
-    D_POINT         reduce using rule 54 (factor -> FLOAT .)
+    ELSE            reduce using rule 54 (factor -> FLOAT .)
     RCOR            reduce using rule 54 (factor -> FLOAT .)
     COMMA           reduce using rule 54 (factor -> FLOAT .)
     RKEY            reduce using rule 54 (factor -> FLOAT .)
@@ -1438,6 +1442,7 @@ state 57
     LPAR            reduce using rule 20 (cuerpo -> expression .)
     END             reduce using rule 20 (cuerpo -> expression .)
     RETURN          reduce using rule 20 (cuerpo -> expression .)
+    ELSE            reduce using rule 20 (cuerpo -> expression .)
     AND             shift and go to state 37
     OR              shift and go to state 38
     GREATER         shift and go to state 39
@@ -1487,8 +1492,8 @@ state 58
     (59) comparacion -> . expression comparador expression OR comparacion
     (60) comparacion -> . expression AND expression
     (61) comparacion -> . expression OR expression
-    (136) condicional -> . IF comparacion D_POINT repCuerpo END
-    (137) condicional -> . IF comparacion D_POINT repCuerpo END cond_else
+    (136) condicional -> . IF comparacion repCuerpo END
+    (137) condicional -> . IF comparacion repCuerpo cond_else
     (68) impresion -> . PUTS factor
     (92) for -> . FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END
     (93) for -> . FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END for
@@ -1515,6 +1520,7 @@ state 58
 
     END             reduce using rule 83 (repCuerpo -> cuerpo .)
     RETURN          reduce using rule 83 (repCuerpo -> cuerpo .)
+    ELSE            reduce using rule 83 (repCuerpo -> cuerpo .)
     VARIABLE        shift and go to state 74
     IF              shift and go to state 25
     PUTS            shift and go to state 30
@@ -1566,6 +1572,7 @@ state 59
     LPAR            reduce using rule 19 (cuerpo -> asignacion .)
     END             reduce using rule 19 (cuerpo -> asignacion .)
     RETURN          reduce using rule 19 (cuerpo -> asignacion .)
+    ELSE            reduce using rule 19 (cuerpo -> asignacion .)
 
 
 state 60
@@ -1585,6 +1592,7 @@ state 60
     LPAR            reduce using rule 21 (cuerpo -> comparacion .)
     END             reduce using rule 21 (cuerpo -> comparacion .)
     RETURN          reduce using rule 21 (cuerpo -> comparacion .)
+    ELSE            reduce using rule 21 (cuerpo -> comparacion .)
 
 
 state 61
@@ -1604,6 +1612,7 @@ state 61
     LPAR            reduce using rule 22 (cuerpo -> condicional .)
     END             reduce using rule 22 (cuerpo -> condicional .)
     RETURN          reduce using rule 22 (cuerpo -> condicional .)
+    ELSE            reduce using rule 22 (cuerpo -> condicional .)
 
 
 state 62
@@ -1623,6 +1632,7 @@ state 62
     LPAR            reduce using rule 23 (cuerpo -> impresion .)
     END             reduce using rule 23 (cuerpo -> impresion .)
     RETURN          reduce using rule 23 (cuerpo -> impresion .)
+    ELSE            reduce using rule 23 (cuerpo -> impresion .)
 
 
 state 63
@@ -1642,6 +1652,7 @@ state 63
     LPAR            reduce using rule 24 (cuerpo -> for .)
     END             reduce using rule 24 (cuerpo -> for .)
     RETURN          reduce using rule 24 (cuerpo -> for .)
+    ELSE            reduce using rule 24 (cuerpo -> for .)
 
 
 state 64
@@ -1661,6 +1672,7 @@ state 64
     LPAR            reduce using rule 25 (cuerpo -> while .)
     END             reduce using rule 25 (cuerpo -> while .)
     RETURN          reduce using rule 25 (cuerpo -> while .)
+    ELSE            reduce using rule 25 (cuerpo -> while .)
 
 
 state 65
@@ -1680,6 +1692,7 @@ state 65
     LPAR            reduce using rule 26 (cuerpo -> input .)
     END             reduce using rule 26 (cuerpo -> input .)
     RETURN          reduce using rule 26 (cuerpo -> input .)
+    ELSE            reduce using rule 26 (cuerpo -> input .)
 
 
 state 66
@@ -1699,6 +1712,7 @@ state 66
     LPAR            reduce using rule 27 (cuerpo -> callFuncion .)
     END             reduce using rule 27 (cuerpo -> callFuncion .)
     RETURN          reduce using rule 27 (cuerpo -> callFuncion .)
+    ELSE            reduce using rule 27 (cuerpo -> callFuncion .)
 
 
 state 67
@@ -1718,6 +1732,7 @@ state 67
     LPAR            reduce using rule 28 (cuerpo -> addValueHash .)
     END             reduce using rule 28 (cuerpo -> addValueHash .)
     RETURN          reduce using rule 28 (cuerpo -> addValueHash .)
+    ELSE            reduce using rule 28 (cuerpo -> addValueHash .)
 
 
 state 68
@@ -1737,6 +1752,7 @@ state 68
     LPAR            reduce using rule 29 (cuerpo -> modValueHash .)
     END             reduce using rule 29 (cuerpo -> modValueHash .)
     RETURN          reduce using rule 29 (cuerpo -> modValueHash .)
+    ELSE            reduce using rule 29 (cuerpo -> modValueHash .)
 
 
 state 69
@@ -1756,6 +1772,7 @@ state 69
     LPAR            reduce using rule 30 (cuerpo -> deleteValueHash .)
     END             reduce using rule 30 (cuerpo -> deleteValueHash .)
     RETURN          reduce using rule 30 (cuerpo -> deleteValueHash .)
+    ELSE            reduce using rule 30 (cuerpo -> deleteValueHash .)
 
 
 state 70
@@ -1775,6 +1792,7 @@ state 70
     LPAR            reduce using rule 31 (cuerpo -> insertArray .)
     END             reduce using rule 31 (cuerpo -> insertArray .)
     RETURN          reduce using rule 31 (cuerpo -> insertArray .)
+    ELSE            reduce using rule 31 (cuerpo -> insertArray .)
 
 
 state 71
@@ -1794,6 +1812,7 @@ state 71
     LPAR            reduce using rule 32 (cuerpo -> deleteArray .)
     END             reduce using rule 32 (cuerpo -> deleteArray .)
     RETURN          reduce using rule 32 (cuerpo -> deleteArray .)
+    ELSE            reduce using rule 32 (cuerpo -> deleteArray .)
 
 
 state 72
@@ -1813,6 +1832,7 @@ state 72
     LPAR            reduce using rule 33 (cuerpo -> pushStack .)
     END             reduce using rule 33 (cuerpo -> pushStack .)
     RETURN          reduce using rule 33 (cuerpo -> pushStack .)
+    ELSE            reduce using rule 33 (cuerpo -> pushStack .)
 
 
 state 73
@@ -1832,6 +1852,7 @@ state 73
     LPAR            reduce using rule 34 (cuerpo -> searchStack .)
     END             reduce using rule 34 (cuerpo -> searchStack .)
     RETURN          reduce using rule 34 (cuerpo -> searchStack .)
+    ELSE            reduce using rule 34 (cuerpo -> searchStack .)
 
 
 state 74
@@ -1887,6 +1908,7 @@ state 74
     FLOAT           reduce using rule 55 (factor -> VARIABLE .)
     END             reduce using rule 55 (factor -> VARIABLE .)
     RETURN          reduce using rule 55 (factor -> VARIABLE .)
+    ELSE            reduce using rule 55 (factor -> VARIABLE .)
     PLUS            shift and go to state 50
     MINUS           shift and go to state 51
     TIMES           shift and go to state 52
@@ -1900,11 +1922,101 @@ state 74
 
 state 75
 
-    (136) condicional -> IF comparacion . D_POINT repCuerpo END
-    (137) condicional -> IF comparacion . D_POINT repCuerpo END cond_else
+    (136) condicional -> IF comparacion . repCuerpo END
+    (137) condicional -> IF comparacion . repCuerpo cond_else
+    (83) repCuerpo -> . cuerpo
+    (84) repCuerpo -> . cuerpo repCuerpo
+    (19) cuerpo -> . asignacion
+    (20) cuerpo -> . expression
+    (21) cuerpo -> . comparacion
+    (22) cuerpo -> . condicional
+    (23) cuerpo -> . impresion
+    (24) cuerpo -> . for
+    (25) cuerpo -> . while
+    (26) cuerpo -> . input
+    (27) cuerpo -> . callFuncion
+    (28) cuerpo -> . addValueHash
+    (29) cuerpo -> . modValueHash
+    (30) cuerpo -> . deleteValueHash
+    (31) cuerpo -> . insertArray
+    (32) cuerpo -> . deleteArray
+    (33) cuerpo -> . pushStack
+    (34) cuerpo -> . searchStack
+    (35) asignacion -> . VARIABLE ASIGN expression
+    (36) asignacion -> . VARIABLE ASIGN comparacion
+    (37) asignacion -> . VARIABLE ASIGN callFuncion
+    (38) asignacion -> . VARIABLE ASIGN diccionario
+    (39) asignacion -> . VARIABLE ASIGN getValueHash
+    (40) asignacion -> . VARIABLE ASIGN array
+    (41) asignacion -> . VARIABLE ASIGN stack
+    (42) asignacion -> . VARIABLE tipo_asignacion factor
+    (43) asignacion -> . VARIABLE ASIGN opMatematicas
+    (49) expression -> . term
+    (50) expression -> . boleano
+    (57) comparacion -> . expression comparador expression
+    (58) comparacion -> . expression comparador expression AND comparacion
+    (59) comparacion -> . expression comparador expression OR comparacion
+    (60) comparacion -> . expression AND expression
+    (61) comparacion -> . expression OR expression
+    (136) condicional -> . IF comparacion repCuerpo END
+    (137) condicional -> . IF comparacion repCuerpo cond_else
+    (68) impresion -> . PUTS factor
+    (92) for -> . FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END
+    (93) for -> . FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END for
+    (81) while -> . WHILE LPAR comparacion RPAR repCuerpo END
+    (82) while -> . WHILE LPAR comparacion RPAR repCuerpo END while
+    (69) input -> . VARIABLE ASIGN GETS
+    (134) callFuncion -> . VARIABLE LPAR RPAR
+    (135) callFuncion -> . VARIABLE LPAR parametros RPAR
+    (76) addValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
+    (77) modValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
+    (78) deleteValueHash -> . VARIABLE POINT DELETE LPAR expression RPAR
+    (90) insertArray -> . VARIABLE POINT INSERT LPAR argumentosA RPAR
+    (91) deleteArray -> . VARIABLE POINT DELETE_AT LPAR NUMBER RPAR
+    (98) pushStack -> . VARIABLE POINT PUSH LPAR factor RPAR
+    (97) searchStack -> . VARIABLE POINT SEARCH LPAR factor RPAR
+    (51) term -> . factor
+    (70) boleano -> . TRUE
+    (71) boleano -> . FALSE
+    (52) factor -> . NUMBER
+    (53) factor -> . STRING
+    (54) factor -> . FLOAT
+    (55) factor -> . VARIABLE
+    (56) factor -> . LPAR expression RPAR
 
-    D_POINT         shift and go to state 133
+    VARIABLE        shift and go to state 74
+    IF              shift and go to state 25
+    PUTS            shift and go to state 30
+    FOR             shift and go to state 28
+    WHILE           shift and go to state 26
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    NUMBER          shift and go to state 29
+    STRING          shift and go to state 34
+    FLOAT           shift and go to state 35
+    LPAR            shift and go to state 27
 
+    comparacion                    shift and go to state 60
+    repCuerpo                      shift and go to state 133
+    cuerpo                         shift and go to state 58
+    asignacion                     shift and go to state 59
+    expression                     shift and go to state 57
+    condicional                    shift and go to state 61
+    impresion                      shift and go to state 62
+    for                            shift and go to state 63
+    while                          shift and go to state 64
+    input                          shift and go to state 65
+    callFuncion                    shift and go to state 66
+    addValueHash                   shift and go to state 67
+    modValueHash                   shift and go to state 68
+    deleteValueHash                shift and go to state 69
+    insertArray                    shift and go to state 70
+    deleteArray                    shift and go to state 71
+    pushStack                      shift and go to state 72
+    searchStack                    shift and go to state 73
+    factor                         shift and go to state 21
+    term                           shift and go to state 22
+    boleano                        shift and go to state 23
 
 state 76
 
@@ -1958,7 +2070,7 @@ state 77
     LPAR            reduce using rule 55 (factor -> VARIABLE .)
     END             reduce using rule 55 (factor -> VARIABLE .)
     RETURN          reduce using rule 55 (factor -> VARIABLE .)
-    D_POINT         reduce using rule 55 (factor -> VARIABLE .)
+    ELSE            reduce using rule 55 (factor -> VARIABLE .)
     RCOR            reduce using rule 55 (factor -> VARIABLE .)
     COMMA           reduce using rule 55 (factor -> VARIABLE .)
     RKEY            reduce using rule 55 (factor -> VARIABLE .)
@@ -2031,6 +2143,7 @@ state 81
     LPAR            reduce using rule 68 (impresion -> PUTS factor .)
     END             reduce using rule 68 (impresion -> PUTS factor .)
     RETURN          reduce using rule 68 (impresion -> PUTS factor .)
+    ELSE            reduce using rule 68 (impresion -> PUTS factor .)
 
 
 state 82
@@ -2061,7 +2174,7 @@ state 83
     LPAR            reduce using rule 57 (comparacion -> expression comparador expression .)
     END             reduce using rule 57 (comparacion -> expression comparador expression .)
     RETURN          reduce using rule 57 (comparacion -> expression comparador expression .)
-    D_POINT         reduce using rule 57 (comparacion -> expression comparador expression .)
+    ELSE            reduce using rule 57 (comparacion -> expression comparador expression .)
     RPAR            reduce using rule 57 (comparacion -> expression comparador expression .)
     AND             shift and go to state 138
     OR              shift and go to state 139
@@ -2085,7 +2198,7 @@ state 84
     LPAR            reduce using rule 60 (comparacion -> expression AND expression .)
     END             reduce using rule 60 (comparacion -> expression AND expression .)
     RETURN          reduce using rule 60 (comparacion -> expression AND expression .)
-    D_POINT         reduce using rule 60 (comparacion -> expression AND expression .)
+    ELSE            reduce using rule 60 (comparacion -> expression AND expression .)
     RPAR            reduce using rule 60 (comparacion -> expression AND expression .)
 
 
@@ -2107,7 +2220,7 @@ state 85
     LPAR            reduce using rule 61 (comparacion -> expression OR expression .)
     END             reduce using rule 61 (comparacion -> expression OR expression .)
     RETURN          reduce using rule 61 (comparacion -> expression OR expression .)
-    D_POINT         reduce using rule 61 (comparacion -> expression OR expression .)
+    ELSE            reduce using rule 61 (comparacion -> expression OR expression .)
     RPAR            reduce using rule 61 (comparacion -> expression OR expression .)
 
 
@@ -2172,6 +2285,7 @@ state 88
     FLOAT           reduce using rule 55 (factor -> VARIABLE .)
     END             reduce using rule 55 (factor -> VARIABLE .)
     RETURN          reduce using rule 55 (factor -> VARIABLE .)
+    ELSE            reduce using rule 55 (factor -> VARIABLE .)
 
   ! LPAR            [ reduce using rule 55 (factor -> VARIABLE .) ]
 
@@ -2205,6 +2319,7 @@ state 89
     LPAR            reduce using rule 35 (asignacion -> VARIABLE ASIGN expression .)
     END             reduce using rule 35 (asignacion -> VARIABLE ASIGN expression .)
     RETURN          reduce using rule 35 (asignacion -> VARIABLE ASIGN expression .)
+    ELSE            reduce using rule 35 (asignacion -> VARIABLE ASIGN expression .)
     AND             shift and go to state 37
     OR              shift and go to state 38
     GREATER         shift and go to state 39
@@ -2234,6 +2349,7 @@ state 90
     LPAR            reduce using rule 36 (asignacion -> VARIABLE ASIGN comparacion .)
     END             reduce using rule 36 (asignacion -> VARIABLE ASIGN comparacion .)
     RETURN          reduce using rule 36 (asignacion -> VARIABLE ASIGN comparacion .)
+    ELSE            reduce using rule 36 (asignacion -> VARIABLE ASIGN comparacion .)
 
 
 state 91
@@ -2254,6 +2370,7 @@ state 91
     LPAR            reduce using rule 37 (asignacion -> VARIABLE ASIGN callFuncion .)
     END             reduce using rule 37 (asignacion -> VARIABLE ASIGN callFuncion .)
     RETURN          reduce using rule 37 (asignacion -> VARIABLE ASIGN callFuncion .)
+    ELSE            reduce using rule 37 (asignacion -> VARIABLE ASIGN callFuncion .)
 
 
 state 92
@@ -2274,6 +2391,7 @@ state 92
     LPAR            reduce using rule 38 (asignacion -> VARIABLE ASIGN diccionario .)
     END             reduce using rule 38 (asignacion -> VARIABLE ASIGN diccionario .)
     RETURN          reduce using rule 38 (asignacion -> VARIABLE ASIGN diccionario .)
+    ELSE            reduce using rule 38 (asignacion -> VARIABLE ASIGN diccionario .)
 
 
 state 93
@@ -2294,6 +2412,7 @@ state 93
     LPAR            reduce using rule 39 (asignacion -> VARIABLE ASIGN getValueHash .)
     END             reduce using rule 39 (asignacion -> VARIABLE ASIGN getValueHash .)
     RETURN          reduce using rule 39 (asignacion -> VARIABLE ASIGN getValueHash .)
+    ELSE            reduce using rule 39 (asignacion -> VARIABLE ASIGN getValueHash .)
 
 
 state 94
@@ -2314,6 +2433,7 @@ state 94
     LPAR            reduce using rule 40 (asignacion -> VARIABLE ASIGN array .)
     END             reduce using rule 40 (asignacion -> VARIABLE ASIGN array .)
     RETURN          reduce using rule 40 (asignacion -> VARIABLE ASIGN array .)
+    ELSE            reduce using rule 40 (asignacion -> VARIABLE ASIGN array .)
 
 
 state 95
@@ -2334,6 +2454,7 @@ state 95
     LPAR            reduce using rule 41 (asignacion -> VARIABLE ASIGN stack .)
     END             reduce using rule 41 (asignacion -> VARIABLE ASIGN stack .)
     RETURN          reduce using rule 41 (asignacion -> VARIABLE ASIGN stack .)
+    ELSE            reduce using rule 41 (asignacion -> VARIABLE ASIGN stack .)
 
 
 state 96
@@ -2354,6 +2475,7 @@ state 96
     LPAR            reduce using rule 43 (asignacion -> VARIABLE ASIGN opMatematicas .)
     END             reduce using rule 43 (asignacion -> VARIABLE ASIGN opMatematicas .)
     RETURN          reduce using rule 43 (asignacion -> VARIABLE ASIGN opMatematicas .)
+    ELSE            reduce using rule 43 (asignacion -> VARIABLE ASIGN opMatematicas .)
 
 
 state 97
@@ -2374,6 +2496,7 @@ state 97
     LPAR            reduce using rule 69 (input -> VARIABLE ASIGN GETS .)
     END             reduce using rule 69 (input -> VARIABLE ASIGN GETS .)
     RETURN          reduce using rule 69 (input -> VARIABLE ASIGN GETS .)
+    ELSE            reduce using rule 69 (input -> VARIABLE ASIGN GETS .)
 
 
 state 98
@@ -2520,6 +2643,7 @@ state 102
     LPAR            reduce using rule 99 (opMatematicas -> suma .)
     END             reduce using rule 99 (opMatematicas -> suma .)
     RETURN          reduce using rule 99 (opMatematicas -> suma .)
+    ELSE            reduce using rule 99 (opMatematicas -> suma .)
     RPAR            reduce using rule 99 (opMatematicas -> suma .)
 
 
@@ -2541,6 +2665,7 @@ state 103
     LPAR            reduce using rule 100 (opMatematicas -> resta .)
     END             reduce using rule 100 (opMatematicas -> resta .)
     RETURN          reduce using rule 100 (opMatematicas -> resta .)
+    ELSE            reduce using rule 100 (opMatematicas -> resta .)
     RPAR            reduce using rule 100 (opMatematicas -> resta .)
 
 
@@ -2562,6 +2687,7 @@ state 104
     LPAR            reduce using rule 101 (opMatematicas -> multiplicacion .)
     END             reduce using rule 101 (opMatematicas -> multiplicacion .)
     RETURN          reduce using rule 101 (opMatematicas -> multiplicacion .)
+    ELSE            reduce using rule 101 (opMatematicas -> multiplicacion .)
     RPAR            reduce using rule 101 (opMatematicas -> multiplicacion .)
 
 
@@ -2583,6 +2709,7 @@ state 105
     LPAR            reduce using rule 102 (opMatematicas -> division .)
     END             reduce using rule 102 (opMatematicas -> division .)
     RETURN          reduce using rule 102 (opMatematicas -> division .)
+    ELSE            reduce using rule 102 (opMatematicas -> division .)
     RPAR            reduce using rule 102 (opMatematicas -> division .)
 
 
@@ -2604,6 +2731,7 @@ state 106
     LPAR            reduce using rule 103 (opMatematicas -> exponenciacion .)
     END             reduce using rule 103 (opMatematicas -> exponenciacion .)
     RETURN          reduce using rule 103 (opMatematicas -> exponenciacion .)
+    ELSE            reduce using rule 103 (opMatematicas -> exponenciacion .)
     RPAR            reduce using rule 103 (opMatematicas -> exponenciacion .)
 
 
@@ -2634,6 +2762,7 @@ state 107
     LPAR            reduce using rule 52 (factor -> NUMBER .)
     END             reduce using rule 52 (factor -> NUMBER .)
     RETURN          reduce using rule 52 (factor -> NUMBER .)
+    ELSE            reduce using rule 52 (factor -> NUMBER .)
     PLUS            reduce using rule 125 (enteros -> NUMBER .)
     MINUS           reduce using rule 125 (enteros -> NUMBER .)
     TIMES           reduce using rule 125 (enteros -> NUMBER .)
@@ -2700,6 +2829,7 @@ state 110
     LPAR            reduce using rule 54 (factor -> FLOAT .)
     END             reduce using rule 54 (factor -> FLOAT .)
     RETURN          reduce using rule 54 (factor -> FLOAT .)
+    ELSE            reduce using rule 54 (factor -> FLOAT .)
     PLUS            reduce using rule 124 (operadores -> FLOAT .)
     MINUS           reduce using rule 124 (operadores -> FLOAT .)
     TIMES           reduce using rule 124 (operadores -> FLOAT .)
@@ -2731,6 +2861,7 @@ state 111
     LPAR            reduce using rule 123 (operadores -> enteros .)
     END             reduce using rule 123 (operadores -> enteros .)
     RETURN          reduce using rule 123 (operadores -> enteros .)
+    ELSE            reduce using rule 123 (operadores -> enteros .)
 
 
 state 112
@@ -2751,6 +2882,7 @@ state 112
     LPAR            reduce using rule 42 (asignacion -> VARIABLE tipo_asignacion factor .)
     END             reduce using rule 42 (asignacion -> VARIABLE tipo_asignacion factor .)
     RETURN          reduce using rule 42 (asignacion -> VARIABLE tipo_asignacion factor .)
+    ELSE            reduce using rule 42 (asignacion -> VARIABLE tipo_asignacion factor .)
 
 
 state 113
@@ -2780,6 +2912,7 @@ state 114
     LPAR            reduce using rule 134 (callFuncion -> VARIABLE LPAR RPAR .)
     END             reduce using rule 134 (callFuncion -> VARIABLE LPAR RPAR .)
     RETURN          reduce using rule 134 (callFuncion -> VARIABLE LPAR RPAR .)
+    ELSE            reduce using rule 134 (callFuncion -> VARIABLE LPAR RPAR .)
 
 
 state 115
@@ -2942,6 +3075,7 @@ state 131
 
     END             reduce using rule 84 (repCuerpo -> cuerpo repCuerpo .)
     RETURN          reduce using rule 84 (repCuerpo -> cuerpo repCuerpo .)
+    ELSE            reduce using rule 84 (repCuerpo -> cuerpo repCuerpo .)
 
 
 state 132
@@ -2961,108 +3095,21 @@ state 132
 
 state 133
 
-    (136) condicional -> IF comparacion D_POINT . repCuerpo END
-    (137) condicional -> IF comparacion D_POINT . repCuerpo END cond_else
-    (83) repCuerpo -> . cuerpo
-    (84) repCuerpo -> . cuerpo repCuerpo
-    (19) cuerpo -> . asignacion
-    (20) cuerpo -> . expression
-    (21) cuerpo -> . comparacion
-    (22) cuerpo -> . condicional
-    (23) cuerpo -> . impresion
-    (24) cuerpo -> . for
-    (25) cuerpo -> . while
-    (26) cuerpo -> . input
-    (27) cuerpo -> . callFuncion
-    (28) cuerpo -> . addValueHash
-    (29) cuerpo -> . modValueHash
-    (30) cuerpo -> . deleteValueHash
-    (31) cuerpo -> . insertArray
-    (32) cuerpo -> . deleteArray
-    (33) cuerpo -> . pushStack
-    (34) cuerpo -> . searchStack
-    (35) asignacion -> . VARIABLE ASIGN expression
-    (36) asignacion -> . VARIABLE ASIGN comparacion
-    (37) asignacion -> . VARIABLE ASIGN callFuncion
-    (38) asignacion -> . VARIABLE ASIGN diccionario
-    (39) asignacion -> . VARIABLE ASIGN getValueHash
-    (40) asignacion -> . VARIABLE ASIGN array
-    (41) asignacion -> . VARIABLE ASIGN stack
-    (42) asignacion -> . VARIABLE tipo_asignacion factor
-    (43) asignacion -> . VARIABLE ASIGN opMatematicas
-    (49) expression -> . term
-    (50) expression -> . boleano
-    (57) comparacion -> . expression comparador expression
-    (58) comparacion -> . expression comparador expression AND comparacion
-    (59) comparacion -> . expression comparador expression OR comparacion
-    (60) comparacion -> . expression AND expression
-    (61) comparacion -> . expression OR expression
-    (136) condicional -> . IF comparacion D_POINT repCuerpo END
-    (137) condicional -> . IF comparacion D_POINT repCuerpo END cond_else
-    (68) impresion -> . PUTS factor
-    (92) for -> . FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END
-    (93) for -> . FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END for
-    (81) while -> . WHILE LPAR comparacion RPAR repCuerpo END
-    (82) while -> . WHILE LPAR comparacion RPAR repCuerpo END while
-    (69) input -> . VARIABLE ASIGN GETS
-    (134) callFuncion -> . VARIABLE LPAR RPAR
-    (135) callFuncion -> . VARIABLE LPAR parametros RPAR
-    (76) addValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
-    (77) modValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
-    (78) deleteValueHash -> . VARIABLE POINT DELETE LPAR expression RPAR
-    (90) insertArray -> . VARIABLE POINT INSERT LPAR argumentosA RPAR
-    (91) deleteArray -> . VARIABLE POINT DELETE_AT LPAR NUMBER RPAR
-    (98) pushStack -> . VARIABLE POINT PUSH LPAR factor RPAR
-    (97) searchStack -> . VARIABLE POINT SEARCH LPAR factor RPAR
-    (51) term -> . factor
-    (70) boleano -> . TRUE
-    (71) boleano -> . FALSE
-    (52) factor -> . NUMBER
-    (53) factor -> . STRING
-    (54) factor -> . FLOAT
-    (55) factor -> . VARIABLE
-    (56) factor -> . LPAR expression RPAR
+    (136) condicional -> IF comparacion repCuerpo . END
+    (137) condicional -> IF comparacion repCuerpo . cond_else
+    (138) cond_else -> . ELSE repCuerpo END
 
-    VARIABLE        shift and go to state 74
-    IF              shift and go to state 25
-    PUTS            shift and go to state 30
-    FOR             shift and go to state 28
-    WHILE           shift and go to state 26
-    TRUE            shift and go to state 31
-    FALSE           shift and go to state 32
-    NUMBER          shift and go to state 29
-    STRING          shift and go to state 34
-    FLOAT           shift and go to state 35
-    LPAR            shift and go to state 27
+    END             shift and go to state 171
+    ELSE            shift and go to state 173
 
-    comparacion                    shift and go to state 60
-    repCuerpo                      shift and go to state 171
-    cuerpo                         shift and go to state 58
-    asignacion                     shift and go to state 59
-    expression                     shift and go to state 57
-    condicional                    shift and go to state 61
-    impresion                      shift and go to state 62
-    for                            shift and go to state 63
-    while                          shift and go to state 64
-    input                          shift and go to state 65
-    callFuncion                    shift and go to state 66
-    addValueHash                   shift and go to state 67
-    modValueHash                   shift and go to state 68
-    deleteValueHash                shift and go to state 69
-    insertArray                    shift and go to state 70
-    deleteArray                    shift and go to state 71
-    pushStack                      shift and go to state 72
-    searchStack                    shift and go to state 73
-    factor                         shift and go to state 21
-    term                           shift and go to state 22
-    boleano                        shift and go to state 23
+    cond_else                      shift and go to state 172
 
 state 134
 
     (81) while -> WHILE LPAR comparacion . RPAR repCuerpo END
     (82) while -> WHILE LPAR comparacion . RPAR repCuerpo END while
 
-    RPAR            shift and go to state 172
+    RPAR            shift and go to state 174
 
 
 state 135
@@ -3092,7 +3139,7 @@ state 135
     END             reduce using rule 56 (factor -> LPAR expression RPAR .)
     RETURN          reduce using rule 56 (factor -> LPAR expression RPAR .)
     RPAR            reduce using rule 56 (factor -> LPAR expression RPAR .)
-    D_POINT         reduce using rule 56 (factor -> LPAR expression RPAR .)
+    ELSE            reduce using rule 56 (factor -> LPAR expression RPAR .)
     RCOR            reduce using rule 56 (factor -> LPAR expression RPAR .)
     COMMA           reduce using rule 56 (factor -> LPAR expression RPAR .)
     RKEY            reduce using rule 56 (factor -> LPAR expression RPAR .)
@@ -3103,7 +3150,7 @@ state 136
     (92) for -> FOR VARIABLE IN . NUMBER POINT POINT NUMBER DO repCuerpo END
     (93) for -> FOR VARIABLE IN . NUMBER POINT POINT NUMBER DO repCuerpo END for
 
-    NUMBER          shift and go to state 173
+    NUMBER          shift and go to state 175
 
 
 state 137
@@ -3113,10 +3160,10 @@ state 137
     (127) parametros -> . VARIABLE
     (128) parametros -> . VARIABLE COMMA parametros
 
-    RPAR            shift and go to state 174
+    RPAR            shift and go to state 176
     VARIABLE        shift and go to state 113
 
-    parametros                     shift and go to state 175
+    parametros                     shift and go to state 177
 
 state 138
 
@@ -3146,7 +3193,7 @@ state 138
     LPAR            shift and go to state 27
 
     expression                     shift and go to state 76
-    comparacion                    shift and go to state 176
+    comparacion                    shift and go to state 178
     term                           shift and go to state 22
     boleano                        shift and go to state 23
     factor                         shift and go to state 21
@@ -3179,7 +3226,7 @@ state 139
     LPAR            shift and go to state 27
 
     expression                     shift and go to state 76
-    comparacion                    shift and go to state 177
+    comparacion                    shift and go to state 179
     term                           shift and go to state 22
     boleano                        shift and go to state 23
     factor                         shift and go to state 21
@@ -3206,7 +3253,7 @@ state 140
     VARIABLE        shift and go to state 77
     LPAR            shift and go to state 27
 
-    expression                     shift and go to state 178
+    expression                     shift and go to state 180
     term                           shift and go to state 22
     boleano                        shift and go to state 23
     factor                         shift and go to state 21
@@ -3215,14 +3262,14 @@ state 141
 
     (104) suma -> VARIABLE PLUS . NUMBER
 
-    NUMBER          shift and go to state 179
+    NUMBER          shift and go to state 181
 
 
 state 142
 
     (109) resta -> VARIABLE MINUS . NUMBER
 
-    NUMBER          shift and go to state 180
+    NUMBER          shift and go to state 182
 
 
 state 143
@@ -3244,7 +3291,7 @@ state 143
     (119) division -> operadores . DIVIDE LPAR opMatematicas RPAR
     (120) exponenciacion -> operadores . EXPONENTIATION operadores
 
-    RPAR            shift and go to state 181
+    RPAR            shift and go to state 183
     PLUS            shift and go to state 154
     MINUS           shift and go to state 155
     TIMES           shift and go to state 156
@@ -3256,7 +3303,7 @@ state 144
 
     (122) exponenciacion -> LPAR opMatematicas . RPAR EXPONENTIATION operadores
 
-    RPAR            shift and go to state 182
+    RPAR            shift and go to state 184
 
 
 state 145
@@ -3306,7 +3353,7 @@ state 148
 
     (72) diccionario -> LKEY cuerpoHash . RKEY
 
-    RKEY            shift and go to state 183
+    RKEY            shift and go to state 185
 
 
 state 149
@@ -3314,14 +3361,14 @@ state 149
     (73) cuerpoHash -> expression . ASIGN GREATER expression
     (74) cuerpoHash -> expression . ASIGN GREATER expression COMMA cuerpoHash
 
-    ASIGN           shift and go to state 184
+    ASIGN           shift and go to state 186
 
 
 state 150
 
     (87) array -> LCOR parametrosA . RCOR
 
-    RCOR            shift and go to state 185
+    RCOR            shift and go to state 187
 
 
 state 151
@@ -3342,6 +3389,7 @@ state 151
     LPAR            reduce using rule 88 (array -> LCOR RCOR .)
     END             reduce using rule 88 (array -> LCOR RCOR .)
     RETURN          reduce using rule 88 (array -> LCOR RCOR .)
+    ELSE            reduce using rule 88 (array -> LCOR RCOR .)
 
 
 state 152
@@ -3351,7 +3399,7 @@ state 152
 
     RCOR            reduce using rule 85 (parametrosA -> factor .)
     RPAR            reduce using rule 85 (parametrosA -> factor .)
-    COMMA           shift and go to state 186
+    COMMA           shift and go to state 188
 
 
 state 153
@@ -3374,8 +3422,8 @@ state 153
     VARIABLE        shift and go to state 77
     LPAR            shift and go to state 27
 
-    parametrosA                    shift and go to state 187
-    vacio                          shift and go to state 188
+    parametrosA                    shift and go to state 189
+    vacio                          shift and go to state 190
     factor                         shift and go to state 152
 
 state 154
@@ -3413,14 +3461,14 @@ state 154
     (121) exponenciacion -> . LPAR operadores RPAR EXPONENTIATION operadores
     (122) exponenciacion -> . LPAR opMatematicas RPAR EXPONENTIATION operadores
 
-    LPAR            shift and go to state 191
-    FLOAT           shift and go to state 192
-    NUMBER          shift and go to state 193
+    LPAR            shift and go to state 193
+    FLOAT           shift and go to state 194
+    NUMBER          shift and go to state 195
     MINUS           shift and go to state 109
-    VARIABLE        shift and go to state 194
+    VARIABLE        shift and go to state 196
 
-    operadores                     shift and go to state 189
-    opMatematicas                  shift and go to state 190
+    operadores                     shift and go to state 191
+    opMatematicas                  shift and go to state 192
     enteros                        shift and go to state 111
     suma                           shift and go to state 102
     resta                          shift and go to state 103
@@ -3463,14 +3511,14 @@ state 155
     (121) exponenciacion -> . LPAR operadores RPAR EXPONENTIATION operadores
     (122) exponenciacion -> . LPAR opMatematicas RPAR EXPONENTIATION operadores
 
-    LPAR            shift and go to state 197
-    FLOAT           shift and go to state 192
-    NUMBER          shift and go to state 193
+    LPAR            shift and go to state 199
+    FLOAT           shift and go to state 194
+    NUMBER          shift and go to state 195
     MINUS           shift and go to state 109
-    VARIABLE        shift and go to state 194
+    VARIABLE        shift and go to state 196
 
-    operadores                     shift and go to state 195
-    opMatematicas                  shift and go to state 196
+    operadores                     shift and go to state 197
+    opMatematicas                  shift and go to state 198
     enteros                        shift and go to state 111
     suma                           shift and go to state 102
     resta                          shift and go to state 103
@@ -3488,12 +3536,12 @@ state 156
     (125) enteros -> . NUMBER
     (126) enteros -> . MINUS NUMBER
 
-    LPAR            shift and go to state 199
-    FLOAT           shift and go to state 192
-    NUMBER          shift and go to state 193
+    LPAR            shift and go to state 201
+    FLOAT           shift and go to state 194
+    NUMBER          shift and go to state 195
     MINUS           shift and go to state 109
 
-    operadores                     shift and go to state 198
+    operadores                     shift and go to state 200
     enteros                        shift and go to state 111
 
 state 157
@@ -3506,12 +3554,12 @@ state 157
     (125) enteros -> . NUMBER
     (126) enteros -> . MINUS NUMBER
 
-    LPAR            shift and go to state 201
-    FLOAT           shift and go to state 192
-    NUMBER          shift and go to state 193
+    LPAR            shift and go to state 203
+    FLOAT           shift and go to state 194
+    NUMBER          shift and go to state 195
     MINUS           shift and go to state 109
 
-    operadores                     shift and go to state 200
+    operadores                     shift and go to state 202
     enteros                        shift and go to state 111
 
 state 158
@@ -3522,11 +3570,11 @@ state 158
     (125) enteros -> . NUMBER
     (126) enteros -> . MINUS NUMBER
 
-    FLOAT           shift and go to state 192
-    NUMBER          shift and go to state 193
+    FLOAT           shift and go to state 194
+    NUMBER          shift and go to state 195
     MINUS           shift and go to state 109
 
-    operadores                     shift and go to state 202
+    operadores                     shift and go to state 204
     enteros                        shift and go to state 111
 
 state 159
@@ -3553,6 +3601,7 @@ state 159
     LPAR            reduce using rule 126 (enteros -> MINUS NUMBER .)
     END             reduce using rule 126 (enteros -> MINUS NUMBER .)
     RETURN          reduce using rule 126 (enteros -> MINUS NUMBER .)
+    ELSE            reduce using rule 126 (enteros -> MINUS NUMBER .)
 
 
 state 160
@@ -3563,7 +3612,7 @@ state 160
 
     VARIABLE        shift and go to state 113
 
-    parametros                     shift and go to state 203
+    parametros                     shift and go to state 205
 
 state 161
 
@@ -3583,6 +3632,7 @@ state 161
     LPAR            reduce using rule 135 (callFuncion -> VARIABLE LPAR parametros RPAR .)
     END             reduce using rule 135 (callFuncion -> VARIABLE LPAR parametros RPAR .)
     RETURN          reduce using rule 135 (callFuncion -> VARIABLE LPAR parametros RPAR .)
+    ELSE            reduce using rule 135 (callFuncion -> VARIABLE LPAR parametros RPAR .)
 
 
 state 162
@@ -3590,7 +3640,7 @@ state 162
     (76) addValueHash -> VARIABLE LCOR expression RCOR . ASIGN expression
     (77) modValueHash -> VARIABLE LCOR expression RCOR . ASIGN expression
 
-    ASIGN           shift and go to state 204
+    ASIGN           shift and go to state 206
 
 
 state 163
@@ -3598,7 +3648,7 @@ state 163
     (79) metodoBoleano -> VARIABLE POINT VARIABLE QUESTION . LPAR expression RPAR
     (80) metodoBoleano -> VARIABLE POINT VARIABLE QUESTION . LPAR RPAR
 
-    LPAR            shift and go to state 205
+    LPAR            shift and go to state 207
 
 
 state 164
@@ -3623,7 +3673,7 @@ state 164
     VARIABLE        shift and go to state 77
     LPAR            shift and go to state 27
 
-    expression                     shift and go to state 206
+    expression                     shift and go to state 208
     term                           shift and go to state 22
     boleano                        shift and go to state 23
     factor                         shift and go to state 21
@@ -3633,15 +3683,15 @@ state 165
     (90) insertArray -> VARIABLE POINT INSERT LPAR . argumentosA RPAR
     (89) argumentosA -> . NUMBER COMMA factor
 
-    NUMBER          shift and go to state 208
+    NUMBER          shift and go to state 210
 
-    argumentosA                    shift and go to state 207
+    argumentosA                    shift and go to state 209
 
 state 166
 
     (91) deleteArray -> VARIABLE POINT DELETE_AT LPAR . NUMBER RPAR
 
-    NUMBER          shift and go to state 209
+    NUMBER          shift and go to state 211
 
 
 state 167
@@ -3659,7 +3709,7 @@ state 167
     VARIABLE        shift and go to state 77
     LPAR            shift and go to state 27
 
-    factor                         shift and go to state 210
+    factor                         shift and go to state 212
 
 state 168
 
@@ -3676,13 +3726,13 @@ state 168
     VARIABLE        shift and go to state 77
     LPAR            shift and go to state 27
 
-    factor                         shift and go to state 211
+    factor                         shift and go to state 213
 
 state 169
 
     (133) funciones -> encabezado repCuerpo RETURN expression . END
 
-    END             shift and go to state 212
+    END             shift and go to state 214
 
 
 state 170
@@ -3694,13 +3744,144 @@ state 170
 
 state 171
 
-    (136) condicional -> IF comparacion D_POINT repCuerpo . END
-    (137) condicional -> IF comparacion D_POINT repCuerpo . END cond_else
+    (136) condicional -> IF comparacion repCuerpo END .
 
-    END             shift and go to state 213
+    $end            reduce using rule 136 (condicional -> IF comparacion repCuerpo END .)
+    VARIABLE        reduce using rule 136 (condicional -> IF comparacion repCuerpo END .)
+    IF              reduce using rule 136 (condicional -> IF comparacion repCuerpo END .)
+    PUTS            reduce using rule 136 (condicional -> IF comparacion repCuerpo END .)
+    FOR             reduce using rule 136 (condicional -> IF comparacion repCuerpo END .)
+    WHILE           reduce using rule 136 (condicional -> IF comparacion repCuerpo END .)
+    TRUE            reduce using rule 136 (condicional -> IF comparacion repCuerpo END .)
+    FALSE           reduce using rule 136 (condicional -> IF comparacion repCuerpo END .)
+    NUMBER          reduce using rule 136 (condicional -> IF comparacion repCuerpo END .)
+    STRING          reduce using rule 136 (condicional -> IF comparacion repCuerpo END .)
+    FLOAT           reduce using rule 136 (condicional -> IF comparacion repCuerpo END .)
+    LPAR            reduce using rule 136 (condicional -> IF comparacion repCuerpo END .)
+    END             reduce using rule 136 (condicional -> IF comparacion repCuerpo END .)
+    RETURN          reduce using rule 136 (condicional -> IF comparacion repCuerpo END .)
+    ELSE            reduce using rule 136 (condicional -> IF comparacion repCuerpo END .)
 
 
 state 172
+
+    (137) condicional -> IF comparacion repCuerpo cond_else .
+
+    $end            reduce using rule 137 (condicional -> IF comparacion repCuerpo cond_else .)
+    VARIABLE        reduce using rule 137 (condicional -> IF comparacion repCuerpo cond_else .)
+    IF              reduce using rule 137 (condicional -> IF comparacion repCuerpo cond_else .)
+    PUTS            reduce using rule 137 (condicional -> IF comparacion repCuerpo cond_else .)
+    FOR             reduce using rule 137 (condicional -> IF comparacion repCuerpo cond_else .)
+    WHILE           reduce using rule 137 (condicional -> IF comparacion repCuerpo cond_else .)
+    TRUE            reduce using rule 137 (condicional -> IF comparacion repCuerpo cond_else .)
+    FALSE           reduce using rule 137 (condicional -> IF comparacion repCuerpo cond_else .)
+    NUMBER          reduce using rule 137 (condicional -> IF comparacion repCuerpo cond_else .)
+    STRING          reduce using rule 137 (condicional -> IF comparacion repCuerpo cond_else .)
+    FLOAT           reduce using rule 137 (condicional -> IF comparacion repCuerpo cond_else .)
+    LPAR            reduce using rule 137 (condicional -> IF comparacion repCuerpo cond_else .)
+    END             reduce using rule 137 (condicional -> IF comparacion repCuerpo cond_else .)
+    RETURN          reduce using rule 137 (condicional -> IF comparacion repCuerpo cond_else .)
+    ELSE            reduce using rule 137 (condicional -> IF comparacion repCuerpo cond_else .)
+
+
+state 173
+
+    (138) cond_else -> ELSE . repCuerpo END
+    (83) repCuerpo -> . cuerpo
+    (84) repCuerpo -> . cuerpo repCuerpo
+    (19) cuerpo -> . asignacion
+    (20) cuerpo -> . expression
+    (21) cuerpo -> . comparacion
+    (22) cuerpo -> . condicional
+    (23) cuerpo -> . impresion
+    (24) cuerpo -> . for
+    (25) cuerpo -> . while
+    (26) cuerpo -> . input
+    (27) cuerpo -> . callFuncion
+    (28) cuerpo -> . addValueHash
+    (29) cuerpo -> . modValueHash
+    (30) cuerpo -> . deleteValueHash
+    (31) cuerpo -> . insertArray
+    (32) cuerpo -> . deleteArray
+    (33) cuerpo -> . pushStack
+    (34) cuerpo -> . searchStack
+    (35) asignacion -> . VARIABLE ASIGN expression
+    (36) asignacion -> . VARIABLE ASIGN comparacion
+    (37) asignacion -> . VARIABLE ASIGN callFuncion
+    (38) asignacion -> . VARIABLE ASIGN diccionario
+    (39) asignacion -> . VARIABLE ASIGN getValueHash
+    (40) asignacion -> . VARIABLE ASIGN array
+    (41) asignacion -> . VARIABLE ASIGN stack
+    (42) asignacion -> . VARIABLE tipo_asignacion factor
+    (43) asignacion -> . VARIABLE ASIGN opMatematicas
+    (49) expression -> . term
+    (50) expression -> . boleano
+    (57) comparacion -> . expression comparador expression
+    (58) comparacion -> . expression comparador expression AND comparacion
+    (59) comparacion -> . expression comparador expression OR comparacion
+    (60) comparacion -> . expression AND expression
+    (61) comparacion -> . expression OR expression
+    (136) condicional -> . IF comparacion repCuerpo END
+    (137) condicional -> . IF comparacion repCuerpo cond_else
+    (68) impresion -> . PUTS factor
+    (92) for -> . FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END
+    (93) for -> . FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END for
+    (81) while -> . WHILE LPAR comparacion RPAR repCuerpo END
+    (82) while -> . WHILE LPAR comparacion RPAR repCuerpo END while
+    (69) input -> . VARIABLE ASIGN GETS
+    (134) callFuncion -> . VARIABLE LPAR RPAR
+    (135) callFuncion -> . VARIABLE LPAR parametros RPAR
+    (76) addValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
+    (77) modValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
+    (78) deleteValueHash -> . VARIABLE POINT DELETE LPAR expression RPAR
+    (90) insertArray -> . VARIABLE POINT INSERT LPAR argumentosA RPAR
+    (91) deleteArray -> . VARIABLE POINT DELETE_AT LPAR NUMBER RPAR
+    (98) pushStack -> . VARIABLE POINT PUSH LPAR factor RPAR
+    (97) searchStack -> . VARIABLE POINT SEARCH LPAR factor RPAR
+    (51) term -> . factor
+    (70) boleano -> . TRUE
+    (71) boleano -> . FALSE
+    (52) factor -> . NUMBER
+    (53) factor -> . STRING
+    (54) factor -> . FLOAT
+    (55) factor -> . VARIABLE
+    (56) factor -> . LPAR expression RPAR
+
+    VARIABLE        shift and go to state 74
+    IF              shift and go to state 25
+    PUTS            shift and go to state 30
+    FOR             shift and go to state 28
+    WHILE           shift and go to state 26
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    NUMBER          shift and go to state 29
+    STRING          shift and go to state 34
+    FLOAT           shift and go to state 35
+    LPAR            shift and go to state 27
+
+    repCuerpo                      shift and go to state 215
+    cuerpo                         shift and go to state 58
+    asignacion                     shift and go to state 59
+    expression                     shift and go to state 57
+    comparacion                    shift and go to state 60
+    condicional                    shift and go to state 61
+    impresion                      shift and go to state 62
+    for                            shift and go to state 63
+    while                          shift and go to state 64
+    input                          shift and go to state 65
+    callFuncion                    shift and go to state 66
+    addValueHash                   shift and go to state 67
+    modValueHash                   shift and go to state 68
+    deleteValueHash                shift and go to state 69
+    insertArray                    shift and go to state 70
+    deleteArray                    shift and go to state 71
+    pushStack                      shift and go to state 72
+    searchStack                    shift and go to state 73
+    factor                         shift and go to state 21
+    term                           shift and go to state 22
+    boleano                        shift and go to state 23
+
+state 174
 
     (81) while -> WHILE LPAR comparacion RPAR . repCuerpo END
     (82) while -> WHILE LPAR comparacion RPAR . repCuerpo END while
@@ -3738,8 +3919,8 @@ state 172
     (59) comparacion -> . expression comparador expression OR comparacion
     (60) comparacion -> . expression AND expression
     (61) comparacion -> . expression OR expression
-    (136) condicional -> . IF comparacion D_POINT repCuerpo END
-    (137) condicional -> . IF comparacion D_POINT repCuerpo END cond_else
+    (136) condicional -> . IF comparacion repCuerpo END
+    (137) condicional -> . IF comparacion repCuerpo cond_else
     (68) impresion -> . PUTS factor
     (92) for -> . FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END
     (93) for -> . FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END for
@@ -3777,7 +3958,7 @@ state 172
     LPAR            shift and go to state 27
 
     comparacion                    shift and go to state 60
-    repCuerpo                      shift and go to state 214
+    repCuerpo                      shift and go to state 216
     while                          shift and go to state 64
     cuerpo                         shift and go to state 58
     asignacion                     shift and go to state 59
@@ -3798,15 +3979,15 @@ state 172
     term                           shift and go to state 22
     boleano                        shift and go to state 23
 
-state 173
+state 175
 
     (92) for -> FOR VARIABLE IN NUMBER . POINT POINT NUMBER DO repCuerpo END
     (93) for -> FOR VARIABLE IN NUMBER . POINT POINT NUMBER DO repCuerpo END for
 
-    POINT           shift and go to state 215
+    POINT           shift and go to state 217
 
 
-state 174
+state 176
 
     (129) encabezado -> DEF VARIABLE LPAR RPAR .
 
@@ -3824,14 +4005,14 @@ state 174
     LPAR            reduce using rule 129 (encabezado -> DEF VARIABLE LPAR RPAR .)
 
 
-state 175
+state 177
 
     (130) encabezado -> DEF VARIABLE LPAR parametros . RPAR
 
-    RPAR            shift and go to state 216
+    RPAR            shift and go to state 218
 
 
-state 176
+state 178
 
     (58) comparacion -> expression comparador expression AND comparacion .
 
@@ -3849,11 +4030,11 @@ state 176
     LPAR            reduce using rule 58 (comparacion -> expression comparador expression AND comparacion .)
     END             reduce using rule 58 (comparacion -> expression comparador expression AND comparacion .)
     RETURN          reduce using rule 58 (comparacion -> expression comparador expression AND comparacion .)
-    D_POINT         reduce using rule 58 (comparacion -> expression comparador expression AND comparacion .)
+    ELSE            reduce using rule 58 (comparacion -> expression comparador expression AND comparacion .)
     RPAR            reduce using rule 58 (comparacion -> expression comparador expression AND comparacion .)
 
 
-state 177
+state 179
 
     (59) comparacion -> expression comparador expression OR comparacion .
 
@@ -3871,18 +4052,18 @@ state 177
     LPAR            reduce using rule 59 (comparacion -> expression comparador expression OR comparacion .)
     END             reduce using rule 59 (comparacion -> expression comparador expression OR comparacion .)
     RETURN          reduce using rule 59 (comparacion -> expression comparador expression OR comparacion .)
-    D_POINT         reduce using rule 59 (comparacion -> expression comparador expression OR comparacion .)
+    ELSE            reduce using rule 59 (comparacion -> expression comparador expression OR comparacion .)
     RPAR            reduce using rule 59 (comparacion -> expression comparador expression OR comparacion .)
 
 
-state 178
+state 180
 
     (75) getValueHash -> VARIABLE LCOR expression . RCOR
 
-    RCOR            shift and go to state 217
+    RCOR            shift and go to state 219
 
 
-state 179
+state 181
 
     (104) suma -> VARIABLE PLUS NUMBER .
 
@@ -3900,10 +4081,11 @@ state 179
     LPAR            reduce using rule 104 (suma -> VARIABLE PLUS NUMBER .)
     END             reduce using rule 104 (suma -> VARIABLE PLUS NUMBER .)
     RETURN          reduce using rule 104 (suma -> VARIABLE PLUS NUMBER .)
+    ELSE            reduce using rule 104 (suma -> VARIABLE PLUS NUMBER .)
     RPAR            reduce using rule 104 (suma -> VARIABLE PLUS NUMBER .)
 
 
-state 180
+state 182
 
     (109) resta -> VARIABLE MINUS NUMBER .
 
@@ -3921,24 +4103,25 @@ state 180
     LPAR            reduce using rule 109 (resta -> VARIABLE MINUS NUMBER .)
     END             reduce using rule 109 (resta -> VARIABLE MINUS NUMBER .)
     RETURN          reduce using rule 109 (resta -> VARIABLE MINUS NUMBER .)
+    ELSE            reduce using rule 109 (resta -> VARIABLE MINUS NUMBER .)
     RPAR            reduce using rule 109 (resta -> VARIABLE MINUS NUMBER .)
 
 
-state 181
+state 183
 
     (121) exponenciacion -> LPAR operadores RPAR . EXPONENTIATION operadores
 
-    EXPONENTIATION  shift and go to state 218
+    EXPONENTIATION  shift and go to state 220
 
 
-state 182
+state 184
 
     (122) exponenciacion -> LPAR opMatematicas RPAR . EXPONENTIATION operadores
 
-    EXPONENTIATION  shift and go to state 219
+    EXPONENTIATION  shift and go to state 221
 
 
-state 183
+state 185
 
     (72) diccionario -> LKEY cuerpoHash RKEY .
 
@@ -3956,17 +4139,18 @@ state 183
     LPAR            reduce using rule 72 (diccionario -> LKEY cuerpoHash RKEY .)
     END             reduce using rule 72 (diccionario -> LKEY cuerpoHash RKEY .)
     RETURN          reduce using rule 72 (diccionario -> LKEY cuerpoHash RKEY .)
+    ELSE            reduce using rule 72 (diccionario -> LKEY cuerpoHash RKEY .)
 
 
-state 184
+state 186
 
     (73) cuerpoHash -> expression ASIGN . GREATER expression
     (74) cuerpoHash -> expression ASIGN . GREATER expression COMMA cuerpoHash
 
-    GREATER         shift and go to state 220
+    GREATER         shift and go to state 222
 
 
-state 185
+state 187
 
     (87) array -> LCOR parametrosA RCOR .
 
@@ -3984,9 +4168,10 @@ state 185
     LPAR            reduce using rule 87 (array -> LCOR parametrosA RCOR .)
     END             reduce using rule 87 (array -> LCOR parametrosA RCOR .)
     RETURN          reduce using rule 87 (array -> LCOR parametrosA RCOR .)
+    ELSE            reduce using rule 87 (array -> LCOR parametrosA RCOR .)
 
 
-state 186
+state 188
 
     (86) parametrosA -> factor COMMA . parametrosA
     (85) parametrosA -> . factor
@@ -4004,23 +4189,23 @@ state 186
     LPAR            shift and go to state 27
 
     factor                         shift and go to state 152
-    parametrosA                    shift and go to state 221
+    parametrosA                    shift and go to state 223
 
-state 187
+state 189
 
     (95) stack -> STACK LPAR parametrosA . RPAR
 
-    RPAR            shift and go to state 222
+    RPAR            shift and go to state 224
 
 
-state 188
+state 190
 
     (96) stack -> STACK LPAR vacio . RPAR
 
-    RPAR            shift and go to state 223
+    RPAR            shift and go to state 225
 
 
-state 189
+state 191
 
     (105) suma -> operadores PLUS operadores .
     (105) suma -> operadores . PLUS operadores
@@ -4053,6 +4238,7 @@ state 189
     LPAR            reduce using rule 105 (suma -> operadores PLUS operadores .)
     END             reduce using rule 105 (suma -> operadores PLUS operadores .)
     RETURN          reduce using rule 105 (suma -> operadores PLUS operadores .)
+    ELSE            reduce using rule 105 (suma -> operadores PLUS operadores .)
     RPAR            reduce using rule 105 (suma -> operadores PLUS operadores .)
     PLUS            shift and go to state 154
     MINUS           shift and go to state 155
@@ -4061,7 +4247,7 @@ state 189
     EXPONENTIATION  shift and go to state 158
 
 
-state 190
+state 192
 
     (106) suma -> operadores PLUS opMatematicas .
 
@@ -4079,10 +4265,11 @@ state 190
     LPAR            reduce using rule 106 (suma -> operadores PLUS opMatematicas .)
     END             reduce using rule 106 (suma -> operadores PLUS opMatematicas .)
     RETURN          reduce using rule 106 (suma -> operadores PLUS opMatematicas .)
+    ELSE            reduce using rule 106 (suma -> operadores PLUS opMatematicas .)
     RPAR            reduce using rule 106 (suma -> operadores PLUS opMatematicas .)
 
 
-state 191
+state 193
 
     (107) suma -> operadores PLUS LPAR . operadores RPAR
     (108) suma -> operadores PLUS LPAR . opMatematicas RPAR
@@ -4117,14 +4304,14 @@ state 191
     (121) exponenciacion -> . LPAR operadores RPAR EXPONENTIATION operadores
     (122) exponenciacion -> . LPAR opMatematicas RPAR EXPONENTIATION operadores
 
-    FLOAT           shift and go to state 192
-    NUMBER          shift and go to state 193
+    FLOAT           shift and go to state 194
+    NUMBER          shift and go to state 195
     MINUS           shift and go to state 109
-    VARIABLE        shift and go to state 194
-    LPAR            shift and go to state 225
+    VARIABLE        shift and go to state 196
+    LPAR            shift and go to state 227
 
-    operadores                     shift and go to state 224
-    opMatematicas                  shift and go to state 226
+    operadores                     shift and go to state 226
+    opMatematicas                  shift and go to state 228
     enteros                        shift and go to state 111
     suma                           shift and go to state 102
     resta                          shift and go to state 103
@@ -4132,7 +4319,7 @@ state 191
     division                       shift and go to state 105
     exponenciacion                 shift and go to state 106
 
-state 192
+state 194
 
     (124) operadores -> FLOAT .
 
@@ -4155,10 +4342,11 @@ state 192
     LPAR            reduce using rule 124 (operadores -> FLOAT .)
     END             reduce using rule 124 (operadores -> FLOAT .)
     RETURN          reduce using rule 124 (operadores -> FLOAT .)
+    ELSE            reduce using rule 124 (operadores -> FLOAT .)
     RPAR            reduce using rule 124 (operadores -> FLOAT .)
 
 
-state 193
+state 195
 
     (125) enteros -> NUMBER .
 
@@ -4181,10 +4369,11 @@ state 193
     LPAR            reduce using rule 125 (enteros -> NUMBER .)
     END             reduce using rule 125 (enteros -> NUMBER .)
     RETURN          reduce using rule 125 (enteros -> NUMBER .)
+    ELSE            reduce using rule 125 (enteros -> NUMBER .)
     RPAR            reduce using rule 125 (enteros -> NUMBER .)
 
 
-state 194
+state 196
 
     (104) suma -> VARIABLE . PLUS NUMBER
     (109) resta -> VARIABLE . MINUS NUMBER
@@ -4193,7 +4382,7 @@ state 194
     MINUS           shift and go to state 142
 
 
-state 195
+state 197
 
     (110) resta -> operadores MINUS operadores .
     (105) suma -> operadores . PLUS operadores
@@ -4226,6 +4415,7 @@ state 195
     LPAR            reduce using rule 110 (resta -> operadores MINUS operadores .)
     END             reduce using rule 110 (resta -> operadores MINUS operadores .)
     RETURN          reduce using rule 110 (resta -> operadores MINUS operadores .)
+    ELSE            reduce using rule 110 (resta -> operadores MINUS operadores .)
     RPAR            reduce using rule 110 (resta -> operadores MINUS operadores .)
     PLUS            shift and go to state 154
     MINUS           shift and go to state 155
@@ -4234,7 +4424,7 @@ state 195
     EXPONENTIATION  shift and go to state 158
 
 
-state 196
+state 198
 
     (111) resta -> operadores MINUS opMatematicas .
 
@@ -4252,10 +4442,11 @@ state 196
     LPAR            reduce using rule 111 (resta -> operadores MINUS opMatematicas .)
     END             reduce using rule 111 (resta -> operadores MINUS opMatematicas .)
     RETURN          reduce using rule 111 (resta -> operadores MINUS opMatematicas .)
+    ELSE            reduce using rule 111 (resta -> operadores MINUS opMatematicas .)
     RPAR            reduce using rule 111 (resta -> operadores MINUS opMatematicas .)
 
 
-state 197
+state 199
 
     (112) resta -> operadores MINUS LPAR . operadores RPAR
     (113) resta -> operadores MINUS LPAR . opMatematicas RPAR
@@ -4290,14 +4481,14 @@ state 197
     (121) exponenciacion -> . LPAR operadores RPAR EXPONENTIATION operadores
     (122) exponenciacion -> . LPAR opMatematicas RPAR EXPONENTIATION operadores
 
-    FLOAT           shift and go to state 192
-    NUMBER          shift and go to state 193
+    FLOAT           shift and go to state 194
+    NUMBER          shift and go to state 195
     MINUS           shift and go to state 109
-    VARIABLE        shift and go to state 194
-    LPAR            shift and go to state 225
+    VARIABLE        shift and go to state 196
+    LPAR            shift and go to state 227
 
-    operadores                     shift and go to state 227
-    opMatematicas                  shift and go to state 228
+    operadores                     shift and go to state 229
+    opMatematicas                  shift and go to state 230
     enteros                        shift and go to state 111
     suma                           shift and go to state 102
     resta                          shift and go to state 103
@@ -4305,7 +4496,7 @@ state 197
     division                       shift and go to state 105
     exponenciacion                 shift and go to state 106
 
-state 198
+state 200
 
     (114) multiplicacion -> operadores TIMES operadores .
 
@@ -4323,10 +4514,11 @@ state 198
     LPAR            reduce using rule 114 (multiplicacion -> operadores TIMES operadores .)
     END             reduce using rule 114 (multiplicacion -> operadores TIMES operadores .)
     RETURN          reduce using rule 114 (multiplicacion -> operadores TIMES operadores .)
+    ELSE            reduce using rule 114 (multiplicacion -> operadores TIMES operadores .)
     RPAR            reduce using rule 114 (multiplicacion -> operadores TIMES operadores .)
 
 
-state 199
+state 201
 
     (115) multiplicacion -> operadores TIMES LPAR . operadores RPAR
     (116) multiplicacion -> operadores TIMES LPAR . opMatematicas RPAR
@@ -4359,14 +4551,14 @@ state 199
     (121) exponenciacion -> . LPAR operadores RPAR EXPONENTIATION operadores
     (122) exponenciacion -> . LPAR opMatematicas RPAR EXPONENTIATION operadores
 
-    FLOAT           shift and go to state 192
-    NUMBER          shift and go to state 193
+    FLOAT           shift and go to state 194
+    NUMBER          shift and go to state 195
     MINUS           shift and go to state 109
-    VARIABLE        shift and go to state 194
-    LPAR            shift and go to state 225
+    VARIABLE        shift and go to state 196
+    LPAR            shift and go to state 227
 
-    operadores                     shift and go to state 229
-    opMatematicas                  shift and go to state 230
+    operadores                     shift and go to state 231
+    opMatematicas                  shift and go to state 232
     enteros                        shift and go to state 111
     suma                           shift and go to state 102
     resta                          shift and go to state 103
@@ -4374,7 +4566,7 @@ state 199
     division                       shift and go to state 105
     exponenciacion                 shift and go to state 106
 
-state 200
+state 202
 
     (117) division -> operadores DIVIDE operadores .
 
@@ -4392,10 +4584,11 @@ state 200
     LPAR            reduce using rule 117 (division -> operadores DIVIDE operadores .)
     END             reduce using rule 117 (division -> operadores DIVIDE operadores .)
     RETURN          reduce using rule 117 (division -> operadores DIVIDE operadores .)
+    ELSE            reduce using rule 117 (division -> operadores DIVIDE operadores .)
     RPAR            reduce using rule 117 (division -> operadores DIVIDE operadores .)
 
 
-state 201
+state 203
 
     (118) division -> operadores DIVIDE LPAR . operadores RPAR
     (119) division -> operadores DIVIDE LPAR . opMatematicas RPAR
@@ -4428,14 +4621,14 @@ state 201
     (121) exponenciacion -> . LPAR operadores RPAR EXPONENTIATION operadores
     (122) exponenciacion -> . LPAR opMatematicas RPAR EXPONENTIATION operadores
 
-    FLOAT           shift and go to state 192
-    NUMBER          shift and go to state 193
+    FLOAT           shift and go to state 194
+    NUMBER          shift and go to state 195
     MINUS           shift and go to state 109
-    VARIABLE        shift and go to state 194
-    LPAR            shift and go to state 225
+    VARIABLE        shift and go to state 196
+    LPAR            shift and go to state 227
 
-    operadores                     shift and go to state 231
-    opMatematicas                  shift and go to state 232
+    operadores                     shift and go to state 233
+    opMatematicas                  shift and go to state 234
     enteros                        shift and go to state 111
     suma                           shift and go to state 102
     resta                          shift and go to state 103
@@ -4443,7 +4636,7 @@ state 201
     division                       shift and go to state 105
     exponenciacion                 shift and go to state 106
 
-state 202
+state 204
 
     (120) exponenciacion -> operadores EXPONENTIATION operadores .
 
@@ -4461,17 +4654,18 @@ state 202
     LPAR            reduce using rule 120 (exponenciacion -> operadores EXPONENTIATION operadores .)
     END             reduce using rule 120 (exponenciacion -> operadores EXPONENTIATION operadores .)
     RETURN          reduce using rule 120 (exponenciacion -> operadores EXPONENTIATION operadores .)
+    ELSE            reduce using rule 120 (exponenciacion -> operadores EXPONENTIATION operadores .)
     RPAR            reduce using rule 120 (exponenciacion -> operadores EXPONENTIATION operadores .)
 
 
-state 203
+state 205
 
     (128) parametros -> VARIABLE COMMA parametros .
 
     RPAR            reduce using rule 128 (parametros -> VARIABLE COMMA parametros .)
 
 
-state 204
+state 206
 
     (76) addValueHash -> VARIABLE LCOR expression RCOR ASIGN . expression
     (77) modValueHash -> VARIABLE LCOR expression RCOR ASIGN . expression
@@ -4494,12 +4688,12 @@ state 204
     VARIABLE        shift and go to state 77
     LPAR            shift and go to state 27
 
-    expression                     shift and go to state 233
+    expression                     shift and go to state 235
     term                           shift and go to state 22
     boleano                        shift and go to state 23
     factor                         shift and go to state 21
 
-state 205
+state 207
 
     (79) metodoBoleano -> VARIABLE POINT VARIABLE QUESTION LPAR . expression RPAR
     (80) metodoBoleano -> VARIABLE POINT VARIABLE QUESTION LPAR . RPAR
@@ -4514,7 +4708,7 @@ state 205
     (55) factor -> . VARIABLE
     (56) factor -> . LPAR expression RPAR
 
-    RPAR            shift and go to state 235
+    RPAR            shift and go to state 237
     TRUE            shift and go to state 31
     FALSE           shift and go to state 32
     NUMBER          shift and go to state 29
@@ -4523,101 +4717,84 @@ state 205
     VARIABLE        shift and go to state 77
     LPAR            shift and go to state 27
 
-    expression                     shift and go to state 234
+    expression                     shift and go to state 236
     term                           shift and go to state 22
     boleano                        shift and go to state 23
     factor                         shift and go to state 21
 
-state 206
+state 208
 
     (78) deleteValueHash -> VARIABLE POINT DELETE LPAR expression . RPAR
 
-    RPAR            shift and go to state 236
-
-
-state 207
-
-    (90) insertArray -> VARIABLE POINT INSERT LPAR argumentosA . RPAR
-
-    RPAR            shift and go to state 237
-
-
-state 208
-
-    (89) argumentosA -> NUMBER . COMMA factor
-
-    COMMA           shift and go to state 238
+    RPAR            shift and go to state 238
 
 
 state 209
 
-    (91) deleteArray -> VARIABLE POINT DELETE_AT LPAR NUMBER . RPAR
+    (90) insertArray -> VARIABLE POINT INSERT LPAR argumentosA . RPAR
 
     RPAR            shift and go to state 239
 
 
 state 210
 
-    (97) searchStack -> VARIABLE POINT SEARCH LPAR factor . RPAR
+    (89) argumentosA -> NUMBER . COMMA factor
 
-    RPAR            shift and go to state 240
+    COMMA           shift and go to state 240
 
 
 state 211
 
-    (98) pushStack -> VARIABLE POINT PUSH LPAR factor . RPAR
+    (91) deleteArray -> VARIABLE POINT DELETE_AT LPAR NUMBER . RPAR
 
     RPAR            shift and go to state 241
 
 
 state 212
 
+    (97) searchStack -> VARIABLE POINT SEARCH LPAR factor . RPAR
+
+    RPAR            shift and go to state 242
+
+
+state 213
+
+    (98) pushStack -> VARIABLE POINT PUSH LPAR factor . RPAR
+
+    RPAR            shift and go to state 243
+
+
+state 214
+
     (133) funciones -> encabezado repCuerpo RETURN expression END .
 
     $end            reduce using rule 133 (funciones -> encabezado repCuerpo RETURN expression END .)
 
 
-state 213
+state 215
 
-    (136) condicional -> IF comparacion D_POINT repCuerpo END .
-    (137) condicional -> IF comparacion D_POINT repCuerpo END . cond_else
-    (138) cond_else -> . ELSE D_POINT repCuerpo END
-
-    $end            reduce using rule 136 (condicional -> IF comparacion D_POINT repCuerpo END .)
-    VARIABLE        reduce using rule 136 (condicional -> IF comparacion D_POINT repCuerpo END .)
-    IF              reduce using rule 136 (condicional -> IF comparacion D_POINT repCuerpo END .)
-    PUTS            reduce using rule 136 (condicional -> IF comparacion D_POINT repCuerpo END .)
-    FOR             reduce using rule 136 (condicional -> IF comparacion D_POINT repCuerpo END .)
-    WHILE           reduce using rule 136 (condicional -> IF comparacion D_POINT repCuerpo END .)
-    TRUE            reduce using rule 136 (condicional -> IF comparacion D_POINT repCuerpo END .)
-    FALSE           reduce using rule 136 (condicional -> IF comparacion D_POINT repCuerpo END .)
-    NUMBER          reduce using rule 136 (condicional -> IF comparacion D_POINT repCuerpo END .)
-    STRING          reduce using rule 136 (condicional -> IF comparacion D_POINT repCuerpo END .)
-    FLOAT           reduce using rule 136 (condicional -> IF comparacion D_POINT repCuerpo END .)
-    LPAR            reduce using rule 136 (condicional -> IF comparacion D_POINT repCuerpo END .)
-    END             reduce using rule 136 (condicional -> IF comparacion D_POINT repCuerpo END .)
-    RETURN          reduce using rule 136 (condicional -> IF comparacion D_POINT repCuerpo END .)
-    ELSE            shift and go to state 243
-
-    cond_else                      shift and go to state 242
-
-state 214
-
-    (81) while -> WHILE LPAR comparacion RPAR repCuerpo . END
-    (82) while -> WHILE LPAR comparacion RPAR repCuerpo . END while
+    (138) cond_else -> ELSE repCuerpo . END
 
     END             shift and go to state 244
 
 
-state 215
+state 216
+
+    (81) while -> WHILE LPAR comparacion RPAR repCuerpo . END
+    (82) while -> WHILE LPAR comparacion RPAR repCuerpo . END while
+
+    END             shift and go to state 245
+
+
+state 217
 
     (92) for -> FOR VARIABLE IN NUMBER POINT . POINT NUMBER DO repCuerpo END
     (93) for -> FOR VARIABLE IN NUMBER POINT . POINT NUMBER DO repCuerpo END for
 
-    POINT           shift and go to state 245
+    POINT           shift and go to state 246
 
 
-state 216
+state 218
 
     (130) encabezado -> DEF VARIABLE LPAR parametros RPAR .
 
@@ -4635,7 +4812,7 @@ state 216
     LPAR            reduce using rule 130 (encabezado -> DEF VARIABLE LPAR parametros RPAR .)
 
 
-state 217
+state 219
 
     (75) getValueHash -> VARIABLE LCOR expression RCOR .
 
@@ -4653,9 +4830,10 @@ state 217
     LPAR            reduce using rule 75 (getValueHash -> VARIABLE LCOR expression RCOR .)
     END             reduce using rule 75 (getValueHash -> VARIABLE LCOR expression RCOR .)
     RETURN          reduce using rule 75 (getValueHash -> VARIABLE LCOR expression RCOR .)
+    ELSE            reduce using rule 75 (getValueHash -> VARIABLE LCOR expression RCOR .)
 
 
-state 218
+state 220
 
     (121) exponenciacion -> LPAR operadores RPAR EXPONENTIATION . operadores
     (123) operadores -> . enteros
@@ -4663,14 +4841,14 @@ state 218
     (125) enteros -> . NUMBER
     (126) enteros -> . MINUS NUMBER
 
-    FLOAT           shift and go to state 192
-    NUMBER          shift and go to state 193
+    FLOAT           shift and go to state 194
+    NUMBER          shift and go to state 195
     MINUS           shift and go to state 109
 
-    operadores                     shift and go to state 246
+    operadores                     shift and go to state 247
     enteros                        shift and go to state 111
 
-state 219
+state 221
 
     (122) exponenciacion -> LPAR opMatematicas RPAR EXPONENTIATION . operadores
     (123) operadores -> . enteros
@@ -4678,14 +4856,14 @@ state 219
     (125) enteros -> . NUMBER
     (126) enteros -> . MINUS NUMBER
 
-    FLOAT           shift and go to state 192
-    NUMBER          shift and go to state 193
+    FLOAT           shift and go to state 194
+    NUMBER          shift and go to state 195
     MINUS           shift and go to state 109
 
-    operadores                     shift and go to state 247
+    operadores                     shift and go to state 248
     enteros                        shift and go to state 111
 
-state 220
+state 222
 
     (73) cuerpoHash -> expression ASIGN GREATER . expression
     (74) cuerpoHash -> expression ASIGN GREATER . expression COMMA cuerpoHash
@@ -4708,12 +4886,12 @@ state 220
     VARIABLE        shift and go to state 77
     LPAR            shift and go to state 27
 
-    expression                     shift and go to state 248
+    expression                     shift and go to state 249
     term                           shift and go to state 22
     boleano                        shift and go to state 23
     factor                         shift and go to state 21
 
-state 221
+state 223
 
     (86) parametrosA -> factor COMMA parametrosA .
 
@@ -4721,7 +4899,7 @@ state 221
     RPAR            reduce using rule 86 (parametrosA -> factor COMMA parametrosA .)
 
 
-state 222
+state 224
 
     (95) stack -> STACK LPAR parametrosA RPAR .
 
@@ -4739,9 +4917,10 @@ state 222
     LPAR            reduce using rule 95 (stack -> STACK LPAR parametrosA RPAR .)
     END             reduce using rule 95 (stack -> STACK LPAR parametrosA RPAR .)
     RETURN          reduce using rule 95 (stack -> STACK LPAR parametrosA RPAR .)
+    ELSE            reduce using rule 95 (stack -> STACK LPAR parametrosA RPAR .)
 
 
-state 223
+state 225
 
     (96) stack -> STACK LPAR vacio RPAR .
 
@@ -4759,9 +4938,10 @@ state 223
     LPAR            reduce using rule 96 (stack -> STACK LPAR vacio RPAR .)
     END             reduce using rule 96 (stack -> STACK LPAR vacio RPAR .)
     RETURN          reduce using rule 96 (stack -> STACK LPAR vacio RPAR .)
+    ELSE            reduce using rule 96 (stack -> STACK LPAR vacio RPAR .)
 
 
-state 224
+state 226
 
     (107) suma -> operadores PLUS LPAR operadores . RPAR
     (121) exponenciacion -> LPAR operadores . RPAR EXPONENTIATION operadores
@@ -4781,7 +4961,7 @@ state 224
     (119) division -> operadores . DIVIDE LPAR opMatematicas RPAR
     (120) exponenciacion -> operadores . EXPONENTIATION operadores
 
-    RPAR            shift and go to state 249
+    RPAR            shift and go to state 250
     PLUS            shift and go to state 154
     MINUS           shift and go to state 155
     TIMES           shift and go to state 156
@@ -4789,7 +4969,7 @@ state 224
     EXPONENTIATION  shift and go to state 158
 
 
-state 225
+state 227
 
     (121) exponenciacion -> LPAR . operadores RPAR EXPONENTIATION operadores
     (122) exponenciacion -> LPAR . opMatematicas RPAR EXPONENTIATION operadores
@@ -4822,11 +5002,11 @@ state 225
     (121) exponenciacion -> . LPAR operadores RPAR EXPONENTIATION operadores
     (122) exponenciacion -> . LPAR opMatematicas RPAR EXPONENTIATION operadores
 
-    FLOAT           shift and go to state 192
-    NUMBER          shift and go to state 193
+    FLOAT           shift and go to state 194
+    NUMBER          shift and go to state 195
     MINUS           shift and go to state 109
-    VARIABLE        shift and go to state 194
-    LPAR            shift and go to state 225
+    VARIABLE        shift and go to state 196
+    LPAR            shift and go to state 227
 
     operadores                     shift and go to state 143
     opMatematicas                  shift and go to state 144
@@ -4837,15 +5017,15 @@ state 225
     division                       shift and go to state 105
     exponenciacion                 shift and go to state 106
 
-state 226
+state 228
 
     (108) suma -> operadores PLUS LPAR opMatematicas . RPAR
     (122) exponenciacion -> LPAR opMatematicas . RPAR EXPONENTIATION operadores
 
-    RPAR            shift and go to state 250
+    RPAR            shift and go to state 251
 
 
-state 227
+state 229
 
     (112) resta -> operadores MINUS LPAR operadores . RPAR
     (121) exponenciacion -> LPAR operadores . RPAR EXPONENTIATION operadores
@@ -4865,7 +5045,7 @@ state 227
     (119) division -> operadores . DIVIDE LPAR opMatematicas RPAR
     (120) exponenciacion -> operadores . EXPONENTIATION operadores
 
-    RPAR            shift and go to state 251
+    RPAR            shift and go to state 252
     PLUS            shift and go to state 154
     MINUS           shift and go to state 155
     TIMES           shift and go to state 156
@@ -4873,15 +5053,15 @@ state 227
     EXPONENTIATION  shift and go to state 158
 
 
-state 228
+state 230
 
     (113) resta -> operadores MINUS LPAR opMatematicas . RPAR
     (122) exponenciacion -> LPAR opMatematicas . RPAR EXPONENTIATION operadores
 
-    RPAR            shift and go to state 252
+    RPAR            shift and go to state 253
 
 
-state 229
+state 231
 
     (115) multiplicacion -> operadores TIMES LPAR operadores . RPAR
     (105) suma -> operadores . PLUS operadores
@@ -4900,7 +5080,7 @@ state 229
     (119) division -> operadores . DIVIDE LPAR opMatematicas RPAR
     (120) exponenciacion -> operadores . EXPONENTIATION operadores
 
-    RPAR            shift and go to state 253
+    RPAR            shift and go to state 254
     PLUS            shift and go to state 154
     MINUS           shift and go to state 155
     TIMES           shift and go to state 156
@@ -4908,14 +5088,14 @@ state 229
     EXPONENTIATION  shift and go to state 158
 
 
-state 230
+state 232
 
     (116) multiplicacion -> operadores TIMES LPAR opMatematicas . RPAR
 
-    RPAR            shift and go to state 254
+    RPAR            shift and go to state 255
 
 
-state 231
+state 233
 
     (118) division -> operadores DIVIDE LPAR operadores . RPAR
     (105) suma -> operadores . PLUS operadores
@@ -4934,7 +5114,7 @@ state 231
     (119) division -> operadores . DIVIDE LPAR opMatematicas RPAR
     (120) exponenciacion -> operadores . EXPONENTIATION operadores
 
-    RPAR            shift and go to state 255
+    RPAR            shift and go to state 256
     PLUS            shift and go to state 154
     MINUS           shift and go to state 155
     TIMES           shift and go to state 156
@@ -4942,14 +5122,14 @@ state 231
     EXPONENTIATION  shift and go to state 158
 
 
-state 232
+state 234
 
     (119) division -> operadores DIVIDE LPAR opMatematicas . RPAR
 
-    RPAR            shift and go to state 256
+    RPAR            shift and go to state 257
 
 
-state 233
+state 235
 
     (76) addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .
     (77) modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .
@@ -4968,6 +5148,7 @@ state 233
   ! reduce/reduce conflict for LPAR resolved using rule 76 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
   ! reduce/reduce conflict for END resolved using rule 76 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
   ! reduce/reduce conflict for RETURN resolved using rule 76 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
+  ! reduce/reduce conflict for ELSE resolved using rule 76 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
     $end            reduce using rule 76 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
     VARIABLE        reduce using rule 76 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
     IF              reduce using rule 76 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
@@ -4982,6 +5163,7 @@ state 233
     LPAR            reduce using rule 76 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
     END             reduce using rule 76 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
     RETURN          reduce using rule 76 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
+    ELSE            reduce using rule 76 (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .)
 
   ! $end            [ reduce using rule 77 (modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .) ]
   ! VARIABLE        [ reduce using rule 77 (modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .) ]
@@ -4997,23 +5179,24 @@ state 233
   ! LPAR            [ reduce using rule 77 (modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .) ]
   ! END             [ reduce using rule 77 (modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .) ]
   ! RETURN          [ reduce using rule 77 (modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .) ]
+  ! ELSE            [ reduce using rule 77 (modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression .) ]
 
 
-state 234
+state 236
 
     (79) metodoBoleano -> VARIABLE POINT VARIABLE QUESTION LPAR expression . RPAR
 
-    RPAR            shift and go to state 257
+    RPAR            shift and go to state 258
 
 
-state 235
+state 237
 
     (80) metodoBoleano -> VARIABLE POINT VARIABLE QUESTION LPAR RPAR .
 
     $end            reduce using rule 80 (metodoBoleano -> VARIABLE POINT VARIABLE QUESTION LPAR RPAR .)
 
 
-state 236
+state 238
 
     (78) deleteValueHash -> VARIABLE POINT DELETE LPAR expression RPAR .
 
@@ -5031,9 +5214,10 @@ state 236
     LPAR            reduce using rule 78 (deleteValueHash -> VARIABLE POINT DELETE LPAR expression RPAR .)
     END             reduce using rule 78 (deleteValueHash -> VARIABLE POINT DELETE LPAR expression RPAR .)
     RETURN          reduce using rule 78 (deleteValueHash -> VARIABLE POINT DELETE LPAR expression RPAR .)
+    ELSE            reduce using rule 78 (deleteValueHash -> VARIABLE POINT DELETE LPAR expression RPAR .)
 
 
-state 237
+state 239
 
     (90) insertArray -> VARIABLE POINT INSERT LPAR argumentosA RPAR .
 
@@ -5051,9 +5235,10 @@ state 237
     LPAR            reduce using rule 90 (insertArray -> VARIABLE POINT INSERT LPAR argumentosA RPAR .)
     END             reduce using rule 90 (insertArray -> VARIABLE POINT INSERT LPAR argumentosA RPAR .)
     RETURN          reduce using rule 90 (insertArray -> VARIABLE POINT INSERT LPAR argumentosA RPAR .)
+    ELSE            reduce using rule 90 (insertArray -> VARIABLE POINT INSERT LPAR argumentosA RPAR .)
 
 
-state 238
+state 240
 
     (89) argumentosA -> NUMBER COMMA . factor
     (52) factor -> . NUMBER
@@ -5068,9 +5253,9 @@ state 238
     VARIABLE        shift and go to state 77
     LPAR            shift and go to state 27
 
-    factor                         shift and go to state 258
+    factor                         shift and go to state 259
 
-state 239
+state 241
 
     (91) deleteArray -> VARIABLE POINT DELETE_AT LPAR NUMBER RPAR .
 
@@ -5088,9 +5273,10 @@ state 239
     LPAR            reduce using rule 91 (deleteArray -> VARIABLE POINT DELETE_AT LPAR NUMBER RPAR .)
     END             reduce using rule 91 (deleteArray -> VARIABLE POINT DELETE_AT LPAR NUMBER RPAR .)
     RETURN          reduce using rule 91 (deleteArray -> VARIABLE POINT DELETE_AT LPAR NUMBER RPAR .)
+    ELSE            reduce using rule 91 (deleteArray -> VARIABLE POINT DELETE_AT LPAR NUMBER RPAR .)
 
 
-state 240
+state 242
 
     (97) searchStack -> VARIABLE POINT SEARCH LPAR factor RPAR .
 
@@ -5108,9 +5294,10 @@ state 240
     LPAR            reduce using rule 97 (searchStack -> VARIABLE POINT SEARCH LPAR factor RPAR .)
     END             reduce using rule 97 (searchStack -> VARIABLE POINT SEARCH LPAR factor RPAR .)
     RETURN          reduce using rule 97 (searchStack -> VARIABLE POINT SEARCH LPAR factor RPAR .)
+    ELSE            reduce using rule 97 (searchStack -> VARIABLE POINT SEARCH LPAR factor RPAR .)
 
 
-state 241
+state 243
 
     (98) pushStack -> VARIABLE POINT PUSH LPAR factor RPAR .
 
@@ -5128,36 +5315,31 @@ state 241
     LPAR            reduce using rule 98 (pushStack -> VARIABLE POINT PUSH LPAR factor RPAR .)
     END             reduce using rule 98 (pushStack -> VARIABLE POINT PUSH LPAR factor RPAR .)
     RETURN          reduce using rule 98 (pushStack -> VARIABLE POINT PUSH LPAR factor RPAR .)
-
-
-state 242
-
-    (137) condicional -> IF comparacion D_POINT repCuerpo END cond_else .
-
-    $end            reduce using rule 137 (condicional -> IF comparacion D_POINT repCuerpo END cond_else .)
-    VARIABLE        reduce using rule 137 (condicional -> IF comparacion D_POINT repCuerpo END cond_else .)
-    IF              reduce using rule 137 (condicional -> IF comparacion D_POINT repCuerpo END cond_else .)
-    PUTS            reduce using rule 137 (condicional -> IF comparacion D_POINT repCuerpo END cond_else .)
-    FOR             reduce using rule 137 (condicional -> IF comparacion D_POINT repCuerpo END cond_else .)
-    WHILE           reduce using rule 137 (condicional -> IF comparacion D_POINT repCuerpo END cond_else .)
-    TRUE            reduce using rule 137 (condicional -> IF comparacion D_POINT repCuerpo END cond_else .)
-    FALSE           reduce using rule 137 (condicional -> IF comparacion D_POINT repCuerpo END cond_else .)
-    NUMBER          reduce using rule 137 (condicional -> IF comparacion D_POINT repCuerpo END cond_else .)
-    STRING          reduce using rule 137 (condicional -> IF comparacion D_POINT repCuerpo END cond_else .)
-    FLOAT           reduce using rule 137 (condicional -> IF comparacion D_POINT repCuerpo END cond_else .)
-    LPAR            reduce using rule 137 (condicional -> IF comparacion D_POINT repCuerpo END cond_else .)
-    END             reduce using rule 137 (condicional -> IF comparacion D_POINT repCuerpo END cond_else .)
-    RETURN          reduce using rule 137 (condicional -> IF comparacion D_POINT repCuerpo END cond_else .)
-
-
-state 243
-
-    (138) cond_else -> ELSE . D_POINT repCuerpo END
-
-    D_POINT         shift and go to state 259
+    ELSE            reduce using rule 98 (pushStack -> VARIABLE POINT PUSH LPAR factor RPAR .)
 
 
 state 244
+
+    (138) cond_else -> ELSE repCuerpo END .
+
+    $end            reduce using rule 138 (cond_else -> ELSE repCuerpo END .)
+    VARIABLE        reduce using rule 138 (cond_else -> ELSE repCuerpo END .)
+    IF              reduce using rule 138 (cond_else -> ELSE repCuerpo END .)
+    PUTS            reduce using rule 138 (cond_else -> ELSE repCuerpo END .)
+    FOR             reduce using rule 138 (cond_else -> ELSE repCuerpo END .)
+    WHILE           reduce using rule 138 (cond_else -> ELSE repCuerpo END .)
+    TRUE            reduce using rule 138 (cond_else -> ELSE repCuerpo END .)
+    FALSE           reduce using rule 138 (cond_else -> ELSE repCuerpo END .)
+    NUMBER          reduce using rule 138 (cond_else -> ELSE repCuerpo END .)
+    STRING          reduce using rule 138 (cond_else -> ELSE repCuerpo END .)
+    FLOAT           reduce using rule 138 (cond_else -> ELSE repCuerpo END .)
+    LPAR            reduce using rule 138 (cond_else -> ELSE repCuerpo END .)
+    END             reduce using rule 138 (cond_else -> ELSE repCuerpo END .)
+    RETURN          reduce using rule 138 (cond_else -> ELSE repCuerpo END .)
+    ELSE            reduce using rule 138 (cond_else -> ELSE repCuerpo END .)
+
+
+state 245
 
     (81) while -> WHILE LPAR comparacion RPAR repCuerpo END .
     (82) while -> WHILE LPAR comparacion RPAR repCuerpo END . while
@@ -5178,13 +5360,14 @@ state 244
     LPAR            reduce using rule 81 (while -> WHILE LPAR comparacion RPAR repCuerpo END .)
     END             reduce using rule 81 (while -> WHILE LPAR comparacion RPAR repCuerpo END .)
     RETURN          reduce using rule 81 (while -> WHILE LPAR comparacion RPAR repCuerpo END .)
+    ELSE            reduce using rule 81 (while -> WHILE LPAR comparacion RPAR repCuerpo END .)
     WHILE           shift and go to state 26
 
   ! WHILE           [ reduce using rule 81 (while -> WHILE LPAR comparacion RPAR repCuerpo END .) ]
 
     while                          shift and go to state 260
 
-state 245
+state 246
 
     (92) for -> FOR VARIABLE IN NUMBER POINT POINT . NUMBER DO repCuerpo END
     (93) for -> FOR VARIABLE IN NUMBER POINT POINT . NUMBER DO repCuerpo END for
@@ -5192,7 +5375,7 @@ state 245
     NUMBER          shift and go to state 261
 
 
-state 246
+state 247
 
     (121) exponenciacion -> LPAR operadores RPAR EXPONENTIATION operadores .
 
@@ -5210,10 +5393,11 @@ state 246
     LPAR            reduce using rule 121 (exponenciacion -> LPAR operadores RPAR EXPONENTIATION operadores .)
     END             reduce using rule 121 (exponenciacion -> LPAR operadores RPAR EXPONENTIATION operadores .)
     RETURN          reduce using rule 121 (exponenciacion -> LPAR operadores RPAR EXPONENTIATION operadores .)
+    ELSE            reduce using rule 121 (exponenciacion -> LPAR operadores RPAR EXPONENTIATION operadores .)
     RPAR            reduce using rule 121 (exponenciacion -> LPAR operadores RPAR EXPONENTIATION operadores .)
 
 
-state 247
+state 248
 
     (122) exponenciacion -> LPAR opMatematicas RPAR EXPONENTIATION operadores .
 
@@ -5231,10 +5415,11 @@ state 247
     LPAR            reduce using rule 122 (exponenciacion -> LPAR opMatematicas RPAR EXPONENTIATION operadores .)
     END             reduce using rule 122 (exponenciacion -> LPAR opMatematicas RPAR EXPONENTIATION operadores .)
     RETURN          reduce using rule 122 (exponenciacion -> LPAR opMatematicas RPAR EXPONENTIATION operadores .)
+    ELSE            reduce using rule 122 (exponenciacion -> LPAR opMatematicas RPAR EXPONENTIATION operadores .)
     RPAR            reduce using rule 122 (exponenciacion -> LPAR opMatematicas RPAR EXPONENTIATION operadores .)
 
 
-state 248
+state 249
 
     (73) cuerpoHash -> expression ASIGN GREATER expression .
     (74) cuerpoHash -> expression ASIGN GREATER expression . COMMA cuerpoHash
@@ -5243,7 +5428,7 @@ state 248
     COMMA           shift and go to state 262
 
 
-state 249
+state 250
 
     (107) suma -> operadores PLUS LPAR operadores RPAR .
     (121) exponenciacion -> LPAR operadores RPAR . EXPONENTIATION operadores
@@ -5262,11 +5447,12 @@ state 249
     LPAR            reduce using rule 107 (suma -> operadores PLUS LPAR operadores RPAR .)
     END             reduce using rule 107 (suma -> operadores PLUS LPAR operadores RPAR .)
     RETURN          reduce using rule 107 (suma -> operadores PLUS LPAR operadores RPAR .)
+    ELSE            reduce using rule 107 (suma -> operadores PLUS LPAR operadores RPAR .)
     RPAR            reduce using rule 107 (suma -> operadores PLUS LPAR operadores RPAR .)
-    EXPONENTIATION  shift and go to state 218
+    EXPONENTIATION  shift and go to state 220
 
 
-state 250
+state 251
 
     (108) suma -> operadores PLUS LPAR opMatematicas RPAR .
     (122) exponenciacion -> LPAR opMatematicas RPAR . EXPONENTIATION operadores
@@ -5285,11 +5471,12 @@ state 250
     LPAR            reduce using rule 108 (suma -> operadores PLUS LPAR opMatematicas RPAR .)
     END             reduce using rule 108 (suma -> operadores PLUS LPAR opMatematicas RPAR .)
     RETURN          reduce using rule 108 (suma -> operadores PLUS LPAR opMatematicas RPAR .)
+    ELSE            reduce using rule 108 (suma -> operadores PLUS LPAR opMatematicas RPAR .)
     RPAR            reduce using rule 108 (suma -> operadores PLUS LPAR opMatematicas RPAR .)
-    EXPONENTIATION  shift and go to state 219
+    EXPONENTIATION  shift and go to state 221
 
 
-state 251
+state 252
 
     (112) resta -> operadores MINUS LPAR operadores RPAR .
     (121) exponenciacion -> LPAR operadores RPAR . EXPONENTIATION operadores
@@ -5308,11 +5495,12 @@ state 251
     LPAR            reduce using rule 112 (resta -> operadores MINUS LPAR operadores RPAR .)
     END             reduce using rule 112 (resta -> operadores MINUS LPAR operadores RPAR .)
     RETURN          reduce using rule 112 (resta -> operadores MINUS LPAR operadores RPAR .)
+    ELSE            reduce using rule 112 (resta -> operadores MINUS LPAR operadores RPAR .)
     RPAR            reduce using rule 112 (resta -> operadores MINUS LPAR operadores RPAR .)
-    EXPONENTIATION  shift and go to state 218
+    EXPONENTIATION  shift and go to state 220
 
 
-state 252
+state 253
 
     (113) resta -> operadores MINUS LPAR opMatematicas RPAR .
     (122) exponenciacion -> LPAR opMatematicas RPAR . EXPONENTIATION operadores
@@ -5331,11 +5519,12 @@ state 252
     LPAR            reduce using rule 113 (resta -> operadores MINUS LPAR opMatematicas RPAR .)
     END             reduce using rule 113 (resta -> operadores MINUS LPAR opMatematicas RPAR .)
     RETURN          reduce using rule 113 (resta -> operadores MINUS LPAR opMatematicas RPAR .)
+    ELSE            reduce using rule 113 (resta -> operadores MINUS LPAR opMatematicas RPAR .)
     RPAR            reduce using rule 113 (resta -> operadores MINUS LPAR opMatematicas RPAR .)
-    EXPONENTIATION  shift and go to state 219
+    EXPONENTIATION  shift and go to state 221
 
 
-state 253
+state 254
 
     (115) multiplicacion -> operadores TIMES LPAR operadores RPAR .
 
@@ -5353,10 +5542,11 @@ state 253
     LPAR            reduce using rule 115 (multiplicacion -> operadores TIMES LPAR operadores RPAR .)
     END             reduce using rule 115 (multiplicacion -> operadores TIMES LPAR operadores RPAR .)
     RETURN          reduce using rule 115 (multiplicacion -> operadores TIMES LPAR operadores RPAR .)
+    ELSE            reduce using rule 115 (multiplicacion -> operadores TIMES LPAR operadores RPAR .)
     RPAR            reduce using rule 115 (multiplicacion -> operadores TIMES LPAR operadores RPAR .)
 
 
-state 254
+state 255
 
     (116) multiplicacion -> operadores TIMES LPAR opMatematicas RPAR .
 
@@ -5374,10 +5564,11 @@ state 254
     LPAR            reduce using rule 116 (multiplicacion -> operadores TIMES LPAR opMatematicas RPAR .)
     END             reduce using rule 116 (multiplicacion -> operadores TIMES LPAR opMatematicas RPAR .)
     RETURN          reduce using rule 116 (multiplicacion -> operadores TIMES LPAR opMatematicas RPAR .)
+    ELSE            reduce using rule 116 (multiplicacion -> operadores TIMES LPAR opMatematicas RPAR .)
     RPAR            reduce using rule 116 (multiplicacion -> operadores TIMES LPAR opMatematicas RPAR .)
 
 
-state 255
+state 256
 
     (118) division -> operadores DIVIDE LPAR operadores RPAR .
 
@@ -5395,10 +5586,11 @@ state 255
     LPAR            reduce using rule 118 (division -> operadores DIVIDE LPAR operadores RPAR .)
     END             reduce using rule 118 (division -> operadores DIVIDE LPAR operadores RPAR .)
     RETURN          reduce using rule 118 (division -> operadores DIVIDE LPAR operadores RPAR .)
+    ELSE            reduce using rule 118 (division -> operadores DIVIDE LPAR operadores RPAR .)
     RPAR            reduce using rule 118 (division -> operadores DIVIDE LPAR operadores RPAR .)
 
 
-state 256
+state 257
 
     (119) division -> operadores DIVIDE LPAR opMatematicas RPAR .
 
@@ -5416,119 +5608,23 @@ state 256
     LPAR            reduce using rule 119 (division -> operadores DIVIDE LPAR opMatematicas RPAR .)
     END             reduce using rule 119 (division -> operadores DIVIDE LPAR opMatematicas RPAR .)
     RETURN          reduce using rule 119 (division -> operadores DIVIDE LPAR opMatematicas RPAR .)
+    ELSE            reduce using rule 119 (division -> operadores DIVIDE LPAR opMatematicas RPAR .)
     RPAR            reduce using rule 119 (division -> operadores DIVIDE LPAR opMatematicas RPAR .)
 
 
-state 257
+state 258
 
     (79) metodoBoleano -> VARIABLE POINT VARIABLE QUESTION LPAR expression RPAR .
 
     $end            reduce using rule 79 (metodoBoleano -> VARIABLE POINT VARIABLE QUESTION LPAR expression RPAR .)
 
 
-state 258
+state 259
 
     (89) argumentosA -> NUMBER COMMA factor .
 
     RPAR            reduce using rule 89 (argumentosA -> NUMBER COMMA factor .)
 
-
-state 259
-
-    (138) cond_else -> ELSE D_POINT . repCuerpo END
-    (83) repCuerpo -> . cuerpo
-    (84) repCuerpo -> . cuerpo repCuerpo
-    (19) cuerpo -> . asignacion
-    (20) cuerpo -> . expression
-    (21) cuerpo -> . comparacion
-    (22) cuerpo -> . condicional
-    (23) cuerpo -> . impresion
-    (24) cuerpo -> . for
-    (25) cuerpo -> . while
-    (26) cuerpo -> . input
-    (27) cuerpo -> . callFuncion
-    (28) cuerpo -> . addValueHash
-    (29) cuerpo -> . modValueHash
-    (30) cuerpo -> . deleteValueHash
-    (31) cuerpo -> . insertArray
-    (32) cuerpo -> . deleteArray
-    (33) cuerpo -> . pushStack
-    (34) cuerpo -> . searchStack
-    (35) asignacion -> . VARIABLE ASIGN expression
-    (36) asignacion -> . VARIABLE ASIGN comparacion
-    (37) asignacion -> . VARIABLE ASIGN callFuncion
-    (38) asignacion -> . VARIABLE ASIGN diccionario
-    (39) asignacion -> . VARIABLE ASIGN getValueHash
-    (40) asignacion -> . VARIABLE ASIGN array
-    (41) asignacion -> . VARIABLE ASIGN stack
-    (42) asignacion -> . VARIABLE tipo_asignacion factor
-    (43) asignacion -> . VARIABLE ASIGN opMatematicas
-    (49) expression -> . term
-    (50) expression -> . boleano
-    (57) comparacion -> . expression comparador expression
-    (58) comparacion -> . expression comparador expression AND comparacion
-    (59) comparacion -> . expression comparador expression OR comparacion
-    (60) comparacion -> . expression AND expression
-    (61) comparacion -> . expression OR expression
-    (136) condicional -> . IF comparacion D_POINT repCuerpo END
-    (137) condicional -> . IF comparacion D_POINT repCuerpo END cond_else
-    (68) impresion -> . PUTS factor
-    (92) for -> . FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END
-    (93) for -> . FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END for
-    (81) while -> . WHILE LPAR comparacion RPAR repCuerpo END
-    (82) while -> . WHILE LPAR comparacion RPAR repCuerpo END while
-    (69) input -> . VARIABLE ASIGN GETS
-    (134) callFuncion -> . VARIABLE LPAR RPAR
-    (135) callFuncion -> . VARIABLE LPAR parametros RPAR
-    (76) addValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
-    (77) modValueHash -> . VARIABLE LCOR expression RCOR ASIGN expression
-    (78) deleteValueHash -> . VARIABLE POINT DELETE LPAR expression RPAR
-    (90) insertArray -> . VARIABLE POINT INSERT LPAR argumentosA RPAR
-    (91) deleteArray -> . VARIABLE POINT DELETE_AT LPAR NUMBER RPAR
-    (98) pushStack -> . VARIABLE POINT PUSH LPAR factor RPAR
-    (97) searchStack -> . VARIABLE POINT SEARCH LPAR factor RPAR
-    (51) term -> . factor
-    (70) boleano -> . TRUE
-    (71) boleano -> . FALSE
-    (52) factor -> . NUMBER
-    (53) factor -> . STRING
-    (54) factor -> . FLOAT
-    (55) factor -> . VARIABLE
-    (56) factor -> . LPAR expression RPAR
-
-    VARIABLE        shift and go to state 74
-    IF              shift and go to state 25
-    PUTS            shift and go to state 30
-    FOR             shift and go to state 28
-    WHILE           shift and go to state 26
-    TRUE            shift and go to state 31
-    FALSE           shift and go to state 32
-    NUMBER          shift and go to state 29
-    STRING          shift and go to state 34
-    FLOAT           shift and go to state 35
-    LPAR            shift and go to state 27
-
-    repCuerpo                      shift and go to state 263
-    cuerpo                         shift and go to state 58
-    asignacion                     shift and go to state 59
-    expression                     shift and go to state 57
-    comparacion                    shift and go to state 60
-    condicional                    shift and go to state 61
-    impresion                      shift and go to state 62
-    for                            shift and go to state 63
-    while                          shift and go to state 64
-    input                          shift and go to state 65
-    callFuncion                    shift and go to state 66
-    addValueHash                   shift and go to state 67
-    modValueHash                   shift and go to state 68
-    deleteValueHash                shift and go to state 69
-    insertArray                    shift and go to state 70
-    deleteArray                    shift and go to state 71
-    pushStack                      shift and go to state 72
-    searchStack                    shift and go to state 73
-    factor                         shift and go to state 21
-    term                           shift and go to state 22
-    boleano                        shift and go to state 23
 
 state 260
 
@@ -5548,6 +5644,7 @@ state 260
     LPAR            reduce using rule 82 (while -> WHILE LPAR comparacion RPAR repCuerpo END while .)
     END             reduce using rule 82 (while -> WHILE LPAR comparacion RPAR repCuerpo END while .)
     RETURN          reduce using rule 82 (while -> WHILE LPAR comparacion RPAR repCuerpo END while .)
+    ELSE            reduce using rule 82 (while -> WHILE LPAR comparacion RPAR repCuerpo END while .)
 
 
 state 261
@@ -5555,7 +5652,7 @@ state 261
     (92) for -> FOR VARIABLE IN NUMBER POINT POINT NUMBER . DO repCuerpo END
     (93) for -> FOR VARIABLE IN NUMBER POINT POINT NUMBER . DO repCuerpo END for
 
-    DO              shift and go to state 264
+    DO              shift and go to state 263
 
 
 state 262
@@ -5583,19 +5680,12 @@ state 262
     LPAR            shift and go to state 27
 
     expression                     shift and go to state 149
-    cuerpoHash                     shift and go to state 265
+    cuerpoHash                     shift and go to state 264
     term                           shift and go to state 22
     boleano                        shift and go to state 23
     factor                         shift and go to state 21
 
 state 263
-
-    (138) cond_else -> ELSE D_POINT repCuerpo . END
-
-    END             shift and go to state 266
-
-
-state 264
 
     (92) for -> FOR VARIABLE IN NUMBER POINT POINT NUMBER DO . repCuerpo END
     (93) for -> FOR VARIABLE IN NUMBER POINT POINT NUMBER DO . repCuerpo END for
@@ -5633,8 +5723,8 @@ state 264
     (59) comparacion -> . expression comparador expression OR comparacion
     (60) comparacion -> . expression AND expression
     (61) comparacion -> . expression OR expression
-    (136) condicional -> . IF comparacion D_POINT repCuerpo END
-    (137) condicional -> . IF comparacion D_POINT repCuerpo END cond_else
+    (136) condicional -> . IF comparacion repCuerpo END
+    (137) condicional -> . IF comparacion repCuerpo cond_else
     (68) impresion -> . PUTS factor
     (92) for -> . FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END
     (93) for -> . FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END for
@@ -5671,7 +5761,7 @@ state 264
     FLOAT           shift and go to state 35
     LPAR            shift and go to state 27
 
-    repCuerpo                      shift and go to state 267
+    repCuerpo                      shift and go to state 265
     for                            shift and go to state 63
     cuerpo                         shift and go to state 58
     asignacion                     shift and go to state 59
@@ -5693,42 +5783,22 @@ state 264
     term                           shift and go to state 22
     boleano                        shift and go to state 23
 
-state 265
+state 264
 
     (74) cuerpoHash -> expression ASIGN GREATER expression COMMA cuerpoHash .
 
     RKEY            reduce using rule 74 (cuerpoHash -> expression ASIGN GREATER expression COMMA cuerpoHash .)
 
 
-state 266
-
-    (138) cond_else -> ELSE D_POINT repCuerpo END .
-
-    $end            reduce using rule 138 (cond_else -> ELSE D_POINT repCuerpo END .)
-    VARIABLE        reduce using rule 138 (cond_else -> ELSE D_POINT repCuerpo END .)
-    IF              reduce using rule 138 (cond_else -> ELSE D_POINT repCuerpo END .)
-    PUTS            reduce using rule 138 (cond_else -> ELSE D_POINT repCuerpo END .)
-    FOR             reduce using rule 138 (cond_else -> ELSE D_POINT repCuerpo END .)
-    WHILE           reduce using rule 138 (cond_else -> ELSE D_POINT repCuerpo END .)
-    TRUE            reduce using rule 138 (cond_else -> ELSE D_POINT repCuerpo END .)
-    FALSE           reduce using rule 138 (cond_else -> ELSE D_POINT repCuerpo END .)
-    NUMBER          reduce using rule 138 (cond_else -> ELSE D_POINT repCuerpo END .)
-    STRING          reduce using rule 138 (cond_else -> ELSE D_POINT repCuerpo END .)
-    FLOAT           reduce using rule 138 (cond_else -> ELSE D_POINT repCuerpo END .)
-    LPAR            reduce using rule 138 (cond_else -> ELSE D_POINT repCuerpo END .)
-    END             reduce using rule 138 (cond_else -> ELSE D_POINT repCuerpo END .)
-    RETURN          reduce using rule 138 (cond_else -> ELSE D_POINT repCuerpo END .)
-
-
-state 267
+state 265
 
     (92) for -> FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo . END
     (93) for -> FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo . END for
 
-    END             shift and go to state 268
+    END             shift and go to state 266
 
 
-state 268
+state 266
 
     (92) for -> FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END .
     (93) for -> FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END . for
@@ -5749,13 +5819,14 @@ state 268
     LPAR            reduce using rule 92 (for -> FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END .)
     END             reduce using rule 92 (for -> FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END .)
     RETURN          reduce using rule 92 (for -> FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END .)
+    ELSE            reduce using rule 92 (for -> FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END .)
     FOR             shift and go to state 28
 
   ! FOR             [ reduce using rule 92 (for -> FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END .) ]
 
-    for                            shift and go to state 269
+    for                            shift and go to state 267
 
-state 269
+state 267
 
     (93) for -> FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END for .
 
@@ -5773,6 +5844,7 @@ state 269
     LPAR            reduce using rule 93 (for -> FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END for .)
     END             reduce using rule 93 (for -> FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END for .)
     RETURN          reduce using rule 93 (for -> FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END for .)
+    ELSE            reduce using rule 93 (for -> FOR VARIABLE IN NUMBER POINT POINT NUMBER DO repCuerpo END for .)
 
 WARNING: 
 WARNING: Conflicts:
@@ -5781,12 +5853,12 @@ WARNING: shift/reduce conflict for ASIGN in state 20 resolved as shift
 WARNING: shift/reduce conflict for ASIGN in state 74 resolved as shift
 WARNING: shift/reduce conflict for LPAR in state 74 resolved as shift
 WARNING: shift/reduce conflict for LPAR in state 88 resolved as shift
-WARNING: shift/reduce conflict for WHILE in state 244 resolved as shift
-WARNING: shift/reduce conflict for FOR in state 268 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 245 resolved as shift
+WARNING: shift/reduce conflict for FOR in state 266 resolved as shift
 WARNING: reduce/reduce conflict in state 145 resolved using rule (factor -> FLOAT)
 WARNING: rejected rule (operadores -> FLOAT) in state 145
 WARNING: reduce/reduce conflict in state 146 resolved using rule (factor -> NUMBER)
 WARNING: rejected rule (enteros -> NUMBER) in state 146
-WARNING: reduce/reduce conflict in state 233 resolved using rule (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression)
-WARNING: rejected rule (modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression) in state 233
+WARNING: reduce/reduce conflict in state 235 resolved using rule (addValueHash -> VARIABLE LCOR expression RCOR ASIGN expression)
+WARNING: rejected rule (modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression) in state 235
 WARNING: Rule (modValueHash -> VARIABLE LCOR expression RCOR ASIGN expression) is never reduced

@@ -289,12 +289,12 @@ def p_call_function(p):
 # Inicio -> Paul del Pezo
 # ----------------------------------Condicional----------------------------------
 def p_cond_if(p):
-    '''condicional : IF comparacion D_POINT repCuerpo END
-                    | IF comparacion D_POINT repCuerpo END cond_else
+    '''condicional : IF comparacion repCuerpo END
+                    | IF comparacion repCuerpo cond_else
     '''
 
 def p_cond_else(p):
-    'cond_else : ELSE D_POINT repCuerpo END'
+    'cond_else : ELSE repCuerpo END'
 # Fin -> Paul del Pezo
 
 resultGUI = []
