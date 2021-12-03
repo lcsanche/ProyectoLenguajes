@@ -185,10 +185,10 @@ def p_for(p):
     '''
 #------------------------------------stack-----------------------------------
 def p_vacio(p):
-    'vacio : ""'
+    'vacio : '''
 def p_stack(p):
-    '''stack : LCOR parametrosA RCOR
-            | LCOR vacio RCOR
+    '''stack : STACK LPAR parametrosA RPAR
+            | STACK LPAR vacio RPAR
     '''
 def p_search_stack(p):
     '''searchStack : VARIABLE POINT SEARCH LPAR factor RPAR

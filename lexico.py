@@ -2,6 +2,8 @@ import ply.lex as lex
 
 # Inicio-> Luis Carlos Sanchez Plaza
 reserved = {
+    #Estructuras
+    'stack' : 'STACK',
     #Condicionales
     'if' : 'IF',
     'else' : 'ELSE',

@@ -5,6 +5,7 @@ if a>1:
 	puts "hola"
 	a=[1,2]
 end
+a=stack()
 while (1>2) 
 	puts i
 	a.insert(2,6)
@@ -15,6 +16,9 @@ for i in 1..10 do
 	hash.delete("a")
 	stack.search(6)
 	stack.push(5)
+	for a in 2..5 do
+	    puts i
+	end
 end
 def hola(a)
 	a=[]
