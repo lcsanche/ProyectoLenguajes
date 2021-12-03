@@ -15,7 +15,7 @@ def open_File():
         file_name = filedialog.askopenfilename(initialdir=directoryActual, title="Seleccione Archivo",
                                                filetypes=(("Ruby files", "*.rb"), ("all files", "*.*")))
     file = open(file_name, "r")
-    file_name=''
+    # file_name=''
     btnLex.config(state=NORMAL)
     btnSint.config(state=NORMAL)
     file_text = ""

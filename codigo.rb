@@ -1,9 +1,11 @@
 variable
 _variable
 @variable
-if a>1:
+if a>1
 	puts "hola"
 	a=[1,2]
+else
+	hash = { a => "hola", b => "mundo" }
 end
 a=stack()
 while (1>2) 
@@ -29,8 +31,3 @@ variable.equal?("hola")
 var = 5+4-(2*5)
 (2.5+3.1)**2
 a.delete_at("pepe")
-if  a==b
-    puts i
-else
-    puts a
-end
